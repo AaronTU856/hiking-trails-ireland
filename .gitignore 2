@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Environments
+.env
+venv/
+.venv/
+webmapping_env/
+
+# Django
+staticfiles/
+media/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Tests/artifacts
+.coverage
+.pytest_cache/
