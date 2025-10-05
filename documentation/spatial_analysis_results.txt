@@ -1,0 +1,45 @@
+  name  | population | countyname 
+--------+------------+------------
+ Dublin |    1400000 | Dublin
+(1 row)
+
+   city1   |   city2    |    distance_km     
+-----------+------------+--------------------
+ Amsterdam | Brussels   | 173.09614531123998
+ Vienna    | Prague     |    251.13629485916
+ Paris     | Brussels   |    264.26791940593
+ Berlin    | Prague     |    281.33055299125
+ London    | Brussels   |    321.58713206855
+ London    | Paris      |    343.91577136897
+ Berlin    | Copenhagen |    355.52701773611
+ London    | Amsterdam  | 358.95543376566997
+ Stockholm | Helsinki   |    397.21859306403
+ Stockholm | Oslo       |    417.78946784679
+(10 rows)
+
+    name    |    country     | distance_from_dublin_km 
+------------+----------------+-------------------------
+ London     | United Kingdom |         464.59355799229
+ Amsterdam  | Netherlands    |         759.08795112614
+ Brussels   | Belgium        |       777.6286626173801
+ Paris      | France         |         782.49544450693
+ Copenhagen | Denmark        |      1242.5272104795802
+(5 rows)
+
+   name    |    country     | population |   distance_km   
+-----------+----------------+------------+-----------------
+ Paris     | France         |   11000000 |               0
+ Brussels  | Belgium        |    1200000 | 264.26791940593
+ London    | United Kingdom |    9000000 | 343.91577136897
+ Amsterdam | Netherlands    |     900000 | 430.24320000608
+(4 rows)
+
+  name  | population | buffer_50km_area_km2 
+--------+------------+----------------------
+ London |    9000000 |    7802.124907267675
+ Paris  |   11000000 |    7809.308458169032
+ Berlin |    3700000 |    7807.496199517816
+ Madrid |    6600000 |    7809.055958582198
+ Rome   |    2800000 |    7801.456282068337
+(5 rows)
+

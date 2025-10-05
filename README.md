@@ -39,6 +39,7 @@ python manage.py createsuperuser --settings=webmapping_project.settings_producti
 
 # 6) Run the development server (with static files in production mode)
 python manage.py runserver --insecure --settings=webmapping_project.settings_production
+<<<<<<< HEAD
 
 
 ## How to Run (Dev)
@@ -99,3 +100,5 @@ api_endpoints_overview.png
 pytest_screenshots.png
 
 any admin/map screenshots
+=======
+>>>>>>> 4094533 (Update lab 3 final project files)

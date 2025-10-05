@@ -1,0 +1,65 @@
+     dataset     | feature_count 
+-----------------+---------------
+ Irish Counties  |            32
+ European Cities |            15
+ Transportation  |             5
+(3 rows)
+
+ column_name |     data_type     
+-------------+-------------------
+ id          | integer
+ osm_id      | double precision
+ area        | numeric
+ latitude    | numeric
+ longitude   | numeric
+ epoch_tstm  | numeric
+ geom        | USER-DEFINED
+ logainm_re  | character varying
+ osm_user    | character varying
+ osm_timest  | character varying
+ attributio  | character varying
+ t_ie_url    | character varying
+ name_tag    | character varying
+ name_ga     | character varying
+ name_en     | character varying
+ alt_name    | character varying
+ alt_name_g  | character varying
+(17 rows)
+
+ countyname |     area_km2      
+------------+-------------------
+ Cork       | 7503.723587803146
+ Galway     | 6168.443442162651
+ Mayo       | 5596.519325579146
+ Donegal    | 4858.555763688814
+ Kerry      | 4807.049185382754
+(5 rows)
+
+    name    |    country     | population | longitude | latitude 
+------------+----------------+------------+-----------+----------
+ Paris      | France         |   11000000 |    2.3522 |  48.8566
+ London     | United Kingdom |    9000000 |   -0.1276 |  51.5074
+ Madrid     | Spain          |    6600000 |   -3.7038 |  40.4168
+ Berlin     | Germany        |    3700000 |    13.405 |    52.52
+ Rome       | Italy          |    2800000 |   12.4964 |  41.9028
+ Vienna     | Austria        |    1900000 |   16.3738 |  48.2082
+ Warsaw     | Poland         |    1800000 |   21.0122 |  52.2297
+ Stockholm  | Sweden         |    1600000 |   18.0686 |  59.3293
+ Dublin     | Ireland        |    1400000 |   -6.2603 |  53.3498
+ Prague     | Czech Republic |    1300000 |   14.4378 |  50.0755
+ Brussels   | Belgium        |    1200000 |    4.3517 |  50.8503
+ Amsterdam  | Netherlands    |     900000 |    4.9041 |  52.3676
+ Copenhagen | Denmark        |     800000 |   12.5683 |  55.6761
+ Oslo       | Norway         |     700000 |   10.7522 |  59.9139
+ Helsinki   | Finland        |     650000 |   24.9384 |  60.1699
+(15 rows)
+
+     route_name      | route_type |     length_km      
+---------------------+------------+--------------------
+ Madrid-Barcelona    | railway    |  506.6492878085596
+ Paris-Lyon          | railway    | 391.71270467386296
+ Berlin-Hamburg      | highway    |  255.9584019658817
+ Dublin-Cork Highway | highway    |  220.8888090498533
+ London-Birmingham   | highway    |  162.8409821107786
+(5 rows)
+
