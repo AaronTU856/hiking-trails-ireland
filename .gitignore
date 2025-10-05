@@ -1,29 +1,23 @@
-# OS / Editor
-.DS_Store
-.idea/
-.vscode/
-*.swp
-
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-.eggs/
-.Python
+*.py[cod]
+*.sqlite3
 
-# Virtualenvs
+# Environments
+.env
 venv/
-env/
 .venv/
 webmapping_env/
 
-# Django / builds
-db.sqlite3
+# Django
 staticfiles/
-staticfiles_production/
 media/
 
-# Node (if any)
-node_modules/
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Tests/artifacts
+.coverage
+.pytest_cache/
