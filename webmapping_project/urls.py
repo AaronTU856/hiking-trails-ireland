@@ -22,10 +22,13 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('maps.urls')),
+    # path('', include('maps.urls')),
     
     # API endpoints
     path('api/cities/', include('cities_api.urls')),
+    
+    # Cities 
+    path('', include('cities.urls')),
     
     # API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

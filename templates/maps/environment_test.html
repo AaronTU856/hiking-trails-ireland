@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Environment Test - Web Mapping Platform{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header {% if overall_status == 'passed' %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+                    <h4 class="mb-0">
+                        <i class="fas fa-flask me-2"></i>
+                        Environment Test Results
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert {% if overall_status == 'passed' %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                        <h5 class="alert-heading">
+                            {% if overall_status == 'passed' %}
+                                <i class="fas fa-check-circle me-2"></i>All Tests Passed!
+                            {% else %}
+                                <i class="fas fa-exclamation-triangle me-2"></i>Some Tests Failed
+                            {% endif %}
+                        </h5>
+                        <p class="mb-0">
+                            {% if overall_status == 'passed' %}
+                                Your web mapping environment is correctly configured and ready for development.
+                            {% else %}
+                                Please review the failed tests below and follow the setup instructions.
+                            {% endif %}
+                        </p>
+                    </div>
+                    
+                    {% for test in tests %}
+                    <div class="test-result mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            {% if test.status == 'passed' %}
+                                <span class="badge bg-success me-3">
+                                    <i class="fas fa-check"></i> PASS
+                                </span>
+                            {% else %}
+                                <span class="badge bg-danger me-3">
+                                    <i class="fas fa-times"></i> FAIL
+                                </span>
+                            {% endif %}
+                            <h6 class="mb-0">{{ test.name }}</h6>
+                        </div>
+                        <p class="text-muted mb-0 ms-5">{{ test.message }}</p>
+                    </div>
+                    {% endfor %}
+                    
+                    <hr>
+                    <div class="text-center">
+                        <a href="{% url 'hello_map' %}" class="btn btn-primary">
+                            <i class="fas fa-map me-2"></i>
+                            Go to Hello Map
+                        </a>
+                        <button class="btn btn-outline-secondary ms-2" onclick="location.reload()">
+                            <i class="fas fa-redo me-2"></i>
+                            Run Tests Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -56,10 +56,14 @@ INSTALLED_APPS = [
     'maps',
     
     # New app for week 2
-    #'apps.spatial_data_app',
+    # 'apps.spatial_data_app',
     
     #New app from week 3
     'cities_api', #New API app for week 3 
+    
+    'cities',
+    
+    
     
 ]
 
