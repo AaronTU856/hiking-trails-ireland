@@ -18,4 +18,4 @@ class CityListSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = City
-        fields = ['id', 'name', 'country', 'population', 'coordinates']
+        fields = ['id', 'name', 'country', 'population', 'coordinates','longitude', 'lat']
