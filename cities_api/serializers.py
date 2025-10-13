@@ -35,12 +35,19 @@ class CityGeoJSONSerializer(GeoFeatureModelSerializer):
     
     class Meta:
         model = City
-        geo_field = 'location'
+        geo_field = "location"
         fields = [
-            'id', 'name', 'country', 'region', 'population', 
-            'is_capital', 'founded_year'
+            "id",
+            "name",
+            "country",
+            "population",
+            "founded_year",
+            "area_km2",
+            "timezone",
+            "description",
+            "latitude",
+            "longitude",
         ]
-
 
 class CityCreateSerializer(serializers.ModelSerializer):
     """Serializer for creating/updating cities"""

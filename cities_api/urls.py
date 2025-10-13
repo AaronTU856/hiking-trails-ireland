@@ -1,13 +1,17 @@
 from django.urls import path
 from . import views
-
-app_name = 'cities_api'
+from .views import city_map 
+app_name = 'cities'
 
 urlpatterns = [
     # Basic CRUD endpoints
     path('', views.CityListCreateView.as_view(), name='city-list-create'),
     path('<int:pk>/', views.CityDetailView.as_view(), name='city-detail'),
+    
+    path('search/', views.city_search, name='city_search'), 
    
+    path('map/', city_map, name='map'),
+    
     # Special format endpoints
     path('geojson/', views.CityGeoJSONView.as_view(), name='city-geojson'),
    

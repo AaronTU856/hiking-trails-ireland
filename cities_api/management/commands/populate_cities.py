@@ -1,6 +1,7 @@
-import os
 from django.core.management.base import BaseCommand
-from cities.models import City
+from django.contrib.gis.geos import Point
+from cities_api.models import City
+
 
 class Command(BaseCommand):
     help = 'Populate database with sample city data'
@@ -19,6 +20,17 @@ class Command(BaseCommand):
                 'timezone': 'Europe/Dublin'
             },
             {
+                'name': 'Cork',
+                'country': 'Ireland',
+                'population': 224004,
+                'latitude': 51.8985,
+                'longitude': -8.4756,
+                'description': 'Second largest city in Ireland, known for its maritime history.',
+                'founded_year': 1401,
+                'area_km2': 187.00,
+                'timezone': 'Europe/Dublin'
+            },
+             {
                 'name': 'New York',
                 'country': 'United States',
                 'population': 8336817,
@@ -95,23 +107,24 @@ class Command(BaseCommand):
                 'area_km2': 1521.11,
                 'timezone': 'America/Sao_Paulo'
             }
-        ]
 
+            ]
         for city_data in sample_cities:
-            city, created = City.objects.get_or_create(
+            city, created = City.objects.update_or_create(
                 name=city_data['name'],
-                country=city_data['country'],
-                defaults=city_data
+                defaults={
+                    'country': city_data['country'],
+                    'population': city_data['population'],
+                    'location': Point(city_data['longitude'], city_data['latitude']),
+                    'description': city_data['description'],
+                    'founded_year': city_data['founded_year'],
+                    'area_km2': city_data['area_km2'],
+                    'timezone': city_data['timezone']
+                }
             )
             if created:
-                self.stdout.write(
-                    self.style.SUCCESS(f'Successfully created city: {city.name}')
-                )
+                self.stdout.write(self.style.SUCCESS(f"✓ Created city: {city.name}"))
             else:
-                self.stdout.write(
-                    self.style.WARNING(f'City already exists: {city.name}')
-                )
+                self.stdout.write(self.style.WARNING(f"↻ Updated existing city: {city.name}"))
 
-        self.stdout.write(
-            self.style.SUCCESS('Sample cities population completed!')
-        )
+        self.stdout.write(self.style.SUCCESS("✅ Sample cities loaded successfully!"))

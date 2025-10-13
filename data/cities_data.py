@@ -240,6 +240,19 @@ CITIES_DATA = [
         'is_capital': True,
         'timezone': 'Europe/Athens',
         'elevation_m': 70
+    },
+    {
+        'name': 'Cork',
+        'country': 'Ireland',
+        'region' : 'Munster',
+        'population': 224004,
+        'latitude': 51.8985,
+        'longitude': -8.4756,
+        'description': 'Second Largest city in Ireland,Known for maritime history.',
+        'founded_year': 1401,
+        'is_capital': False,
+        'timezone': 'Europe/Dublin',
+        'elevation_m': 10,
     }
 ]
 

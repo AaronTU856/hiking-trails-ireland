@@ -19,16 +19,24 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
-
+from cities_api.views import city_map 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('maps.urls')),
+   
+    # Map page is the homepage
+    # path('', include('maps.urls')),
+     path('', city_map, name='home'),
     
+    #path('api-test/', include('cities_api.urls')),
+    path('maps/', include('maps.urls')),
+
+    path('cities/', include('cities_api.urls', namespace='cities')),
     # API endpoints
     path('api/cities/', include('cities_api.urls')),
     
     # Cities 
-    path('', include('cities.urls')),
+    #path('', include('cities.urls')),
     
     # API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

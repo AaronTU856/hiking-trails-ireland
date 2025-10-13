@@ -98,11 +98,16 @@ class CityGeoJSONView(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
-        geojson_data = {
+        geojson_data = serializer.data
+
+        # FIX: handle nested FeatureCollection returned by serializer
+        if isinstance(geojson_data, dict) and "features" in geojson_data:
+            geojson_data = geojson_data["features"]
+
+        return Response({
             "type": "FeatureCollection",
-            "features": serializer.data
-        }
-        return Response(geojson_data)
+            "features": geojson_data
+        })
 
 @api_view(['GET'])
 def city_statistics(request):
@@ -250,6 +255,15 @@ def countries_list(request):
     return Response(list(countries))
 
 @api_view(['GET'])
+def city_search(request):
+    """Simple city search endpoint"""
+    q = request.query_params.get('q', '')
+    if not q:
+        return Response([], status=200)
+    cities = City.objects.filter(name__icontains=q)[:10]
+    return Response(CityListSerializer(cities, many=True).data)
+
+@api_view(['GET'])
 def api_info(request):
     """
     Return API information and available endpoints
@@ -285,3 +299,7 @@ def api_info(request):
 def api_test_page(request):
     """Simple frontend for testing API"""
     return render(request, 'api_test.html')
+
+def city_map(request):
+    """Render the main project map (templates/cities/map.html)."""
+    return render(request, 'cities/map.html')

@@ -91,8 +91,9 @@ class City(models.Model):
     # Spatial field
     location = models.PointField(srid=4326, help_text="Geographic coordinates")
 
-   
-   
+    description = models.TextField(blank=True, null=True)
+    area_km2 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
    
     # Administrative
     is_capital = models.BooleanField(default=False)

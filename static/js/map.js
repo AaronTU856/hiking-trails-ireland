@@ -26,7 +26,7 @@ function initializeMap() {
 
     // Initialize the map - Center on Europe for better view
 
-    map = L.map('map').setView([54.5, 15.2], 4); // Changed to Europe center
+    map = L.map('map').setView([53.5, -7.7], 6); // Changed to Europe center
 
  
 
@@ -112,18 +112,19 @@ function loadCities() {
 
             // Handle different response formats
 
-            if (data && data.features && Array.isArray(data.features)) {
-
-                // Valid GeoJSON format
-
-                console.log('Valid GeoJSON received with', data.features.length, 'features');
-
-                allCitiesData = data.features;
-
+            if (data && data.features) {
+                // Handle both normal and nested GeoJSON structures
+                const features = Array.isArray(data.features)
+                    ? data.features
+                    : Array.isArray(data.features.features)
+                        ? data.features.features
+                        : [];
+            
+                console.log('Loaded', features.length, 'features (after flattening nested GeoJSON)');
+            
+                allCitiesData = features;
                 displayCitiesOnMap(allCitiesData);
-
                 updateCityCount(allCitiesData.length);
-
                 console.log(`Successfully loaded ${allCitiesData.length} cities`);
 
             } else if (data && data.error) {
