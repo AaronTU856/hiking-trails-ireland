@@ -272,4 +272,164 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* filepath: static/css/style.css */
+/* Proximity Search Styles */
+.numbered-marker {
+    background: transparent !important;
+    border: none !important;
+}
+ 
+.marker-number {
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+ 
+.proximity-results-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+ 
+.result-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+ 
+.result-item:hover {
+    background-color: #f8f9fa;
+}
+ 
+.proximity-result {
+    min-width: 250px;
+}
+ 
+.proximity-result h6 {
+    margin-bottom: 10px;
+    color: #007bff;
+    font-weight: 600;
+}
+ 
+.proximity-result p {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+ 
+/* Map cursor when in proximity mode */
+.leaflet-container.proximity-mode {
+    cursor: crosshair !important;
+}
+ 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .proximity-results-panel {
+        width: 90%;
+        right: 5%;
+        top: 10px;
+    }
+}
+.proximity-controls {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            min-width: 250px;
+        }
+       
+        .results-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 320px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: none;
+        }
+ 
+        .search-mode-selector {
+            margin-bottom: 10px;
+        }
+ 
+        .search-controls {
+            display: none;
+            margin-top: 10px;
+        }
+ 
+        .radius-circle {
+            opacity: 0.3;
+        }
+ 
+        .result-marker {
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            font-size: 12px;
+        }
+ 
+        .search-marker {
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 3px solid white;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+        }
+ 
+        .list-group-item {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+ 
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+ 
+        .distance-badge {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #495057;
+        }
+
  

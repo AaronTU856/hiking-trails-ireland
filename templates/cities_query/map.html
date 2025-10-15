@@ -1,6 +1,6 @@
-{% load static %}
- 
-<!DOCTYPE html>
+{%load static%}
+
+<!DOCTYPE html
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
    
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
 </head>
 <body>
     <!-- Navigation -->
@@ -262,7 +263,7 @@
             searchMarker = L.marker([lat, lng], {
                 icon: L.divIcon({
                     className: 'search-marker',
-                    html: '<div class="search-marker">📍</div>',
+                    html: '<div class="search-marker"></div>',
                     iconSize: [30, 30],
                     iconAnchor: [15, 15]
                 })

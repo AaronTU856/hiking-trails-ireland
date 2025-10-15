@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     
     #New app from week 3
     'cities_api', #New API app for week 3 
+    'cities_query',
     
     
     
