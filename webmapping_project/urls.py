@@ -25,34 +25,25 @@ from cities_api.views import city_map
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('maps.urls')),
-   
-    # Map page is the homepage
-    # path('', include('maps.urls')),
+
+    # Home page (map)
     path('', city_map, name='home'),
-    
-    #path('api-test/', include('cities_api.urls')),
     path('maps/', include('maps.urls')),
 
+    # City APIs
     path('cities/', include('cities_api.urls', namespace='cities')),
-    # API endpoints
     path('api/cities/', include('cities_api.urls')),
-    
-    
-    path('query/', include('cities_query.urls')),  # New inclusion for cities_query app
-    
-    
-    # Cities 
-    #path('', include('cities.urls')),
-    
+
+    # Region APIs (European Mapping)
+    path('api/regions/', include('european_mapping.regions.urls')),
+
+    # Query module
+    path('query/', include('cities_query.urls')),
+
     # API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path(
-        "api/redoc/",
-        SpectacularRedocView.as_view(url_name="schema"),
-        name="redoc",
-    ),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
       
     
 ]
