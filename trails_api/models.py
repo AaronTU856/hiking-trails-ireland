@@ -168,16 +168,16 @@ class Trail(models.Model):
         ('hard', 'Hard'),
     ]
     
-trail_name = models.CharField(max_length=200, db_index=True)
-county = models.Charfield(max_length=100, db_index = True)
-region = models.Charfield(max_length=200, blank=True)
-distance_km = models.DecimalField(max_digits=6, decimal_places=2, help_text="Trail length in kilometers")
-difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default ='moderate')
-elevation_gain_m = models.IntegerField(help_text="Total elevation gain in meters")
-description = models.TextField(blank=True, null=True)
-start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
-created_at = models.DateTimeField(auto_now_add=True)
-updated_at = models.DateTimeField(auto_now=True)
+    trail_name = models.CharField(max_length=200, db_index=True)
+    county = models.CharField(max_length=100, db_index=True)
+    region = models.CharField(max_length=200, blank=True)
+    distance_km = models.DecimalField(max_digits=6, decimal_places=2, help_text="Trail length in kilometers")
+    difficulty = models.CharField(max_length=10, choices = DIFFICULTY_CHOICES, default='moderate')
+    elevation_gain_m = models.IntegerField(help_text="Total elevation gain in meters")
+    description = models.TextField(blank=True, null=True)
+    start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Meta:

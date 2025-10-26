@@ -18,7 +18,7 @@ from .serializers import (
     CityCreateSerializer, CitySummarySerializer, DistanceSerializer,
     BoundingBoxSerializer
 )
-from .filters import CityFilter
+from .filters import TrailFilter
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
@@ -32,50 +32,67 @@ class StandardResultsSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-@extend_schema(tags=["Cities"], summary="List cities", description="Filter, search and paginate.")
+@extend_schema(tags=["Trails"], summary="List trails or Create", description="Filter, search and paginate.")
 class CityListCreateView(generics.ListCreateAPIView):
     """
     List all cities or create a new city
     """
-    queryset = City.objects.all()
+    queryset = Trail.objects.all()
+    serializer_class = TrailSerializer
     pagination_class = StandardResultsSetPagination
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_class = CityFilter
-    search_fields = ['name', 'country', 'region']
-    ordering_fields = ['name', 'country', 'population', 'founded_year']
-    ordering = ['-population']  # Default ordering
+    search_fields = ['trail_name', 'county', 'region']
+    ordering_fields = ['trail_name', 'county', 'distance_km', 'difficulty']
+    ordering = ['trail_name']
+   
+# GeoJSON Endpoint 
+@extend_schema(tags=["Trails"], summary="Retrieve, update or delete a trail")
+class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Trail.objects.all()
+    serializer_class = TrailSerializer
+  
+# Trails within radius  
+@extend_schema(
+    tags=["Spatial"],
+    request=DistanceSerializer,
+    responses={200: dict},
+    examples=[
+        OpenApiExample(
+            "Find trails within 50km of Killarney",
+            value={"latitude": 52.059, "longitude": -9.507, "radius_km": 50},
+            request_only=True,
+        )
+    ],
+)    
     
-    def get_serializer_class(self):
-        """Use different serializers for list vs create"""
-        if self.request.method == 'POST':
-            return CityCreateSerializer
-        return CityListSerializer
     
-    def get_queryset(self):
-        """Optionally filter queryset based on query parameters"""
-        queryset = City.objects.all()
-        
-        # Additional custom filters
-        min_population = self.request.query_params.get('min_population')
-        if min_population:
-            try:
-                min_pop = int(min_population)
-                queryset = queryset.filter(population__gte=min_pop)
-            except ValueError:
-                pass
-        
-        capitals_only = self.request.query_params.get('capitals_only')
-        if capitals_only and capitals_only.lower() == 'true':
-            queryset = queryset.filter(is_capital=True)
-        
-        return queryset
+    
+    
+def get_queryset(self):
+    """Optionally filter queryset based on query parameters"""
+    queryset = City.objects.all()
+    
+    # Additional custom filters
+    min_population = self.request.query_params.get('min_population')
+    if min_population:
+        try:
+            min_pop = int(min_population)
+            queryset = queryset.filter(population__gte=min_pop)
+        except ValueError:
+            pass
+    
+    capitals_only = self.request.query_params.get('capitals_only')
+    if capitals_only and capitals_only.lower() == 'true':
+        queryset = queryset.filter(is_capital=True)
+    
+    return queryset
 
-class CityDetailView(generics.RetrieveUpdateDestroyAPIView):
+class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update, or delete a city instance
     """
-    queryset = City.objects.all()
-    serializer_class = CityDetailSerializer
+    queryset = Trail.objects.all()
+    serializer_class = TrailDetailSerializer
     
     def get_serializer_class(self):
         """Use create serializer for updates"""
@@ -87,12 +104,12 @@ class CityGeoJSONView(generics.ListAPIView):
     """
     Return cities as GeoJSON for mapping applications
     """
-    queryset = City.objects.all()
+    queryset = Trail.objects.all()
     serializer_class = CityGeoJSONSerializer
     pagination_class = None
     #pagination_class = StandardResultsSetPagination
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_class = CityFilter
+    filterset_class = TrailFilter
     search_fields = ['name', 'country']
     
     def list(self, request, *args, **kwargs):
@@ -155,9 +172,9 @@ def city_statistics(request):
 
 
 
-def cities_within_radius(request):
+def trails_within_radius(request):
     """
-    Find cities within specified radius of a point
+    Find trails within specified radius of a point
     """
     serializer = DistanceSerializer(data=request.data)
     if serializer.is_valid():
@@ -169,16 +186,16 @@ def cities_within_radius(request):
         )
         
         # Use Django's built-in spatial lookup instead of custom manager method
-        cities = City.objects.filter(
+        trails = Trail.objects.filter(
             location__distance_lte=(center_point, Distance(km=data['radius_km']))
         ).annotate(
             distance=DistanceFunction('location', center_point)  # Fixed: Use DistanceFunction
         ).order_by('distance')
         
         # Add distance to serialized data
-        city_data = CityListSerializer(cities, many=True).data
-        for i, city in enumerate(cities):
-            city_data[i]['distance_km'] = round(city.distance.km, 2)
+        city_data = CityListSerializer(trails, many=True).data
+        for i, trail in enumerate(trails):
+            trail_data[i]['distance_km'] = round(trail.distance.km, 2)
         
         return Response({
             'center': {
@@ -186,8 +203,8 @@ def cities_within_radius(request):
                 'longitude': data['longitude']
             },
             'radius_km': data['radius_km'],
-            'count': cities.count(),
-            'cities': city_data
+            'count': trails.count(),
+            'trails': trail_data
         })
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -255,13 +272,13 @@ def countries_list(request):
     return Response(list(countries))
 
 @api_view(['GET'])
-def city_search(request):
-    """Simple city search endpoint"""
+def trail_search(request):
+    """Simple trail search endpoint"""
     q = request.query_params.get('q', '')
     if not q:
         return Response([], status=200)
-    cities = City.objects.filter(name__icontains=q)[:10]
-    return Response(CityListSerializer(cities, many=True).data)
+        trails = Trail.objects.filter(name__icontains=q)[:10]
+    return Response(CityListSerializer(trails, many=True).data)
 
 @api_view(['GET'])
 def api_info(request):
