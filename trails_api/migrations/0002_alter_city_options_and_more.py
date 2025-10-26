@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cities_api', '0001_initial'),
+        ('trails_api', '0001_initial'),
     ]
 
     operations = [
@@ -17,11 +17,11 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveIndex(
             model_name='city',
-            name='cities_api__country_7ddc0c_idx',
+            name='trails_api__country_7ddc0c_idx',
         ),
         migrations.RemoveIndex(
             model_name='city',
-            name='cities_api__is_capi_e3d8a0_idx',
+            name='trails_api__is_capi_e3d8a0_idx',
         ),
         migrations.AlterField(
             model_name='city',
@@ -30,10 +30,10 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name='city',
-            index=models.Index(fields=['name'], name='cities_api__name_17129a_idx'),
+            index=models.Index(fields=['name'], name='trails_api__name_17129a_idx'),
         ),
         migrations.AddIndex(
             model_name='city',
-            index=models.Index(fields=['country'], name='cities_api__country_1686d9_idx'),
+            index=models.Index(fields=['country'], name='trails_api__country_1686d9_idx'),
         ),
     ]

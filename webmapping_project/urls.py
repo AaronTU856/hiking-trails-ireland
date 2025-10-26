@@ -32,14 +32,12 @@ urlpatterns = [
 
     # City APIs
     
-    path('api/trails/', include('cities_api.urls')),
+    path('api/trails/', include('trails_api.urls')),
 
     # Region APIs (European Mapping)
-    path('api/regions/', include('european_mapping.regions.urls')),
+    # path('api/regions/', include('european_mapping.regions.urls')),
 
-    # Query module
-    path('query/', include('cities_query.urls')),
-
+    
     # API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),

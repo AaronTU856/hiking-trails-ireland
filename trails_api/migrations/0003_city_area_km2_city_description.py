@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cities_api', '0002_alter_city_options_and_more'),
+        ('trails_api', '0002_alter_city_options_and_more'),
     ]
 
     operations = [

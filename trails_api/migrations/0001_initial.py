@@ -33,7 +33,11 @@ class Migration(migrations.Migration):
                 'verbose_name': 'City',
                 'verbose_name_plural': 'Cities',
                 'ordering': ['-population', 'name'],
-                'indexes': [models.Index(fields=['country', 'population'], name='cities_api__country_7ddc0c_idx'), models.Index(fields=['is_capital'], name='cities_api__is_capi_e3d8a0_idx'), models.Index(fields=['population'], name='cities_api__populat_68da63_idx')],
+                'indexes': [
+                            models.Index(fields=['country', 'population'], name='trails_api__country_7ddc0c_idx'),
+                            models.Index(fields=['is_capital'], name='trails_api__is_capi_e3d8a0_idx'),
+                            models.Index(fields=['population'], name='trails_api__populat_68da63_idx'),
+                        ],
             },
         ),
     ]
