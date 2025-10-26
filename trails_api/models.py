@@ -7,19 +7,19 @@ from django.contrib.gis.measure import Distance
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 
-class CityManager(models.Manager):
+class TrailManager(models.Manager):
     """Custom manager for City model with spatial queries"""
     
     def within_radius(self, center_point, radius_km):
         """
-        Find cities within a specified radius of a point
+        Find trails within a specified radius of a point
         
         Args:
             center_point: Point object (longitude, latitude)
             radius_km: Radius in kilometers
         
         Returns:
-            QuerySet of cities within the radius
+            QuerySet of trails within the radius
         """
         return self.filter(
             location__distance_lte=(center_point, Distance(km=radius_km))
@@ -27,7 +27,7 @@ class CityManager(models.Manager):
     
     def in_bounding_box(self, bbox):
         """
-        Find cities within a bounding box
+        Find trails within a bounding box
         
         Args:
             bbox: List [min_lng, min_lat, max_lng, max_lat]
@@ -44,7 +44,7 @@ class CityManager(models.Manager):
     
     def nearest_to_point(self, point, limit=10):
         """
-        Find nearest cities to a point
+        Find nearest trails to a point
         
         Args:
             point: Point object (longitude, latitude)
@@ -61,60 +61,60 @@ class CityManager(models.Manager):
 
 
 
-class City(models.Model):
-    """
-    Comprehensive city model with spatial capabilities
-    """
-    # Basic information
-    name = models.CharField(max_length=200, db_index=True)
-    country = models.CharField(max_length=100, db_index=True)
-    region = models.CharField(max_length=200, blank=True)
+# class City(models.Model):
+#     """
+#     Comprehensive city model with spatial capabilities
+#     """
+#     # Basic information
+#     name = models.CharField(max_length=200, db_index=True)
+#     country = models.CharField(max_length=100, db_index=True)
+#     region = models.CharField(max_length=200, blank=True)
    
-    # Demographics
-    population = models.PositiveIntegerField()
+#     # Demographics
+#     population = models.PositiveIntegerField()
    
-    # Geographic information
-    location = models.PointField(srid=4326, help_text="City center coordinates")
-    elevation_m = models.IntegerField(
-        null=True,
-        blank=True,
-        help_text="Elevation above sea level in meters"
-    )
+#     # Geographic information
+#     location = models.PointField(srid=4326, help_text="City center coordinates")
+#     elevation_m = models.IntegerField(
+#         null=True,
+#         blank=True,
+#         help_text="Elevation above sea level in meters"
+#     )
    
-    # Historical data
-    founded_year = models.IntegerField(
-        null=True,
-        blank=True,
-        validators=[MinValueValidator(-4000), MaxValueValidator(2025)]
-    )
+#     # Historical data
+#     founded_year = models.IntegerField(
+#         null=True,
+#         blank=True,
+#         validators=[MinValueValidator(-4000), MaxValueValidator(2025)]
+#     )
     
-    # Spatial field
-    location = models.PointField(srid=4326, help_text="Geographic coordinates")
+#     # Spatial field
+#     location = models.PointField(srid=4326, help_text="Geographic coordinates")
 
-    description = models.TextField(blank=True, null=True)
-    area_km2 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+#     description = models.TextField(blank=True, null=True)
+#     area_km2 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
    
-    # Administrative
-    is_capital = models.BooleanField(default=False)
-    timezone = models.CharField(max_length=50, blank=True)
+#     # Administrative
+#     is_capital = models.BooleanField(default=False)
+#     timezone = models.CharField(max_length=50, blank=True)
    
-    # Metadata
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+#     # Metadata
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
     
-    # Add the custom manager
-    objects = CityManager()
+#     # Add the custom manager
+#     objects = CityManager()
 
    
-    class Meta:
-        verbose_name_plural = "Cities"
-        ordering = ['-population']
-        indexes = [
-            models.Index(fields=['name']),
-            models.Index(fields=['country']),
-            models.Index(fields=['population']),
-        ]
+#     class Meta:
+#         verbose_name_plural = "Cities"
+#         ordering = ['-population']
+#         indexes = [
+#             models.Index(fields=['name']),
+#             models.Index(fields=['country']),
+#             models.Index(fields=['population']),
+#         ]
 
    
     def __str__(self):
@@ -135,29 +135,29 @@ class City(models.Model):
         """Return coordinates as [longitude, latitude] for GeoJSON"""
         return [self.longitude, self.latitude] if self.location else None
    
-    @property
-    def population_category(self):
-        """Categorize city by population size"""
-        if self.population >= 10000000:
-            return "Megacity"
-        elif self.population >= 5000000:
-            return "Large Metropolis"
-        elif self.population >= 1000000:
-            return "Metropolis"
-        elif self.population >= 500000:
-            return "Large City"
-        elif self.population >= 100000:
-            return "City"
-        else:
-            return "Town"
+    # @property
+    # def population_category(self):
+    #     """Categorize city by population size"""
+    #     if self.population >= 10000000:
+    #         return "Megacity"
+    #     elif self.population >= 5000000:
+    #         return "Large Metropolis"
+    #     elif self.population >= 1000000:
+    #         return "Metropolis"
+    #     elif self.population >= 500000:
+    #         return "Large City"
+    #     elif self.population >= 100000:
+    #         return "City"
+    #     else:
+    #         return "Town"
    
-    @property
-    def age_years(self):
-        """Calculate city age in years"""
-        if self.founded_year:
-            current_year = timezone.now().year
-            return current_year - self.founded_year
-        return None
+    # @property
+    # def age_years(self):
+    #     """Calculate city age in years"""
+    #     if self.founded_year:
+    #         current_year = timezone.now().year
+    #         return current_year - self.founded_year
+    #     return None
 
 
 
