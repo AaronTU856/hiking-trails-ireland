@@ -3,4 +3,5 @@ from django.apps import AppConfig
 
 class CitiesApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cities_api'
+    name = 'trails_api'
+    
