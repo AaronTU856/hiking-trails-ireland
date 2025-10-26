@@ -59,12 +59,12 @@ INSTALLED_APPS = [
     # 'apps.spatial_data_app',
     
     #New app from week 3
-    'cities_api', #New API app for week 3 
-    'cities_query',
+    'trails_api', #New API app for week 3 
+    'trails_mapping',
     
     #New app for week 6
-    'european_mapping.regions',
-    'european_mapping.cities',
+    #'european_mapping.regions',
+    #'european_mapping.cities',
     
     
     
