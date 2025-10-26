@@ -207,48 +207,51 @@ def trail_map(request):
 #             return CityCreateSerializer
 #         return CityDetailSerializer
 
-# class CityGeoJSONView(generics.ListAPIView):
-#     """
-#     Return cities as GeoJSON for mapping applications
-#     """
-#     queryset = Trail.objects.all()
-#     serializer_class = CityGeoJSONSerializer
-#     pagination_class = None
-#     #pagination_class = StandardResultsSetPagination
-#     filter_backends = [DjangoFilterBackend, SearchFilter]
-#     filterset_class = TrailFilter
-#     search_fields = ['name', 'country']
+class TrailGeoJSONView(generics.ListAPIView):
+    """
+    Return trails as GeoJSON for mapping applications
+    """
+    queryset = Trail.objects.all()
+    serializer_class = TrailGeoJSONSerializer
+    pagination_class = None
+    #pagination_class = StandardResultsSetPagination
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_class = TrailFilter
+    search_fields = ['name', 'county']
     
-#     def list(self, request, *args, **kwargs):
-#         queryset = self.filter_queryset(self.get_queryset())
-#         serializer = self.get_serializer(queryset, many=True)
-#         geojson_data = serializer.data
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        geojson_data = serializer.data
 
-#         # FIX: handle nested FeatureCollection returned by serializer
-#         if isinstance(geojson_data, dict) and "features" in geojson_data:
-#             geojson_data = geojson_data["features"]
+        # FIX: handle nested FeatureCollection returned by serializer
+        if isinstance(geojson_data, dict) and "features" in geojson_data:
+            geojson_data = geojson_data["features"]
 
-#         return Response({
-#             "type": "FeatureCollection",
-#             "features": geojson_data
-#         })
+        return Response({
+            "type": "FeatureCollection",
+            "features": geojson_data
+        })
 
-# @api_view(['GET'])
-# def trail_statistics(request):
-#     """
-#     Return statistical summary of cities data
-#     """
-#     stats = {
-#         'total_trails': Trail.objects.count(),
-#         'total_population': Trail.objects.aggregate(
-#             total=models.Sum('population')
-#         )['total'] or 0,
-#         'countries_count': Trail.objects.values('country').distinct().count(),
-#         'capitals_count': Trail.objects.filter(is_capital=True).count(),
-#         'average_population': Trail.objects.aggregate(
-#             avg=Avg('population')
-#         )['avg'] or 0,
-#     }
+@api_view(['GET'])
+def api_info(request):
+    """
+    Returns basic information about the Trails API.
+    """
+    info = {
+        "api_name": "Trails API",
+        "version": "1.0",
+        "description": "Provides trail data, GeoJSON views, and trail search functionality for hiking routes in Ireland.",
+        "endpoints": [
+            "/api/trails/",
+            "/api/trails/<id>/",
+            "/api/trails/geojson/",
+            "/api/trails/counties/",
+            "/api/trails/info/",
+            "/api/trails/search/",
+        ],
+    }
+    return Response(info)
     
 #     # Largest and smallest cities
 #     largest = Trail.objects.order_by('-population').first()
@@ -331,28 +334,29 @@ def trail_map(request):
 
 
 
-# @api_view(['GET'])
-# def counties_list(request):
-#     """
-#     Return list of countries with city counts
-#     """
-#     counties = (Trails.objects
-#                  .values('country')
-#                  .annotate(city_count=Count('id'))
-#                  .annotate(total_population=models.Sum('population'))
-#                  .annotate(capitals_count=Count('id', filter=Q(is_capital=True)))
-#                  .order_by('country'))
+@api_view(['GET'])
+def counties_list(request):
+    """
+    Return list of countries with trails counts
+    """
+    counties = (Trails.objects
+                 .values('country')
+                 .annotate(trail_count=Count('id'))
+                 .annotate(total_population=models.Sum('population'))
+                 .annotate(capitals_count=Count('id', filter=Q(is_capital=True)))
+                 .order_by('country'))
     
-#     return Response(list(countries))
+    return Response(list(counties))
 
-# @api_view(['GET'])
-# def trail_search(request):
-#     """Simple trail search endpoint"""
-#     q = request.query_params.get('q', '')
-#     if not q:
-#         return Response([], status=200)
-#         trails = Trail.objects.filter(name__icontains=q)[:10]
-#     return Response(CityListSerializer(trails, many=True).data)
+@api_view(['GET'])
+def trail_search(request):
+    """Simple trail search endpoint"""
+    q = request.query_params.get('q', '')
+    if not q:
+        return Response([], status=200)
+    
+    trails = Trail.objects.filter(name__icontains=q)[:10]
+    return Response(TrailListSerializer(trails, many=True).data)
 
 # @api_view(['GET'])
 # def api_info(request):

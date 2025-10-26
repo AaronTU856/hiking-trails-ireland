@@ -1,37 +1,32 @@
 import django_filters
-from .models import City
+from .models import Trail
 
-class CityFilter(django_filters.FilterSet):
-    """Filter set for City model"""
+class TrailFilter(django_filters.FilterSet):
+    """Filter set for Trail model"""
    
     name = django_filters.CharFilter(lookup_expr='icontains')
     country = django_filters.CharFilter(lookup_expr='icontains')
     region = django_filters.CharFilter(lookup_expr='icontains')
    
-    min_population = django_filters.NumberFilter(
-        field_name='population',
+    smallest_mountain = django_filters.NumberFilter(
+        field_name='smallest',
         lookup_expr='gte'
     )
-    max_population = django_filters.NumberFilter(
-        field_name='population',
+    highest_mountain = django_filters.NumberFilter(
+        field_name='highest',
         lookup_expr='lte'
     )
    
-    min_founded_year = django_filters.NumberFilter(
-        field_name='founded_year',
+    longest_trail = django_filters.NumberFilter(
+        field_name='longest_trail',
         lookup_expr='gte'
     )
-    max_founded_year = django_filters.NumberFilter(
-        field_name='founded_year',
+    shortest_trail = django_filters.NumberFilter(
+        field_name='shortest_trail',
         lookup_expr='lte'
     )
    
-    is_capital = django_filters.BooleanFilter()
    
     class Meta:
-        model = City
-        fields = [
-            'name', 'country', 'region', 'is_capital',
-            'min_population', 'max_population',
-            'min_founded_year', 'max_founded_year'
-        ]
+        model = Trail
+        fields = ['county', 'difficulty', 'region']

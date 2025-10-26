@@ -1,27 +1,27 @@
 from django.urls import path
 from . import views
-from .views import city_map 
-app_name = 'cities'
+from .views import trail_map 
+app_name = 'trails'
 
 urlpatterns = [
     # Basic CRUD endpoints
-    path('', views.CityListCreateView.as_view(), name='city-list-create'),
-    path('<int:pk>/', views.CityDetailView.as_view(), name='city-detail'),
+    path('', views.TrailListCreateView.as_view(), name='trail-list-create'),
+    path('<int:pk>/', views.TrailDetailView.as_view(), name='trail-detail'),
     
-    path('search/', views.city_search, name='city_search'), 
+    path('search/', views.trail_search, name='trail_search'), 
    
-    path('map/', city_map, name='map'),
+    path('map/', trail_map, name='map'),
     
     # Special format endpoints
-    path('geojson/', views.CityGeoJSONView.as_view(), name='city-geojson'),
+    path('geojson/', views.TrailGeoJSONView.as_view(), name='trail-geojson'),
    
     # Spatial query endpoints
-    path('within-radius/', views.cities_within_radius, name='cities-within-radius'),
-    path('bbox/', views.cities_in_bounding_box, name='cities-bbox'),
+    path('within-radius/', views.trails_within_radius, name='trails-within-radius'),
+    path('bbox/', views.trails_in_bounding_box, name='trails-bbox'),
    
     # Statistics and metadata
-    path('stats/', views.city_statistics, name='city-statistics'),
-    path('countries/', views.countries_list, name='countries-list'),
+    path('stats/', views.trail_statistics, name='trail-statistics'),
+    path('counties/', views.counties_list, name='countries-list'),
     path('info/', views.api_info, name='api-info'),
     path('test/', views.api_test_page, name='api-test'),
 ]

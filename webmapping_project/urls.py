@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
-from trails_api.views import city_map 
+from trails_api.views import trail_map 
 
 
 
@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Home page (map)
-    path('', city_map, name='home'),
+    path('', trail_map, name='home'),
     path('maps/', include('maps.urls')),
 
     # City APIs
