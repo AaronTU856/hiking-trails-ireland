@@ -14,8 +14,8 @@ from drf_spectacular.utils import extend_schema, OpenApiExample, OpenApiParamete
 
 from .models import City
 from .serializers import (
-    CityListSerializer, CityDetailSerializer, CityGeoJSONSerializer,
-    CityCreateSerializer, CitySummarySerializer, DistanceSerializer,
+    TrailListSerializer, TrailDetailSerializer, TrailGeoJSONSerializer,
+    TrailCreateSerializer, TrailSummarySerializer, DistanceSerializer,
     BoundingBoxSerializer
 )
 from .filters import TrailFilter
@@ -127,30 +127,30 @@ class CityGeoJSONView(generics.ListAPIView):
         })
 
 @api_view(['GET'])
-def city_statistics(request):
+def trail_statistics(request):
     """
     Return statistical summary of cities data
     """
     stats = {
-        'total_cities': City.objects.count(),
-        'total_population': City.objects.aggregate(
+        'total_trails': Trail.objects.count(),
+        'total_population': Trail.objects.aggregate(
             total=models.Sum('population')
         )['total'] or 0,
-        'countries_count': City.objects.values('country').distinct().count(),
-        'capitals_count': City.objects.filter(is_capital=True).count(),
-        'average_population': City.objects.aggregate(
+        'countries_count': Trail.objects.values('country').distinct().count(),
+        'capitals_count': Trail.objects.filter(is_capital=True).count(),
+        'average_population': Trail.objects.aggregate(
             avg=Avg('population')
         )['avg'] or 0,
     }
     
     # Largest and smallest cities
-    largest = City.objects.order_by('-population').first()
-    smallest = City.objects.order_by('population').first()
+    largest = Trail.objects.order_by('-population').first()
+    smallest = Trail.objects.order_by('population').first()
     
-    stats['largest_city'] = str(largest) if largest else 'N/A'
-    stats['smallest_city'] = str(smallest) if smallest else 'N/A'
+    stats['largest_trail'] = str(largest) if largest else 'N/A'
+    stats['smallest_trail'] = str(smallest) if smallest else 'N/A'
     
-    serializer = CitySummarySerializer(stats)
+    serializer = TrailSummarySerializer(stats)
     return Response(serializer.data)
 
 
@@ -193,7 +193,7 @@ def trails_within_radius(request):
         ).order_by('distance')
         
         # Add distance to serialized data
-        city_data = CityListSerializer(trails, many=True).data
+        trail_data = TrailListSerializer(trails, many=True).data
         for i, trail in enumerate(trails):
             trail_data[i]['distance_km'] = round(trail.distance.km, 2)
         
@@ -230,7 +230,7 @@ def trails_within_radius(request):
 @permission_classes([AllowAny]) 
 def cities_in_bounding_box(request):
     """
-    Find cities within a bounding box
+    Find trails within a bounding box
     """
     serializer = BoundingBoxSerializer(data=request.data)
     if serializer.is_valid():
@@ -258,11 +258,11 @@ def cities_in_bounding_box(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def countries_list(request):
+def counties_list(request):
     """
     Return list of countries with city counts
     """
-    countries = (City.objects
+    counties = (Trails.objects
                  .values('country')
                  .annotate(city_count=Count('id'))
                  .annotate(total_population=models.Sum('population'))
@@ -285,7 +285,7 @@ def api_info(request):
     """
     Return API information and available endpoints
     """
-    base_url = request.build_absolute_uri('/api/cities/')
+    base_url = request.build_absolute_uri('/api/trails/')
     
     endpoints = {
         'cities_list': f"{base_url}",
@@ -299,12 +299,12 @@ def api_info(request):
     }
     
     return Response({
-        'api_name': 'Cities API',
+        'api_name': 'Trails API',
         'version': '1.0',
         'description': 'RESTful API for city data with spatial capabilities',
         'endpoints': endpoints,
         'features': [
-            'City CRUD operations',
+            'Trails CRUD operations',
             'GeoJSON output',
             'Spatial queries (radius, bounding box)',
             'Filtering and search',
@@ -319,4 +319,4 @@ def api_test_page(request):
 
 def city_map(request):
     """Render the main project map (templates/cities/map.html)."""
-    return render(request, 'cities/map.html')
+    return render(request, 'trails/map.html')

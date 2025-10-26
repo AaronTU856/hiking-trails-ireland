@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from django.contrib.gis.geos import Point
-from .models import City
+from .models import Trail
 
 class CityListSerializer(serializers.ModelSerializer):
     """Serializer for listing cities"""
@@ -9,23 +9,23 @@ class CityListSerializer(serializers.ModelSerializer):
     longitude = serializers.ReadOnlyField()
     
     class Meta:
-        model = City
+        model = Trail
         fields = [
-            'id', 'name', 'country', 'region', 'population', 
-            'is_capital', 'founded_year', 'latitude', 'longitude'
+            'id', 'name', 'county', 'region', 'difficulty', 
+            'latitude', 'longitude'
         ]
 
 
-class CityDetailSerializer(serializers.ModelSerializer):
-    """Detailed serializer for individual city"""
+class TrailDetailSerializer(serializers.ModelSerializer):
+    """Detailed serializer for individual trail"""
     latitude = serializers.ReadOnlyField()
     longitude = serializers.ReadOnlyField()
     
     class Meta:
-        model = City
+        model = Trail
         fields = [
-            'id', 'name', 'country', 'region', 'population', 
-            'is_capital', 'founded_year', 'location', 'latitude', 'longitude'
+            'id', 'name', 'county', 'region', 
+            'location', 'latitude', 'longitude'
         ]
 
 
@@ -39,9 +39,7 @@ class CityGeoJSONSerializer(GeoFeatureModelSerializer):
         fields = [
             "id",
             "name",
-            "country",
-            "population",
-            "founded_year",
+            "county",
             "area_km2",
             "timezone",
             "description",
@@ -50,15 +48,15 @@ class CityGeoJSONSerializer(GeoFeatureModelSerializer):
         ]
 
 class CityCreateSerializer(serializers.ModelSerializer):
-    """Serializer for creating/updating cities"""
+    """Serializer for creating/updating trails"""
     latitude = serializers.FloatField(write_only=True)
     longitude = serializers.FloatField(write_only=True)
     
     class Meta:
-        model = City
+        model = Trail
         fields = [
-            'name', 'country', 'region', 'population', 
-            'is_capital', 'founded_year', 'latitude', 'longitude'
+            'name', 'county', 'region',
+            'founded_year', 'latitude', 'longitude'
         ]
     
     def validate_latitude(self, value):
@@ -103,13 +101,10 @@ class CityCreateSerializer(serializers.ModelSerializer):
 
 class CitySummarySerializer(serializers.Serializer):
     """Serializer for city statistics summary"""
-    total_cities = serializers.IntegerField()
-    total_population = serializers.IntegerField()
-    countries_count = serializers.IntegerField()
-    capitals_count = serializers.IntegerField()
-    average_population = serializers.FloatField()
-    largest_city = serializers.CharField()
-    smallest_city = serializers.CharField()
+    total_trails = serializers.IntegerField()   
+    counties_count = serializers.IntegerField()   
+    largest_trail = serializers.CharField()
+    smallest_trail = serializers.CharField()
 
 class DistanceSerializer(serializers.Serializer):
     """Serializer for distance-based queries"""
