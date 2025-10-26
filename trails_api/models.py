@@ -161,8 +161,39 @@ class City(models.Model):
 
 
 
+class Trail(models.Model):
+    DIFFICULTY_CHOICES = [
+        ('easy', 'Easy'),
+        ('moderate', 'Moderate'),
+        ('hard', 'Hard'),
+    ]
+    
+trail_name = models.CharField(max_length=200, db_index=True)
+county = models.Charfield(max_length=100, db_index = True)
+region = models.Charfield(max_length=200, blank=True)
+distance_km = models.DecimalField(max_digits=6, decimal_places=2, help_text="Trail length in kilometers")
+difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default ='moderate')
+elevation_gain_m = models.IntegerField(help_text="Total elevation gain in meters")
+description = models.TextField(blank=True, null=True)
+start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
+created_at = models.DateTimeField(auto_now_add=True)
+updated_at = models.DateTimeField(auto_now=True)
+
+
+class Meta:
+        verbose_name = 'Trail'
+        verbose_name_plural = "Trails"
+        ordering = ['Trail_name']
+        indexes = [
+            models.Index(fields=['county'], name='trails_api_county_idx'),
+            
+            models.Index(fields=['difficulty'], name='trails_api_difficulty_idx'),
+        ]
+
+def __str__(self):
+    return f"{self.trial_name} ({self.county})"
 
 
 
 # Add custom manager to City model
-City.add_to_class('objects', CityManager())
+#City.add_to_class('objects', CityManager())
