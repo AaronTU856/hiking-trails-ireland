@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.contrib.gis.geos import Point
-from cities_api.models import City
+from trails_api.models import City
 
 
 class Command(BaseCommand):

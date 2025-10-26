@@ -1,7 +1,7 @@
 import pytest
 from django.urls import reverse
 from django.contrib.gis.geos import Point
-from cities_api.models import City
+from trails_api.models import City
 
 @pytest.mark.django_db
 def test_list_cities(client):

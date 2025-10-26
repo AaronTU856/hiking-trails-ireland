@@ -6,7 +6,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.contrib.gis.geos import Point
-from cities_api.models import City
+from trails_api.models import City
 
 class CityAPITestCase(APITestCase):
     """Test cases for Cities API"""
@@ -31,7 +31,7 @@ class CityAPITestCase(APITestCase):
    
     def test_city_list(self):
         """Test city list endpoint"""
-        url = reverse('cities_api:city-list-create')
+        url = reverse('trails_api:city-list-create')
         response = self.client.get(url)
        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -40,7 +40,7 @@ class CityAPITestCase(APITestCase):
    
     def test_city_detail(self):
         """Test city detail endpoint"""
-        url = reverse('cities_api:city-detail', kwargs={'pk': self.dublin.pk})
+        url = reverse('trails_api:city-detail', kwargs={'pk': self.dublin.pk})
         response = self.client.get(url)
        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -49,7 +49,7 @@ class CityAPITestCase(APITestCase):
    
     def test_city_creation(self):
         """Test creating a new city"""
-        url = reverse('cities_api:city-list-create')
+        url = reverse('trails_api:city-list-create')
         data = {
             'name': 'Paris',
             'country': 'France',
@@ -65,7 +65,7 @@ class CityAPITestCase(APITestCase):
    
     def test_city_filtering(self):
         """Test city filtering"""
-        url = reverse('cities_api:city-list-create')
+        url = reverse('trails_api:city-list-create')
         response = self.client.get(url, {'country': 'Ireland'})
        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -74,7 +74,7 @@ class CityAPITestCase(APITestCase):
    
     def test_geojson_format(self):
         """Test GeoJSON output"""
-        url = reverse('cities_api:city-geojson')
+        url = reverse('trails_api:city-geojson')
         response = self.client.get(url)
        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -83,7 +83,7 @@ class CityAPITestCase(APITestCase):
    
     def test_within_radius_query(self):
         """Test spatial within radius query"""
-        url = reverse('cities_api:cities-within-radius')
+        url = reverse('trails_api:cities-within-radius')
         data = {
             'latitude': 53.0,
             'longitude': -6.0,
@@ -97,7 +97,7 @@ class CityAPITestCase(APITestCase):
    
     def test_statistics_endpoint(self):
         """Test statistics endpoint"""
-        url = reverse('cities_api:city-statistics')
+        url = reverse('trails_api:city-statistics')
         response = self.client.get(url)
        
         self.assertEqual(response.status_code, status.HTTP_200_OK)

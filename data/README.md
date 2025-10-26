@@ -12,4 +12,4 @@ This folder holds seed data and helper scripts for the **Cities API**.
 ```bash
 # Activate venv & ensure DB is configured
 python3 manage.py migrate
-python3 manage.py load_cities  # if you created cities_api/management/commands/load_cities.py
+python3 manage.py load_cities  # if you created trails_api/management/commands/load_cities.py
