@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
-from cities_api.views import city_map 
+from trails_api.views import city_map 
 
 
 
@@ -31,8 +31,8 @@ urlpatterns = [
     path('maps/', include('maps.urls')),
 
     # City APIs
-    path('cities/', include('cities_api.urls', namespace='cities')),
-    path('api/cities/', include('cities_api.urls')),
+    
+    path('api/trails/', include('cities_api.urls')),
 
     # Region APIs (European Mapping)
     path('api/regions/', include('european_mapping.regions.urls')),
