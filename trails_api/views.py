@@ -391,10 +391,10 @@ def trail_search(request):
 #         ]
 #     })
 
-# def api_test_page(request):
-#     """Simple frontend for testing API"""
-#     return render(request, 'api_test.html')
+def api_test_page(request):
+    """Simple frontend for testing API"""
+    return render(request, 'api_test.html')
 
-# def city_map(request):
-#     """Render the main project map (templates/cities/map.html)."""
-#     return render(request, 'trails/map.html')
+def trail_map(request):
+    """Render the main project map (templates/cities/map.html)."""
+    return render(request, 'trails/map.html')
