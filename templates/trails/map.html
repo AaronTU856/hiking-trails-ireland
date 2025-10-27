@@ -39,6 +39,64 @@
       attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
+
+
+ // 🗺️ Function to load and display trails
+ async function loadTrails() {
+    try {
+        const response = await fetch('/api/trails/geojson/');
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const data = await response.json();
+
+        if (!data.features || data.features.length === 0) {
+            console.warn("⚠️ No trail features returned from API");
+            alert("No trail data found in the database.");
+            return;
+        }
+
+        const trailsLayer = L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => {
+                return L.circleMarker(latlng, {
+                    radius: 7,
+                    fillColor: '#28a745',
+                    color: '#ffffff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.9
+                });
+            },
+            onEachFeature: (feature, layer) => {
+                const props = feature.properties;
+                layer.bindPopup(`
+                    <div>
+                        <strong>${props.trail_name}</strong><br>
+                        County: ${props.county}<br>
+                        Distance: ${props.distance_km} km<br>
+                        Difficulty: ${props.difficulty}<br>
+                        ${props.description ? `<p class="mt-1 small">${props.description}</p>` : ''}
+                    </div>
+                `);
+            }
+        }).addTo(map);
+
+        // Fit map to markers
+        const bounds = trailsLayer.getBounds();
+        if (bounds.isValid()) map.fitBounds(bounds);
+
+        console.log(`✅ Loaded ${data.features.length} trails successfully`);
+
+    } catch (error) {
+        console.error('❌ Error loading trails:', error);
+        alert('Error loading trails: ' + error.message);
+    }
+}
+
+// Load trails once map is ready
+loadTrails(); 
+
+
+
   let searchEnabled = false;
   let searchMarker = null;
   let radiusCircle = null;
@@ -101,6 +159,8 @@
     trailMarkers.forEach(m => map.removeLayer(m));
     trailMarkers = [];
   }
+
+
 </script>
 </body>
 </html>
