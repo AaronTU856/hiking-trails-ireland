@@ -1,0 +1,788 @@
+openapi: 3.0.3
+info:
+  title: Trials API
+  version: 1.0.0
+  description: RESTful API for trial data in Ireland
+  contact:
+    name: Aaron Baggot
+    programme: TU856
+    Module: Web Mapping
+    email: C22716399@mytudublin.ie
+  license:
+    name: MIT
+paths:
+  /api/trails/:
+    get:
+      operationId: trails_list
+      description: Filter, search and paginate.
+      summary: List trails or Create
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - Trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTrailListList'
+          description: ''
+    post:
+      operationId: trails_create
+      description: Filter, search and paginate.
+      summary: List trails or Create
+      tags:
+      - Trails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrailCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrailCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TrailCreateRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrailCreate'
+          description: ''
+  /api/trails/{id}/:
+    get:
+      operationId: trails_retrieve
+      summary: Retrieve, update or delete a trail
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrailDetail'
+          description: ''
+    put:
+      operationId: trails_update
+      summary: Retrieve, update or delete a trail
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Trails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrailDetailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrailDetailRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TrailDetailRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrailDetail'
+          description: ''
+    patch:
+      operationId: trails_partial_update
+      summary: Retrieve, update or delete a trail
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Trails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTrailDetailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTrailDetailRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTrailDetailRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrailDetail'
+          description: ''
+    delete:
+      operationId: trails_destroy
+      summary: Retrieve, update or delete a trail
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/trails/bbox/:
+    post:
+      operationId: trails_bbox_create
+      description: Find trails within a bounding box
+      tags:
+      - Spatial
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DistanceRequest'
+            examples:
+              FindTrailsWithin50kmOfKillarney:
+                value:
+                  latitude: 52.059
+                  longitude: -9.507
+                  radius_km: 50
+                summary: Find trails within 50km of Killarney
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DistanceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DistanceRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/trails/counties/:
+    get:
+      operationId: trails_counties_retrieve
+      description: Return list of countries with trails counts
+      tags:
+      - trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/trails/geojson/:
+    get:
+      operationId: trails_geojson_list
+      description: Return trails as GeoJSON for mapping applications
+      parameters:
+      - in: query
+        name: country
+        schema:
+          type: string
+      - in: query
+        name: county
+        schema:
+          type: string
+      - in: query
+        name: difficulty
+        schema:
+          type: string
+          enum:
+          - easy
+          - hard
+          - moderate
+        description: |-
+          * `easy` - Easy
+          * `moderate` - Moderate
+          * `hard` - Hard
+      - in: query
+        name: highest_mountain
+        schema:
+          type: number
+      - in: query
+        name: longest_trail
+        schema:
+          type: number
+      - in: query
+        name: name
+        schema:
+          type: string
+      - in: query
+        name: region
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: shortest_trail
+        schema:
+          type: number
+      - in: query
+        name: smallest_mountain
+        schema:
+          type: number
+      tags:
+      - trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrailGeoJSONList'
+          description: ''
+  /api/trails/info/:
+    get:
+      operationId: trails_info_retrieve
+      description: Returns basic information about the Trails API.
+      tags:
+      - trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/trails/search/:
+    get:
+      operationId: trails_search_retrieve
+      description: Simple trail search endpoint
+      tags:
+      - trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/trails/stats/:
+    get:
+      operationId: trails_stats_retrieve
+      tags:
+      - trails
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/trails/within-radius/:
+    post:
+      operationId: trails_within_radius_create
+      description: Find trails within specified radius of a point
+      tags:
+      - trails
+      security:
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    DifficultyEnum:
+      enum:
+      - easy
+      - moderate
+      - hard
+      type: string
+      description: |-
+        * `easy` - Easy
+        * `moderate` - Moderate
+        * `hard` - Hard
+    DistanceRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          maximum: 90
+          minimum: -90
+        longitude:
+          type: number
+          format: double
+          maximum: 180
+          minimum: -180
+        radius_km:
+          type: number
+          format: double
+          maximum: 20000
+          minimum: 0.1
+      required:
+      - latitude
+      - longitude
+      - radius_km
+    GisFeatureCollectionEnum:
+      type: string
+      enum:
+      - FeatureCollection
+    GisFeatureEnum:
+      type: string
+      enum:
+      - Feature
+    PaginatedTrailListList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrailList'
+    PatchedTrailDetailRequest:
+      type: object
+      description: Detailed serializer for individual trail
+      properties:
+        trail_name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        county:
+          type: string
+          minLength: 1
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        description:
+          type: string
+          nullable: true
+        start_point:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+              example:
+              - 12.9721
+              - 77.5933
+              minItems: 2
+              maxItems: 3
+          description: Trail start coordinates, longitude, latitude
+    TrailCreate:
+      type: object
+      properties:
+        trail_name:
+          type: string
+          maxLength: 200
+        county:
+          type: string
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        description:
+          type: string
+          nullable: true
+      required:
+      - county
+      - distance_km
+      - elevation_gain_m
+      - trail_name
+    TrailCreateRequest:
+      type: object
+      properties:
+        trail_name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        county:
+          type: string
+          minLength: 1
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        description:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+          writeOnly: true
+        longitude:
+          type: number
+          format: double
+          writeOnly: true
+      required:
+      - county
+      - distance_km
+      - elevation_gain_m
+      - latitude
+      - longitude
+      - trail_name
+    TrailDetail:
+      type: object
+      description: Detailed serializer for individual trail
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        latitude:
+          type: string
+          readOnly: true
+        longitude:
+          type: string
+          readOnly: true
+        trail_name:
+          type: string
+          maxLength: 200
+        county:
+          type: string
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        description:
+          type: string
+          nullable: true
+        start_point:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+              example:
+              - 12.9721
+              - 77.5933
+              minItems: 2
+              maxItems: 3
+          description: Trail start coordinates, longitude, latitude
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - county
+      - created_at
+      - distance_km
+      - elevation_gain_m
+      - id
+      - latitude
+      - longitude
+      - start_point
+      - trail_name
+      - updated_at
+    TrailDetailRequest:
+      type: object
+      description: Detailed serializer for individual trail
+      properties:
+        trail_name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        county:
+          type: string
+          minLength: 1
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        description:
+          type: string
+          nullable: true
+        start_point:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+              example:
+              - 12.9721
+              - 77.5933
+              minItems: 2
+              maxItems: 3
+          description: Trail start coordinates, longitude, latitude
+      required:
+      - county
+      - distance_km
+      - elevation_gain_m
+      - start_point
+      - trail_name
+    TrailGeoJSON:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/GisFeatureEnum'
+        id:
+          type: integer
+          readOnly: true
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - Point
+            coordinates:
+              type: array
+              items:
+                type: number
+                format: float
+              example:
+              - 12.9721
+              - 77.5933
+              minItems: 2
+              maxItems: 3
+        properties:
+          type: object
+          properties:
+            trail_name:
+              type: string
+              maxLength: 200
+            county:
+              type: string
+              maxLength: 100
+            distance_km:
+              type: string
+              format: decimal
+              pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+              description: Trail length in kilometers
+            difficulty:
+              enum:
+              - easy
+              - moderate
+              - hard
+              type: string
+              description: |-
+                * `easy` - Easy
+                * `moderate` - Moderate
+                * `hard` - Hard
+            latitude:
+              type: string
+              readOnly: true
+            longitude:
+              type: string
+              readOnly: true
+    TrailGeoJSONList:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/GisFeatureCollectionEnum'
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrailGeoJSON'
+    TrailList:
+      type: object
+      description: Serializer for listing cities
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trail_name:
+          type: string
+          maxLength: 200
+        county:
+          type: string
+          maxLength: 100
+        region:
+          type: string
+          maxLength: 200
+        distance_km:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          description: Trail length in kilometers
+        difficulty:
+          $ref: '#/components/schemas/DifficultyEnum'
+        elevation_gain_m:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Total elevation gain in meters
+        latitude:
+          type: string
+          readOnly: true
+        longitude:
+          type: string
+          readOnly: true
+      required:
+      - county
+      - distance_km
+      - elevation_gain_m
+      - id
+      - latitude
+      - longitude
+      - trail_name
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

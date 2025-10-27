@@ -22,7 +22,7 @@ class TrailManager(models.Manager):
             QuerySet of trails within the radius
         """
         return self.filter(
-            location__distance_lte=(center_point, Distance(km=radius_km))
+            start_point__distance_lte=(center_point, Distance(km=radius_km))
         )
     
     def in_bounding_box(self, bbox):
@@ -33,14 +33,14 @@ class TrailManager(models.Manager):
             bbox: List [min_lng, min_lat, max_lng, max_lat]
         
         Returns:
-            QuerySet of cities within the bounding box
+            QuerySet of trails within the bounding box
         """
         min_lng, min_lat, max_lng, max_lat = bbox
         
         # Create polygon from bounding box coordinates
         bbox_polygon = Polygon.from_bbox((min_lng, min_lat, max_lng, max_lat))
         
-        return self.filter(location__within=bbox_polygon)
+        return self.filter(start_point__within=bbox_polygon)
     
     def nearest_to_point(self, point, limit=10):
         """
@@ -48,10 +48,10 @@ class TrailManager(models.Manager):
         
         Args:
             point: Point object (longitude, latitude)
-            limit: Maximum number of cities to return
+            limit: Maximum number of trails to return
         
         Returns:
-            QuerySet of nearest cities ordered by distance
+            QuerySet of nearest trails ordered by distance
         """
         from django.contrib.gis.db.models.functions import Distance as DistanceFunction
         
@@ -123,17 +123,17 @@ class TrailManager(models.Manager):
     @property
     def latitude(self):
         """Return latitude coordinate"""
-        return self.location.y if self.location else None
+        return self.start_point.y if self.start_point else None
    
     @property
     def longitude(self):
         """Return longitude coordinate"""
-        return self.location.x if self.location else None
+        return self.start_point.x if self.start_point else None
    
     @property
     def coordinates(self):
         """Return coordinates as [longitude, latitude] for GeoJSON"""
-        return [self.longitude, self.latitude] if self.location else None
+        return [self.longitude, self.latitude] if self.start_point else None
    
     # @property
     # def population_category(self):

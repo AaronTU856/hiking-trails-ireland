@@ -29,13 +29,23 @@ class TrailDetailSerializer(serializers.ModelSerializer):
 
 
 class TrailGeoJSONSerializer(GeoFeatureModelSerializer):
+    latitude = serializers.SerializerMethodField()
+    longitude = serializers.SerializerMethodField()
+
     class Meta:
         model = Trail
         geo_field = 'start_point'
         fields = (
-            'id', 'trail_name', 'county', 'region',
-            'distance_km', 'difficulty', 'description'
+            'id', 'trail_name', 'county',
+            'distance_km', 'difficulty',
+            'latitude', 'longitude'
         )
+
+    def get_latitude(self, obj):
+        return obj.start_point.y if obj.start_point else None
+
+    def get_longitude(self, obj):
+        return obj.start_point.x if obj.start_point else None
         
 
 class TrailCreateSerializer(serializers.ModelSerializer):

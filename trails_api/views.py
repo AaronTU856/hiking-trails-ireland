@@ -23,6 +23,9 @@ from .filters import TrailFilter
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 
 
@@ -55,20 +58,11 @@ class TrailListCreateView(generics.ListCreateAPIView):
     
  
 # Trail details
-   
+
 @extend_schema(tags=["Trails"], summary="Retrieve, update or delete a trail")
 class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Trail.objects.all()
     serializer_class = TrailDetailSerializer
-    
-    
-    
-# GeoJSON Endpoint 
-@extend_schema(tags=["Trails"], summary="Retrieve, update or delete a trail")
-class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Trail.objects.all()
-    serializer_class = TrailGeoJSONSerializer
-    pagination_class = None
   
 # Trails within radius  
 @extend_schema(
@@ -86,32 +80,6 @@ class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
     
 
 
-@api_view(['POST'])
-@authentication_classes([])
-@permission_classes([AllowAny])
-def trails_within_radius(request):
-    serializer = DistanceSerializer(data=request.data)
-    if serializer.is_valid():
-        data = serializer.validated_data
-        center = Point(data['longitude'], data['latitude'], srid=4326)
-
-        trails = Trail.objects.filter(
-            start_point__distance_lte=(center, Distance(km=data['radius_km']))
-        ).annotate(
-            distance=DistanceFunction('start_point', center)
-        ).order_by('distance')
-
-        trail_data = TrailListSerializer(trails, many=True).data
-        for i, t in enumerate(trails):
-            trail_data[i]['distance_km'] = round(t.distance.km, 2)
-
-        return Response({
-            "center": {"lat": data['latitude'], "lng": data['longitude']},
-            "radius_km": data['radius_km'],
-            "count": trails.count(),
-            "trails": trail_data,
-        })
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Trails in bounding box
 @extend_schema(
@@ -280,44 +248,46 @@ def api_info(request):
 # @authentication_classes([])          # <- no SessionAuthentication, so no CSRF
 # @permission_classes([AllowAny]) 
 
-
-
-# def trails_within_radius(request):
-#     """
-#     Find trails within specified radius of a point
-#     """
-#     serializer = DistanceSerializer(data=request.data)
-#     if serializer.is_valid():
-#         data = serializer.validated_data
-#         center_point = Point(
-#             data['longitude'], 
-#             data['latitude'], 
-#             srid=4326
-#         )
+@csrf_exempt
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def trails_within_radius(request):
+    """
+    Find trails within specified radius of a point
+    """
+    serializer = DistanceSerializer(data=request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        center_point = Point(
+            data['longitude'], 
+            data['latitude'], 
+            srid=4326
+        )
         
-#         # Use Django's built-in spatial lookup instead of custom manager method
-#         trails = Trail.objects.filter(
-#             location__distance_lte=(center_point, Distance(km=data['radius_km']))
-#         ).annotate(
-#             distance=DistanceFunction('location', center_point)  # Fixed: Use DistanceFunction
-#         ).order_by('distance')
+        # Use Django's built-in spatial lookup instead of custom manager method
+        trails = Trail.objects.filter(
+            start_point__distance_lte=(center_point, Distance(km=data['radius_km']))
+        ).annotate(
+            distance=DistanceFunction('start_point', center_point)  # Fixed: Use DistanceFunction
+        ).order_by('distance')
         
-#         # Add distance to serialized data
-#         trail_data = TrailListSerializer(trails, many=True).data
-#         for i, trail in enumerate(trails):
-#             trail_data[i]['distance_km'] = round(trail.distance.km, 2)
+        # Add distance to serialized data
+        trail_data = TrailListSerializer(trails, many=True).data
+        for i, trail in enumerate(trails):
+            trail_data[i]['distance_km'] = round(trail.distance.km, 2)
         
-#         return Response({
-#             'center': {
-#                 'latitude': data['latitude'],
-#                 'longitude': data['longitude']
-#             },
-#             'radius_km': data['radius_km'],
-#             'count': trails.count(),
-#             'trails': trail_data
-#         })
+        return Response({
+            'center': {
+                'lat': data['latitude'],
+                'lng': data['longitude']
+            },
+            'radius_km': data['radius_km'],
+            'count': trails.count(),
+            'trails': trail_data
+        })
     
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #     examples=[

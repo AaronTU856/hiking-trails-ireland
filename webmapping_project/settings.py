@@ -196,8 +196,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 # API Documentation
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Cities API',
-    'DESCRIPTION': 'RESTful API for city data with spatial capabilities',
+    'TITLE': 'Trials API',
+    'DESCRIPTION': 'RESTful API for trial data in Ireland',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     "CONTACT": {"name": "Aaron Baggot", "programme": "TU856", "Module": "Web Mapping", "email": "C22716399@mytudublin.ie"},
@@ -205,6 +205,8 @@ SPECTACULAR_SETTINGS = {
     # Optional niceties:
     "COMPONENT_SPLIT_REQUEST": True,
     "SWAGGER_UI_SETTINGS": {"deepLinking": True, "displayOperationId": True},
+
+
 }
 
 

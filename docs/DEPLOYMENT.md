@@ -16,7 +16,7 @@ This guide explains how to deploy the Django + GeoDjango (PostGIS) web mapping a
 ## Installation Steps
 
 ### 1. Server Setup
-```bash
+
 sudo apt update
 sudo apt install -y python3-pip python3-venv nginx postgresql postgresql-contrib postgis
 sudo systemctl enable nginx
