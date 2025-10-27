@@ -8,7 +8,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 
 class TrailManager(models.Manager):
-    """Custom manager for City model with spatial queries"""
+    """Custom manager for trail model with spatial queries"""
     
     def within_radius(self, center_point, radius_km):
         """
@@ -118,7 +118,7 @@ class TrailManager(models.Manager):
 
    
     def __str__(self):
-        return f"{self.name}, {self.country}"
+        return f"{self.name}, {self.county}"
    
     @property
     def latitude(self):
@@ -172,26 +172,24 @@ class Trail(models.Model):
     county = models.CharField(max_length=100, db_index=True)
     region = models.CharField(max_length=200, blank=True)
     distance_km = models.DecimalField(max_digits=6, decimal_places=2, help_text="Trail length in kilometers")
-    difficulty = models.CharField(max_length=10, choices = DIFFICULTY_CHOICES, default='moderate')
+    difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default='moderate')
     elevation_gain_m = models.IntegerField(help_text="Total elevation gain in meters")
     description = models.TextField(blank=True, null=True)
     start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
-class Meta:
+    class Meta:
         verbose_name = 'Trail'
         verbose_name_plural = "Trails"
-        ordering = ['Trail_name']
+        ordering = ['trail_name']
         indexes = [
             models.Index(fields=['county'], name='trails_api_county_idx'),
-            
             models.Index(fields=['difficulty'], name='trails_api_difficulty_idx'),
         ]
 
-def __str__(self):
-    return f"{self.trial_name} ({self.county})"
+    def __str__(self):
+        return f"{self.trail_name} ({self.county})"
 
 
 
