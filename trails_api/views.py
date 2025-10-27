@@ -368,7 +368,7 @@ def trail_search(request):
 #     endpoints = {
 #         'cities_list': f"{base_url}",
 #         'cities_geojson': f"{base_url}geojson/",
-#         'city_detail': f"{base_url}{{id}}/",
+#         'trail_detail': f"{base_url}{{id}}/",
 #         'cities_within_radius': f"{base_url}within-radius/",
 #         'cities_in_bbox': f"{base_url}bbox/",
 #         'statistics': f"{base_url}stats/",
@@ -379,7 +379,7 @@ def trail_search(request):
 #     return Response({
 #         'api_name': 'Trails API',
 #         'version': '1.0',
-#         'description': 'RESTful API for city data with spatial capabilities',
+#         'description': 'RESTful API for trail data with spatial capabilities',
 #         'endpoints': endpoints,
 #         'features': [
 #             'Trails CRUD operations',
