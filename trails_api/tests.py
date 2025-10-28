@@ -69,7 +69,6 @@ class TrailAPITestCase(APITestCase):
             }
         
         response = self.client.post(url, data, format='json')
-        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Trail.objects.count(), 3)
         self.assertEqual(Trail.objects.last().trail_name, "Glendalough Valley Loop")
