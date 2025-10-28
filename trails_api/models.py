@@ -178,6 +178,13 @@ class Trail(models.Model):
     start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    activity = models.CharField(max_length=100, blank=True)
+    nearest_town = models.CharField(max_length=100, blank=True)
+    dogs_allowed = models.CharField(max_length=50, blank=True)
+    facilities = models.TextField(blank=True)
+    public_transport = models.TextField(blank=True)
+    start_point = models.PointField(srid=4326)
+    trail_type = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = 'Trail'
@@ -189,7 +196,7 @@ class Trail(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.trail_name} ({self.county})"
+        return f"{self.trail_name or 'Unnamed Trail'} ({self.county})"
 
 
 
