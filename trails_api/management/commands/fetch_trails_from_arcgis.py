@@ -3,6 +3,7 @@ import json
 from django.core.management.base import BaseCommand
 from django.contrib.gis.geos import Point, LineString
 from trails_api.models import Trail
+from decimal import Decimal, InvalidOperation
 
 
 class Command(BaseCommand):
@@ -26,6 +27,10 @@ class Command(BaseCommand):
         imported, skipped = 0, 0
         for feature in features:
             props = feature.get("properties", {})
+            
+            if not imported:
+                print(props.keys())
+                
             geom = feature.get("geometry", {})
 
             name = props.get("Name") or props.get("Trail_Name") or "Unnamed Trail"
@@ -41,21 +46,51 @@ class Command(BaseCommand):
             else:
                 skipped += 1
                 continue
+            
+            ascent_raw = props.get("AscentMetres")
+            try:
+                ascent = int(float(ascent_raw))
+            except (ValueError, TypeError):
+                ascent = 0
+                
+            # Distance in km
+            length_value = (
+                                props.get("LengthKm") or 
+                                props.get("LengthKM") or 
+                                props.get("Length in Km") or 
+                                props.get("Length_km") or 
+                                0
+                            )
 
-            Trail.objects.get_or_create(
+            try:
+                distance = Decimal(str(length_value))
+            except (ValueError, TypeError, InvalidOperation):
+                distance = Decimal("0.00")
+
+            Trail.objects.update_or_create(
                 trail_name=name,
                 defaults={
+                    "activity": props.get("Activity") or props.get("TrailActivity"),
                     "county": props.get("County", "Unknown"),
-                    "region": props.get("Region", "Unknown"),
-                    "distance_km": float(props.get("LengthKM", 0)),
-                    "difficulty": "moderate",
-                    "elevation_gain_m": 0,
+                    "region": "Unknown",
+                    "distance_km": distance,
+                    "difficulty": (props.get("Difficulty") or "moderate").lower(),
+                    "elevation_gain_m": ascent,
                     "description": props.get("Description", "Imported from ArcGIS"),
                     "start_point": start,
+                    "dogs_allowed": props.get("DogsAllowed"),
+                    "facilities": props.get("Facilities"),
+                    "public_transport": props.get("PublicTransport"),
+                    "trail_type": props.get("TrailType"),
+                    "nearest_town": props.get("NearestTownStart") or "",
                 },
             )
+            if imported == 0:  # just print one example
+                print(props.keys())
 
             imported += 1
+            
+       
 
         self.stdout.write(self.style.SUCCESS(f"✅ Imported {imported} new trails"))
         if skipped:
