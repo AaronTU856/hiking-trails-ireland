@@ -1,6 +1,7 @@
 
 from django.core.management.base import BaseCommand
 from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import D
 from trails_api.models import Trail
 import json
 
@@ -54,11 +55,12 @@ class Command(BaseCommand):
             longitude, latitude = coords[0], coords[1]
             
             # Prevent any duplicates
-            if Trail.objects.filter(
+            existing = Trail.objects.filter(
                 trail_name=name,
-                start_point__x=longitude,
-                start_point__y=latitude,
-            ).exists():
+                start_point__distance_lte=(Point(longitude, latitude, srid=4326), D(m=5))
+            )
+
+            if existing.exists():
                 duplicates += 1
                 continue
 
@@ -77,16 +79,16 @@ class Command(BaseCommand):
 
             imported += 1
         
-            # Print Results
-            self.stdout.write(self.style.SUCCESS(f" Successfully imported {imported} trails!"))
-            if duplicates:
-                self.stdout.write(self.style.WARNING(f" Skipped {duplicates} duplicates."))
-            if skipped:
-                self.stdout.write(self.style.WARNING(f" Skipped {skipped} unnamed or invalid features."))
+        # Print Results
+        self.stdout.write(self.style.SUCCESS(f" Successfully imported {imported} trails!"))
+        if duplicates:
+            self.stdout.write(self.style.WARNING(f" Skipped {duplicates} duplicates."))
+        if skipped:
+            self.stdout.write(self.style.WARNING(f" Skipped {skipped} unnamed or invalid features."))
 
-            # Display a few sample trails
-            sample = Trail.objects.all()[:5]
-            if sample:
-                self.stdout.write("\nSample imported trails:")
-                for trail in sample:
-                    self.stdout.write(f" - {trail.trail_name} ({trail.start_point.y}, {trail.start_point.x})")
+        # Display a few sample trails
+        sample = Trail.objects.all()[:5]
+        if sample:
+            self.stdout.write("\nSample imported trails:")
+            for trail in sample:
+                self.stdout.write(f" - {trail.trail_name} ({trail.start_point.y}, {trail.start_point.x})")
