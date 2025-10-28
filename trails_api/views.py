@@ -10,6 +10,7 @@ from django.contrib.gis.measure import Distance
 from django.contrib.gis.db.models.functions import Distance as DistanceFunction
 from rest_framework.permissions import AllowAny
 from drf_spectacular.utils import extend_schema, OpenApiExample
+from django.db import models
 
 from .models import Trail
 from .serializers import (
@@ -38,13 +39,13 @@ class StandardResultsSetPagination(PageNumberPagination):
     
     
 # Trail List and create
-@extend_schema(tags=["Trails"], summary="List trails or Create", description="Filter, search and paginate.")
+# @extend_schema(tags=["Trails"], summary="List trails or Create", description="Filter, search and paginate.")
 class TrailListCreateView(generics.ListCreateAPIView):
     """
     List all trails or create a new trail
     """
     queryset = Trail.objects.all()
-    serializer_class = TrailListSerializer
+    serializer_class = None
     pagination_class = StandardResultsSetPagination
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     search_fields = ['trail_name', 'county', 'region']
@@ -52,6 +53,7 @@ class TrailListCreateView(generics.ListCreateAPIView):
     ordering = ['trail_name']
 
     def get_serializer_class(self):
+        print(f"Serializer in use for {self.request.method}")
         if self.request.method == 'POST':
             return TrailCreateSerializer
         return TrailListSerializer

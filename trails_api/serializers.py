@@ -59,6 +59,10 @@ class TrailCreateSerializer(serializers.ModelSerializer):
             'difficulty', 'elevation_gain_m', 'description',
             'latitude', 'longitude'
         ]
+        
+    def validate(self, data):
+        print("Incoming data:", data)
+        return data
 
     def create(self, validated_data):
         latitude = validated_data.pop('latitude')

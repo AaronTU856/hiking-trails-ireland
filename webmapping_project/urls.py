@@ -32,7 +32,9 @@ urlpatterns = [
 
     # City APIs
     
-    path('api/trails/', include('trails_api.urls')),
+    path('api/trails/', include(('trails_api.urls', 'trails'), namespace='trails')),
+
+
 
     # Region APIs (European Mapping)
     # path('api/regions/', include('european_mapping.regions.urls')),

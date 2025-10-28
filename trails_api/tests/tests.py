@@ -6,7 +6,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.contrib.gis.geos import Point
-from trails_api.models import City
+from trails_api.models import Trail
 
 class CityAPITestCase(APITestCase):
     """Test cases for Cities API"""

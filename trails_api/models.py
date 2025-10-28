@@ -118,7 +118,7 @@ class TrailManager(models.Manager):
 
    
     def __str__(self):
-        return f"{self.name}, {self.county}"
+        return f"{self.trail_name}, {self.county}"
    
     @property
     def latitude(self):
