@@ -28,8 +28,8 @@ class Command(BaseCommand):
         for feature in features:
             props = feature.get("properties", {})
             
-            if not imported:
-                print(props.keys())
+            # if not imported:
+            #     print(props.keys())
                 
             geom = feature.get("geometry", {})
 
@@ -85,8 +85,8 @@ class Command(BaseCommand):
                     "nearest_town": props.get("NearestTownStart") or "",
                 },
             )
-            if imported == 0:  # just print one example
-                print(props.keys())
+            # if imported == 0:  # just print one example
+            #     print(props.keys())
 
             imported += 1
             
