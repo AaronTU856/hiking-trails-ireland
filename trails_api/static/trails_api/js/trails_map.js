@@ -1,10 +1,11 @@
-// City Mapper - Main JavaScript functionality
+console.log("✅ trails_map.js loaded");
+// Trail Mapper - Main JavaScript functionality
 
 let map;
 
-let cityMarkers = L.layerGroup();
+let trailMarkers = L.layerGroup();
 
-let allCitiesData = [];
+let allTrailsData = [];
 
  
 
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initializeMap();
 
-    loadCities();
+    loadTrails();
 
     setupEventListeners();
 
@@ -26,7 +27,7 @@ function initializeMap() {
 
     // Initialize the map - Center on Europe for better view
 
-    map = L.map('map').setView([53.5, -7.7], 6); // Changed to Europe center
+    window.map = L.map('map').setView([53.5, -7.7], 7);
 
  
 
@@ -44,25 +45,25 @@ function initializeMap() {
 
     // Add the markers layer group to map
 
-    cityMarkers.addTo(map);
+    trailMarkers.addTo(map);
 
  
 
-    // Add map click event for adding new cities
+    // Add map click event for adding new trails
 
     map.on('click', function(e) {
 
         const { lat, lng } = e.latlng;
 
-        document.getElementById('city-lat').value = lat.toFixed(6);
+        document.getElementById('trail-lat').value = lat.toFixed(6);
 
-        document.getElementById('city-lng').value = lng.toFixed(6);
+        document.getElementById('trail-lng').value = lng.toFixed(6);
 
        
 
-        // Show add city modal
+        // Show add trail modal
 
-        const modal = new bootstrap.Modal(document.getElementById('addCityModal'));
+        const modal = new bootstrap.Modal(document.getElementById('addTrailModal'));
 
         modal.show();
 
@@ -72,9 +73,9 @@ function initializeMap() {
 
  
 
-function loadCities() {
+function loadTrails() {
 
-    console.log('Loading cities...');
+    console.log('Loading trails...');
 
     showLoading(true);
 
@@ -82,7 +83,7 @@ function loadCities() {
 
     // Try the geojson endpoint first
 
-    fetch('/api/cities/geojson/')
+    fetch('/api/trails/geojson/')
 
         .then(response => {
 
@@ -122,10 +123,10 @@ function loadCities() {
             
                 console.log('Loaded', features.length, 'features (after flattening nested GeoJSON)');
             
-                allCitiesData = features;
-                displayCitiesOnMap(allCitiesData);
-                updateCityCount(allCitiesData.length);
-                console.log(`Successfully loaded ${allCitiesData.length} cities`);
+                allTrailsData = features;
+                displayTrailsOnMap(allTrailsData);
+                updateTrailCount(allTrailsData.length);
+                console.log(`Successfully loaded ${allTrailsData.length} trails`);
 
             } else if (data && data.error) {
 
@@ -135,11 +136,11 @@ function loadCities() {
 
             } else if (Array.isArray(data)) {
 
-                // API returned array of cities, convert to GeoJSON
+                // API returned array of trails, convert to GeoJSON
 
                 console.log('Converting array to GeoJSON format');
 
-                const geojsonFeatures = data.map(city => ({
+                const geojsonFeatures = data.map(trail => ({
 
                     type: "Feature",
 
@@ -147,21 +148,21 @@ function loadCities() {
 
                         type: "Point",
 
-                        coordinates: [parseFloat(city.longitude || 0), parseFloat(city.latitude || 0)]
+                        coordinates: [parseFloat(trail.longitude || 0), parseFloat(trail.latitude || 0)]
 
                     },
 
-                    properties: city
+                    properties: trail
 
                 }));
 
-                allCitiesData = geojsonFeatures;
+                allTrailsData = geojsonFeatures;
 
-                displayCitiesOnMap(allCitiesData);
+                displayTrailsOnMap(allTrailsData);
 
-                updateCityCount(allCitiesData.length);
+                updateTrailCount(allTrailsData.length);
 
-                console.log(`Successfully converted and loaded ${allCitiesData.length} cities`);
+                console.log(`Successfully converted and loaded ${allTrailsData.length} trails`);
 
             } else {
 
@@ -169,7 +170,7 @@ function loadCities() {
 
                 console.warn('Unexpected API response format, trying regular endpoint');
 
-                return loadCitiesFromRegularAPI();
+                return loadTrailsFromRegularAPI();
 
             }
 
@@ -181,7 +182,7 @@ function loadCities() {
 
             // Fallback to regular API
 
-            return loadCitiesFromRegularAPI();
+            return loadTrailsFromRegularAPI();
 
         })
 
@@ -195,13 +196,13 @@ function loadCities() {
 
  
 
-function loadCitiesFromRegularAPI() {
+function loadTrailsFromRegularAPI() {
 
     console.log('Trying regular API endpoint...');
 
    
 
-    return fetch('/api/cities/')
+    return fetch('/api/trails/')
 
         .then(response => {
 
@@ -223,7 +224,7 @@ function loadCitiesFromRegularAPI() {
 
            
 
-            let citiesArray;
+            let trailsArray;
 
            
 
@@ -233,13 +234,13 @@ function loadCitiesFromRegularAPI() {
 
                 // Paginated response
 
-                citiesArray = data.results;
+                trailsArray = data.results;
 
             } else if (Array.isArray(data)) {
 
                 // Direct array response
 
-                citiesArray = data;
+                trailsArray = data;
 
             } else {
 
@@ -251,7 +252,7 @@ function loadCitiesFromRegularAPI() {
 
             // Convert to GeoJSON format
 
-            const geojsonFeatures = citiesArray.map(city => ({
+            const geojsonFeatures = trailsArray.map(trail => ({
 
                 type: "Feature",
 
@@ -259,29 +260,29 @@ function loadCitiesFromRegularAPI() {
 
                     type: "Point",
 
-                    coordinates: [parseFloat(city.longitude || 0), parseFloat(city.latitude || 0)]
+                    coordinates: [parseFloat(trail.longitude || 0), parseFloat(trail.latitude || 0)]
 
                 },
 
-                properties: city
+                properties: trail
 
             }));
 
            
 
-            allCitiesData = geojsonFeatures;
+            allTrailsData = geojsonFeatures;
 
-            displayCitiesOnMap(allCitiesData);
+            displayTrailsOnMap(allTrailsData);
 
-            updateCityCount(allCitiesData.length);
+            updateTrailCount(allTrailsData.length);
 
-            console.log(`Successfully loaded ${allCitiesData.length} cities from regular API`);
+            console.log(`Successfully loaded ${allTrailsData.length} trails from regular API`);
 
         })
 
         .catch(error => {
 
-            console.error('Error loading cities from both endpoints:', error);
+            console.error('Error loading trails from both endpoints:', error);
 
            
 
@@ -301,7 +302,7 @@ function loadCitiesFromRegularAPI() {
 
             } else {
 
-                showAlert(`Error loading cities: ${error.message}`, 'danger');
+                showAlert(`Error loading trails: ${error.message}`, 'danger');
 
             }
 
@@ -313,27 +314,27 @@ function loadCitiesFromRegularAPI() {
 
  
 
-function displayCitiesOnMap(cities) {
+function displayTrailsOnMap(trails) {
 
     // Clear existing markers
 
-    cityMarkers.clearLayers();
+    trailMarkers.clearLayers();
 
    
 
-    cities.forEach(city => {
+    trails.forEach(trail => {
 
         try {
 
             // Fix: Access coordinates from geometry.coordinates
 
-            const { geometry, properties } = city;
+            const { geometry, properties } = trail;
 
            
 
             if (!geometry || !geometry.coordinates || !Array.isArray(geometry.coordinates)) {
 
-                console.warn('Invalid geometry for city:', properties?.name || 'Unknown');
+                console.warn('Invalid geometry for trail:', properties?.name || 'Unknown');
 
                 return;
 
@@ -349,7 +350,7 @@ function displayCitiesOnMap(cities) {
 
             if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
 
-                console.warn('Invalid coordinates for city:', properties?.name, lat, lng);
+                console.warn('Invalid coordinates for trail:', properties?.name, lat, lng);
 
                 return;
 
@@ -393,25 +394,25 @@ function displayCitiesOnMap(cities) {
 
             marker.on('click', function() {
 
-                showCityInfo(properties);
+                showTrailInfo(properties);
 
             });
 
            
 
-            // Store city data with marker for reference
+            // Store trail data with marker for reference
 
-            marker.cityData = properties;
+            marker.trailData = properties;
 
            
 
-            cityMarkers.addLayer(marker);
+            trailMarkers.addLayer(marker);
 
            
 
         } catch (error) {
 
-            console.error('Error creating marker for city:', city, error);
+            console.error('Error creating marker for trail:', trail, error);
 
         }
 
@@ -419,13 +420,13 @@ function displayCitiesOnMap(cities) {
 
    
 
-    // Fit map to show all markers if cities exist
+    // Fit map to show all markers if trails exist
 
-    if (cities.length > 0) {
+    if (trails.length > 0) {
 
         try {
 
-            const group = new L.featureGroup(cityMarkers.getLayers());
+            const group = new L.featureGroup(trailMarkers.getLayers());
 
             if (group.getLayers().length > 0) {
 
@@ -445,67 +446,43 @@ function displayCitiesOnMap(cities) {
 
  
 
-function createPopupContent(city) {
-
+function createPopupContent(trail) {
     // Safely handle missing properties
-
-    const name = city.name || 'Unknown City';
-
-    const country = city.country || 'Unknown Country';
-
-    const population = city.population ? city.population.toLocaleString() : 'Unknown';
-
-    const latitude = city.latitude || 'Unknown';
-
-    const longitude = city.longitude || 'Unknown';
-
-   
+    const name = trail.trail_name || 'Unknown Trail';
+    const county = trail.county || 'Unknown County';
+    const distance = trail.distance_km ? `${trail.distance_km} km` : 'Unknown';
+    const difficulty = trail.difficulty || 'Unknown';
+    const description = trail.description || 'No description available';
+    const latitude = trail.latitude || 0;
+    const longitude = trail.longitude || 0;
 
     return `
-
-        <div class="city-popup">
-
-            <h6>${name}, ${country}</h6>
-
-            <div class="city-popup-info">
-
-                <span class="population">👥 Population: ${population}</span>
-
-                ${city.founded_year ? `<span>📅 Founded: ${city.founded_year}</span>` : ''}
-
-                ${city.area_km2 ? `<span>📏 Area: ${city.area_km2} km²</span>` : ''}
-
-                <span class="coordinates">📍 ${latitude}, ${longitude}</span>
-
-                ${city.description ? `<div style="margin-top: 8px; font-style: italic;">${city.description}</div>` : ''}
-
+        <div class="trail-popup">
+            <h6>${name}</h6>
+            <div class="trail-popup-info">
+                <span>📍 <strong>County:</strong> ${county}</span><br>
+                <span>📏 <strong>Distance:</strong> ${distance}</span><br>
+                <span>🏔️ <strong>Difficulty:</strong> ${difficulty}</span><br>
+                <span>🗺️ <strong>Coordinates:</strong> ${latitude.toFixed(4)}, ${longitude.toFixed(4)}</span>
+                ${description ? `<div style="margin-top: 8px; font-style: italic;">${description}</div>` : ''}
             </div>
-
-            <div class="popup-buttons">
-
-                <button class="btn btn-sm btn-primary" onclick="zoomToCity(${city.id})">Zoom</button>
-
-                <button class="btn btn-sm btn-info" onclick="showCityDetails(${city.id})">Details</button>
-
+            <div class="popup-buttons" style="margin-top: 8px;">
+                <button class="btn btn-sm btn-primary" onclick="zoomToTrail(${latitude}, ${longitude})">Zoom</button>
+                <button class="btn btn-sm btn-info" onclick="showTrailDetails('${name}')">Details</button>
             </div>
-
         </div>
-
     `;
-
 }
-
- 
 
 function performSearch() {
 
-    const query = document.getElementById('city-search').value.trim();
+    const query = document.getElementById('trail-search').value.trim();
 
     if (!query) {
 
-        displayCitiesOnMap(allCitiesData);
+        displayTrailsOnMap(allTrailsData);
 
-        updateCityCount(allCitiesData.length);
+        updateTrailCount(allTrailsData.length);
 
         return;
 
@@ -517,7 +494,7 @@ function performSearch() {
 
    
 
-    fetch(`/api/cities/search/?q=${encodeURIComponent(query)}`)
+    fetch(`/api/trails/search/?q=${encodeURIComponent(query)}`)
 
         .then(response => {
 
@@ -537,15 +514,15 @@ function performSearch() {
 
            
 
-            let filteredCities;
+            let filteredTrails;
 
            
 
             if (Array.isArray(data)) {
 
-                // If search returns array of city objects, convert to GeoJSON
+                // If search returns array of trail objects, convert to GeoJSON
 
-                filteredCities = data.map(city => ({
+                filteredTrails = data.map(trail => ({
 
                     type: "Feature",
 
@@ -553,11 +530,11 @@ function performSearch() {
 
                         type: "Point",
 
-                        coordinates: [parseFloat(city.longitude || 0), parseFloat(city.latitude || 0)]
+                        coordinates: [parseFloat(trail.longitude || 0), parseFloat(trail.latitude || 0)]
 
                     },
 
-                    properties: city
+                    properties: trail
 
                 }));
 
@@ -565,17 +542,17 @@ function performSearch() {
 
                 // If search returns GeoJSON
 
-                filteredCities = data.features;
+                filteredTrails = data.features;
 
             } else {
 
                 // Filter from existing data as fallback
 
-                filteredCities = allCitiesData.filter(city =>
+                filteredTrails = allTrailsData.filter(trail =>
 
-                    city.properties.name.toLowerCase().includes(query.toLowerCase()) ||
+                    trail.properties.name.toLowerCase().includes(query.toLowerCase()) ||
 
-                    city.properties.country.toLowerCase().includes(query.toLowerCase())
+                    trail.properties.country.toLowerCase().includes(query.toLowerCase())
 
                 );
 
@@ -583,15 +560,15 @@ function performSearch() {
 
            
 
-            displayCitiesOnMap(filteredCities);
+            displayTrailsOnMap(filteredTrails);
 
-            updateCityCount(filteredCities.length);
+            updateTrailCount(filteredTrails.length);
 
            
 
-            if (filteredCities.length === 0) {
+            if (filteredTrails.length === 0) {
 
-                showAlert('No cities found matching your search.', 'info');
+                showAlert('No trails found matching your search.', 'info');
 
             }
 
@@ -599,31 +576,31 @@ function performSearch() {
 
         .catch(error => {
 
-            console.error('Error searching cities:', error);
+            console.error('Error searching trails:', error);
 
            
 
             // Fallback to client-side search
 
-            const filteredCities = allCitiesData.filter(city =>
+            const filteredTrails = allTrailsData.filter(trail =>
 
-                city.properties.name.toLowerCase().includes(query.toLowerCase()) ||
+                trail.properties.name.toLowerCase().includes(query.toLowerCase()) ||
 
-                city.properties.country.toLowerCase().includes(query.toLowerCase())
+                trail.properties.country.toLowerCase().includes(query.toLowerCase())
 
             );
 
            
 
-            displayCitiesOnMap(filteredCities);
+            displayTrailsOnMap(filteredTrails);
 
-            updateCityCount(filteredCities.length);
+            updateTrailCount(filteredTrails.length);
 
            
 
-            if (filteredCities.length === 0) {
+            if (filteredTrails.length === 0) {
 
-                showAlert('No cities found matching your search.', 'info');
+                showAlert('No trails found matching your search.', 'info');
 
             } else {
 
@@ -661,17 +638,17 @@ function getMarkerSize(population) {
 
  
 
-function showCityInfo(city) {
+function showTrailInfo(trail) {
 
-    const infoPanel = document.getElementById('city-info');
+    const infoPanel = document.getElementById('trail-info');
 
-    const infoContent = document.getElementById('city-info-content');
+    const infoContent = document.getElementById('trail-info-content');
 
    
 
     if (!infoPanel || !infoContent) {
 
-        console.warn('City info panel elements not found');
+        console.warn('Trail info panel elements not found');
 
         return;
 
@@ -681,15 +658,15 @@ function showCityInfo(city) {
 
     // Safely handle missing properties
 
-    const name = city.name || 'Unknown City';
+    const name = trail.name || 'Unknown Trail';
 
-    const country = city.country || 'Unknown Country';
+    const country = trail.country || 'Unknown Country';
 
-    const population = city.population ? city.population.toLocaleString() : 'Unknown';
+    const population = trail.population ? trail.population.toLocaleString() : 'Unknown';
 
-    const latitude = city.latitude || 0;
+    const latitude = trail.latitude || 0;
 
-    const longitude = city.longitude || 0;
+    const longitude = trail.longitude || 0;
 
    
 
@@ -705,7 +682,7 @@ function showCityInfo(city) {
 
         </div>
 
-        <div class="city-info-grid">
+        <div class="trail-info-grid">
 
             <div class="info-item">
 
@@ -715,37 +692,37 @@ function showCityInfo(city) {
 
             </div>
 
-            ${city.founded_year ? `
+            ${trail.founded_year ? `
 
                 <div class="info-item">
 
                     <label>Founded</label>
 
-                    <div class="value">${city.founded_year}</div>
+                    <div class="value">${trail.founded_year}</div>
 
                 </div>
 
             ` : ''}
 
-            ${city.area_km2 ? `
+            ${trail.area_km2 ? `
 
                 <div class="info-item">
 
                     <label>Area</label>
 
-                    <div class="value">${city.area_km2} km²</div>
+                    <div class="value">${trail.area_km2} km²</div>
 
                 </div>
 
             ` : ''}
 
-            ${city.timezone ? `
+            ${trail.timezone ? `
 
                 <div class="info-item">
 
                     <label>Timezone</label>
 
-                    <div class="value">${city.timezone}</div>
+                    <div class="value">${trail.timezone}</div>
 
                 </div>
 
@@ -761,13 +738,13 @@ function showCityInfo(city) {
 
         </div>
 
-        ${city.description ? `
+        ${trail.description ? `
 
             <div class="mt-3">
 
                 <label><strong>Description</strong></label>
 
-                <div class="value">${city.description}</div>
+                <div class="value">${trail.description}</div>
 
             </div>
 
@@ -775,7 +752,7 @@ function showCityInfo(city) {
 
         <div class="mt-3">
 
-            <button class="btn btn-primary btn-sm me-2" onclick="zoomToCity(${city.id})">Zoom to City</button>
+            <button class="btn btn-primary btn-sm me-2" onclick="zoomToTrail(${trail.id})">Zoom to Trail</button>
 
             <button class="btn btn-outline-secondary btn-sm" onclick="copyCoordinates('${latitude}', '${longitude}')">Copy Coordinates</button>
 
@@ -799,7 +776,7 @@ function setupEventListeners() {
 
     const searchBtn = document.getElementById('search-btn');
 
-    const searchInput = document.getElementById('city-search');
+    const searchInput = document.getElementById('trail-search');
 
     const clearSearchBtn = document.getElementById('clear-search');
 
@@ -807,9 +784,9 @@ function setupEventListeners() {
 
     const closeInfoBtn = document.getElementById('close-info');
 
-    const addCityBtn = document.getElementById('add-city-btn');
+    const addTrailBtn = document.getElementById('add-trail-btn');
 
-    const saveCityBtn = document.getElementById('save-city');
+    const saveTrailBtn = document.getElementById('save-trail');
 
    
 
@@ -847,9 +824,9 @@ function setupEventListeners() {
 
             }
 
-            displayCitiesOnMap(allCitiesData);
+            displayTrailsOnMap(allTrailsData);
 
-            updateCityCount(allCitiesData.length);
+            updateTrailCount(allTrailsData.length);
 
         });
 
@@ -859,7 +836,7 @@ function setupEventListeners() {
 
     if (refreshBtn) {
 
-        refreshBtn.addEventListener('click', loadCities);
+        refreshBtn.addEventListener('click', loadTrails);
 
     }
 
@@ -869,7 +846,7 @@ function setupEventListeners() {
 
         closeInfoBtn.addEventListener('click', function() {
 
-            const infoPanel = document.getElementById('city-info');
+            const infoPanel = document.getElementById('trail-info');
 
             if (infoPanel) {
 
@@ -883,11 +860,11 @@ function setupEventListeners() {
 
    
 
-    if (addCityBtn) {
+    if (addTrailBtn) {
 
-        addCityBtn.addEventListener('click', function() {
+        addTrailBtn.addEventListener('click', function() {
 
-            const modalElement = document.getElementById('addCityModal');
+            const modalElement = document.getElementById('addTrailModal');
 
             if (modalElement) {
 
@@ -903,9 +880,9 @@ function setupEventListeners() {
 
    
 
-    if (saveCityBtn) {
+    if (saveTrailBtn) {
 
-        saveCityBtn.addEventListener('click', saveNewCity);
+        saveTrailBtn.addEventListener('click', saveNewTrail);
 
     }
 
@@ -913,21 +890,21 @@ function setupEventListeners() {
 
  
 
-function saveNewCity() {
+function saveNewTrail() {
 
-    const nameInput = document.getElementById('city-name');
+    const nameInput = document.getElementById('trail-name');
 
-    const countryInput = document.getElementById('city-country');
+    const countryInput = document.getElementById('trail-country');
 
-    const latInput = document.getElementById('city-lat');
+    const latInput = document.getElementById('trail-lat');
 
-    const lngInput = document.getElementById('city-lng');
+    const lngInput = document.getElementById('trail-lng');
 
-    const populationInput = document.getElementById('city-population');
+    const populationInput = document.getElementById('trail-population');
 
-    const foundedInput = document.getElementById('city-founded');
+    const foundedInput = document.getElementById('trail-founded');
 
-    const descriptionInput = document.getElementById('city-description');
+    const descriptionInput = document.getElementById('trail-description');
 
    
 
@@ -983,7 +960,7 @@ function saveNewCity() {
 
    
 
-    fetch('/api/cities/', {
+    fetch('/api/trails/', {
 
         method: 'POST',
 
@@ -1013,13 +990,13 @@ function saveNewCity() {
 
     .then(data => {
 
-        showAlert('City added successfully!', 'success');
+        showAlert('Trail added successfully!', 'success');
 
        
 
         // Close modal
 
-        const modalElement = document.getElementById('addCityModal');
+        const modalElement = document.getElementById('addTrailModal');
 
         if (modalElement) {
 
@@ -1037,7 +1014,7 @@ function saveNewCity() {
 
         // Reset form
 
-        const form = document.getElementById('add-city-form');
+        const form = document.getElementById('add-trail-form');
 
         if (form) {
 
@@ -1047,17 +1024,17 @@ function saveNewCity() {
 
        
 
-        // Reload cities
+        // Reload trails
 
-        loadCities();
+        loadTrails();
 
     })
 
     .catch(error => {
 
-        console.error('Error saving city:', error);
+        console.error('Error saving trail:', error);
 
-        showAlert('Error saving city. Please try again.', 'danger');
+        showAlert('Error saving trail. Please try again.', 'danger');
 
     });
 
@@ -1067,13 +1044,13 @@ function saveNewCity() {
 
 // Utility functions
 
-function zoomToCity(cityId) {
+function zoomToTrail(trailId) {
 
-    const city = allCitiesData.find(c => c.properties.id === parseInt(cityId));
+    const trail = allTrailsData.find(c => c.properties.id === parseInt(trailId));
 
-    if (city && city.geometry && city.geometry.coordinates) {
+    if (trail && trail.geometry && trail.geometry.coordinates) {
 
-        const [lng, lat] = city.geometry.coordinates;
+        const [lng, lat] = trail.geometry.coordinates;
 
         if (!isNaN(lat) && !isNaN(lng)) {
 
@@ -1087,13 +1064,13 @@ function zoomToCity(cityId) {
 
  
 
-function showCityDetails(cityId) {
+function showTrailDetails(trailId) {
 
-    const city = allCitiesData.find(c => c.properties.id === parseInt(cityId));
+    const trail = allTrailsData.find(c => c.properties.id === parseInt(trailId));
 
-    if (city) {
+    if (trail) {
 
-        showCityInfo(city.properties);
+        showTrailInfo(trail.properties);
 
     }
 
@@ -1149,13 +1126,13 @@ function copyCoordinates(lat, lng) {
 
  
 
-function updateCityCount(count) {
+function updateTrailCount(count) {
 
-    const countElement = document.getElementById('city-count');
+    const countElement = document.getElementById('trail-count');
 
     if (countElement) {
 
-        countElement.textContent = `${count} cities loaded`;
+        countElement.textContent = `${count} trails loaded`;
 
     }
 
@@ -1296,7 +1273,7 @@ class ProximitySearch {
     constructor(map) {
         this.map = map;
         this.searchMarker = null;
-        this.nearestCitiesLayer = L.layerGroup().addTo(this.map);
+        this.nearestTrailsLayer = L.layerGroup().addTo(this.map);
         this.radiusCircle = null;
         this.isProximityMode = false;
        
@@ -1351,7 +1328,7 @@ class ProximitySearch {
             toggleBtn.className = 'btn btn-danger';
             radiusInput.classList.remove('d-none');
             this.map.getContainer().style.cursor = 'crosshair';
-            showAlert('Click anywhere on the map to find nearest cities', 'info');
+            showAlert('Click anywhere on the map to find nearest trails', 'info');
         } else {
             toggleBtn.innerHTML = 'Proximity Search';
             toggleBtn.className = 'btn btn-outline-primary';
@@ -1362,9 +1339,8 @@ class ProximitySearch {
     }
    
     async performProximitySearch(lat, lng) {
-        // Clear previous results
         this.clearProximityResults();
-       
+    
         // Add search marker
         this.searchMarker = L.marker([lat, lng], {
             icon: L.icon({
@@ -1375,76 +1351,77 @@ class ProximitySearch {
                 popupAnchor: [1, -34]
             })
         }).addTo(this.map);
-       
+    
         this.searchMarker.bindPopup(`
             <strong>Search Point</strong><br>
             Lat: ${lat.toFixed(6)}<br>
             Lng: ${lng.toFixed(6)}
         `).openPopup();
-       
-        // Show loading
+    
         showLoading(true);
-       
+    
         try {
-            const response = await fetch('/query/api/nearest/', {
+            const response = await fetch('/api/trails/within-radius/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': getCsrfToken()
                 },
-                body: JSON.stringify({ lat, lng })
+                body: JSON.stringify({
+                    latitude: lat,
+                    longitude: lng,
+                    radius_km: parseFloat(document.getElementById('radius-input').value || 10)
+                })
             });
-           
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-           
+    
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
             const data = await response.json();
-            this.displayNearestCities(data.nearest_cities);
+    
+            // ✅ Your API returns data.nearest_trails (not data.trails)
+            this.displayNearestTrails(data.nearest_trails);
             this.updateResultsPanel(data);
-           
+    
         } catch (error) {
-            console.error('Error finding nearest cities:', error);
+            console.error('Error finding nearest trails:', error);
             showAlert('Error performing proximity search. Please try again.', 'danger');
         } finally {
             showLoading(false);
         }
     }
-   
-    displayNearestCities(cities) {
-        cities.forEach((city, index) => {
-            const marker = L.marker([city.coordinates.lat, city.coordinates.lng], {
-                icon: this.getNumberedIcon(city.rank)
+
+    displayNearestTrails(trails) {
+        this.nearestTrailsLayer.clearLayers();
+    
+        trails.forEach((trail, index) => {
+            const { lat, lng } = trail.coordinates;
+            if (isNaN(lat) || isNaN(lng)) return;
+    
+            const marker = L.marker([lat, lng], {
+                icon: this.getNumberedIcon(index + 1)
             });
-           
+    
             const popupContent = `
-                <div class="city-popup proximity-result">
-                    <h6>#${city.rank} ${city.name}</h6>
-                    <p><strong>Country:</strong> ${city.country}</p>
-                    <p><strong>Population:</strong> ${city.population.toLocaleString()}</p>
-                    <p><strong>Distance:</strong> ${city.distance_km} km (${city.distance_miles} mi)</p>
-                    ${city.founded_year ? `<p><strong>Founded:</strong> ${city.founded_year}</p>` : ''}
-                    ${city.description ? `<p><em>${city.description}</em></p>` : ''}
-                    <button class="btn btn-sm btn-primary" onclick="proximitySearch.zoomToCity(${city.coordinates.lat}, ${city.coordinates.lng})">
-                        Zoom Here
-                    </button>
-                </div>
+                <strong>${trail.name}</strong><br>
+                County: ${trail.county}<br>
+                Difficulty: ${trail.difficulty}<br>
+                Distance: ${trail.distance_km} km<br>
+                From You: ${trail.distance_to_user} km
             `;
-           
             marker.bindPopup(popupContent);
-            this.nearestCitiesLayer.addLayer(marker);
+            this.nearestTrailsLayer.addLayer(marker);
         });
-       
-        // Fit map to show search point and results
-        if (cities.length > 0) {
+    
+        // Fit map to bounds
+        if (trails.length > 0) {
             const group = new L.featureGroup([
                 this.searchMarker,
-                ...this.nearestCitiesLayer.getLayers()
+                ...this.nearestTrailsLayer.getLayers()
             ]);
             this.map.fitBounds(group.getBounds().pad(0.1));
         }
     }
-   
+    
     getNumberedIcon(number) {
         return L.divIcon({
             className: 'numbered-marker',
@@ -1455,7 +1432,6 @@ class ProximitySearch {
     }
    
     updateResultsPanel(data) {
-        // Create or update results panel
         let resultsPanel = document.getElementById('proximity-results');
         if (!resultsPanel) {
             resultsPanel = document.createElement('div');
@@ -1463,32 +1439,32 @@ class ProximitySearch {
             resultsPanel.className = 'proximity-results-panel';
             document.body.appendChild(resultsPanel);
         }
-       
+    
+        const trails = data.nearest_trails || [];
         resultsPanel.innerHTML = `
-            <div class="card">
-                <div class="card-header">
-                    <h5>Nearest Cities Results</h5>
-                    <button type="button" class="btn-close" onclick="proximitySearch.clearProximityResults()"></button>
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Nearest Trails</h5>
+                    <button type="button" class="btn-close btn-close-white" onclick="proximitySearch.clearProximityResults()"></button>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="max-height:300px; overflow-y:auto;">
                     <p><strong>Search Point:</strong> ${data.search_point.lat.toFixed(4)}, ${data.search_point.lng.toFixed(4)}</p>
-                    <p><strong>Cities Found:</strong> ${data.total_found}</p>
+                    <p><strong>Trails Found:</strong> ${trails.length}</p>
                     <div class="results-list">
-                        ${data.nearest_cities.map(city => `
-                            <div class="result-item" onclick="proximitySearch.zoomToCity(${city.coordinates.lat}, ${city.coordinates.lng})">
-                                <strong>#${city.rank} ${city.name}, ${city.country}</strong><br>
-                                <small>${city.distance_km} km away • Population: ${city.population.toLocaleString()}</small>
+                        ${trails.map((trail, index) => `
+                            <div class="result-item border-bottom py-2" 
+                                 onclick="proximitySearch.zoomToTrail(${trail.coordinates.lat}, ${trail.coordinates.lng})">
+                                <strong>#${index + 1} ${trail.name}</strong><br>
+                                <small>${trail.county} • ${trail.difficulty} • ${trail.distance_to_user} km away</small>
                             </div>
                         `).join('')}
                     </div>
                 </div>
             </div>
         `;
-       
         resultsPanel.style.display = 'block';
     }
-   
-    zoomToCity(lat, lng) {
+    zoomToTrail(lat, lng) {
         this.map.setView([lat, lng], 12);
     }
    
@@ -1498,7 +1474,7 @@ class ProximitySearch {
             this.searchMarker = null;
         }
        
-        this.nearestCitiesLayer.clearLayers();
+        this.nearestTrailsLayer.clearLayers();
        
         if (this.radiusCircle) {
             this.map.removeLayer(this.radiusCircle);

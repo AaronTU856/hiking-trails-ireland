@@ -6,12 +6,11 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.gis.geos import Point, Polygon
-from django.contrib.gis.measure import Distance
 from django.contrib.gis.db.models.functions import Distance as DistanceFunction
 from rest_framework.permissions import AllowAny
 from drf_spectacular.utils import extend_schema, OpenApiExample
 from django.db import models
-
+from django.http import JsonResponse
 from .models import Trail
 from .serializers import (
     TrailListSerializer, TrailDetailSerializer, TrailGeoJSONSerializer,
@@ -255,41 +254,45 @@ def api_info(request):
 @authentication_classes([])
 @permission_classes([AllowAny])
 def trails_within_radius(request):
-    """
-    Find trails within specified radius of a point
-    """
-    serializer = DistanceSerializer(data=request.data)
-    if serializer.is_valid():
-        data = serializer.validated_data
-        center_point = Point(
-            data['longitude'], 
-            data['latitude'], 
-            srid=4326
+    try:
+        lat = float(request.data.get("latitude"))
+        lng = float(request.data.get("longitude"))
+        radius_km = float(request.data.get("radius_km", 50))
+
+        # Create Point (longitude, latitude)
+        user_location = Point(lng, lat, srid=4326)
+
+        # ✅ Use the correct database function
+        trails = (
+            Trail.objects.annotate(distance=DistanceFunction("start_point", user_location))
+            .filter(distance__lte=radius_km * 1000)
+            .order_by("distance")
         )
-        
-        # Use Django's built-in spatial lookup instead of custom manager method
-        trails = Trail.objects.filter(
-            start_point__distance_lte=(center_point, Distance(km=data['radius_km']))
-        ).annotate(
-            distance=DistanceFunction('start_point', center_point)  # Fixed: Use DistanceFunction
-        ).order_by('distance')
-        
-        # Add distance to serialized data
-        trail_data = TrailListSerializer(trails, many=True).data
-        for i, trail in enumerate(trails):
-            trail_data[i]['distance_km'] = round(trail.distance.km, 2)
-        
+
+        results = []
+        for t in trails:
+            results.append({
+                "id": t.id,
+                "name": t.trail_name,
+                "county": t.county,
+                "difficulty": t.difficulty,
+                "distance_km": round(t.distance_km or 0, 2),
+                "distance_from_point_km": round(t.distance.km, 2),
+                "latitude": t.start_point.y,
+                "longitude": t.start_point.x,
+            })
+
         return Response({
-            'center': {
-                'lat': data['latitude'],
-                'lng': data['longitude']
-            },
-            'radius_km': data['radius_km'],
-            'count': trails.count(),
-            'trails': trail_data
+            "search_point": {"lat": lat, "lng": lng},
+            "radius_km": radius_km,
+            "total_found": len(results),
+            "nearest_trails": results,
         })
-    
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print("❌ Error in trails_within_radius:", e)
+        return Response({"error": str(e)}, status=500)
+
 
 
 #     examples=[
