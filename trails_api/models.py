@@ -208,7 +208,11 @@ from django.contrib.gis.db import models
 
 class Town(models.Model):
     name = models.CharField(max_length=100)
-    location = models.PointField(srid=4326)
+    location = models.PointField()
+    town_type = models.CharField(max_length=50, blank=True, null=True)
+    population = models.IntegerField(blank=True, null=True)
+    area = models.FloatField(blank=True, null=True)
+
 
     def __str__(self):
         return self.name

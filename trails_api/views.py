@@ -64,6 +64,22 @@ class TrailListCreateView(generics.ListCreateAPIView):
             return TrailCreateSerializer
         return TrailListSerializer
     
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        min_length = self.request.query_params.get('min_length')
+        max_length = self.request.query_params.get('max_length')
+        difficulty = self.request.query_params.get('difficulty')
+
+        if min_length:
+            queryset = queryset.filter(distance_km__gte=min_length)
+        if max_length:
+            queryset = queryset.filter(distance_km__lte=max_length)
+        if difficulty:
+            queryset = queryset.filter(difficulty__iexact=difficulty)
+
+        return queryset
+
+    
  
 # Trail details
 
@@ -187,17 +203,13 @@ class TownGeoJSONSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Town
         geo_field = 'location'
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'town_type', 'population', 'area')
+
 
 class TownGeoJSONView(generics.ListAPIView):
     queryset = Town.objects.all()
     serializer_class = TownGeoJSONSerializer
     pagination_class = None
-
-    def get(self, request):
-        data = serialize('geojson', Town.objects.all())
-        return HttpResponse(data, content_type='application/json')
-
 
 
 
@@ -208,15 +220,14 @@ class TrailGeoJSONView(generics.ListAPIView):
     queryset = Trail.objects.all()
     serializer_class = TrailGeoJSONSerializer
     pagination_class = None
-    #pagination_class = StandardResultsSetPagination
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_class = TrailFilter
-    search_fields = ['name', 'county']
-    
+    search_fields = ['trail_name', 'county']
+
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
-        geojson_data = serializer.data
+        return Response(serializer.data) 
 
         # FIX: handle nested FeatureCollection returned by serializer
         if isinstance(geojson_data, dict) and "features" in geojson_data:

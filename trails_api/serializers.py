@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from django.contrib.gis.geos import Point
-from .models import Trail
+from .models import Trail, Town  
 
 class TrailListSerializer(serializers.ModelSerializer):
     """Serializer for listing cities"""
@@ -97,3 +97,11 @@ class BoundingBoxSerializer(serializers.Serializer):
         if data['min_longitude'] >= data['max_longitude']:
             raise serializers.ValidationError("min_longitude must be less than max_longitude")
         return data
+    
+
+
+class TownGeoJSONSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Town
+        geo_field = 'location'
+        fields = ('id', 'name', 'town_type', 'population', 'area')

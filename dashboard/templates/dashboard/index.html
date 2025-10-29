@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
-{% block title %}Dashboard - European Urban Planning{% endblock %}
+{% block title %}Dashboard - Irish Trails{% endblock %}
 
 {% block head_extra %}
 <!-- Custom Dashboard CSS -->
@@ -79,11 +79,11 @@
                         </div>
                     </div>
 
-                    <!-- Population Filters -->
+                    <!-- Trail Filters -->
                     <div class="filter-section">
-                        <h6>👥 Population Filters</h6>
+                        <h6>👥 Trail Filters</h6>
                         <div class="mb-2">
-                            <label class="form-label">City Population Range</label>
+                            <label class="form-label">Trail Length</label>
                             <div class="row">
                                 <div class="col-6">
                                     <input type="number" id="city-pop-min" class="form-control form-control-sm" 
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">Town Population Range</label>
+                            <label class="form-label">Trail Difficulty</label>
                             <div class="row">
                                 <div class="col-6">
                                     <input type="number" id="town-pop-min" class="form-control form-control-sm" 
@@ -110,11 +110,11 @@
                         </div>
                     </div>
 
-                    <!-- Area Filters -->
+                    <!-- Town Filters -->
                     <div class="filter-section">
-                        <h6>📏 Area Filters</h6>
+                        <h6>📏 Town Filters</h6>
                         <div class="mb-2">
-                            <label class="form-label">City Urban Area (km²)</label>
+                            <label class="form-label">Town Name</label>
                             <div class="row">
                                 <div class="col-6">
                                     <input type="number" id="city-area-min" class="form-control form-control-sm" 
@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">Town Area (km²)</label>
+                            <label class="form-label">Town </label>
                             <div class="row">
                                 <div class="col-6">
                                     <input type="number" id="town-area-min" class="form-control form-control-sm" 
@@ -145,16 +145,16 @@
                     <div class="filter-section">
                         <h6>🏛️ Category Filters</h6>
                         <div class="mb-2">
-                            <label class="form-label">Country</label>
+                            <label class="form-label">County</label>
                             <select id="country-filter" class="form-select form-select-sm">
-                                <option value="">All Countries</option>
+                                <option value="">All Counties</option>
                                 {% for country in countries %}
                                 <option value="{{ country }}">{{ country }}</option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">City Type</label>
+                            <label class="form-label">Town Type</label>
                             <select id="city-type-filter" class="form-select form-select-sm">
                                 <option value="">All Types</option>
                                 {% for city_type in city_types %}
@@ -244,7 +244,7 @@
 
 
     <!-- Inline JS for Dashboard -->
-    <script>
+    {% comment %} <script>
        
         console.log('🎯 Dashboard script loading...');
 
@@ -263,9 +263,8 @@
             }
         });
 
-        // Initialize map
-        console.log('🗺️ Initializing map...');
-        const map = L.map('map').setView([54.5, 15.2], 4);
+        
+       
 
         // Add tile layers
         const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -858,7 +857,7 @@
         });
 
         console.log('✅ Dashboard script loaded');
-    </script>
+    </script> {% endcomment %}
 
     
 {% endblock %}
