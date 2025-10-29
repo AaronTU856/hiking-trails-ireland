@@ -70,6 +70,11 @@ INSTALLED_APPS = [
     #'european_mapping.regions',
     #'european_mapping.cities',
     
+    # Dashboard
+    'dashboard',
+    
+    'django.contrib.humanize',
+    
     
     
     

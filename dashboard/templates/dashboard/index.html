@@ -1,0 +1,864 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}Dashboard - European Urban Planning{% endblock %}
+
+{% block head_extra %}
+<!-- Custom Dashboard CSS -->
+<style>
+    #map { height: 600px; }
+    .control-panel {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .filter-section {
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    .layer-toggle {
+        margin: 5px 0;
+    }
+    .stats-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .export-btn {
+        margin: 5px;
+    }
+    .loading {
+        display: none;
+        text-align: center;
+        padding: 20px;
+    }
+    .feature-info {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(255,255,255,0.9);
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+        max-width: 300px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+        <div class="row">
+            <!-- Control Panel -->
+            <div class="col-md-3">
+                <div class="control-panel">
+                    <h5>📊 Data Overview</h5>
+                    <div class="stats-card">
+                        <h6>Total Trails: <span id="total-trails">{{ total_trails }}</span></h6>
+                        <h6>Total Towns: <span id="total-towns">{{ total_towns }}</span></h6>
+                    </div>
+
+                    <!-- Layer Controls -->
+                    <div class="filter-section">
+                        <h6>🗺️ Map Layers</h6>
+                        <div class="layer-toggle">
+                            <input type="checkbox" id="show-trails" checked>
+                            <label for="show-trails">Show Trails</label>
+                        </div>
+                        <div class="layer-toggle">
+                            <input type="checkbox" id="show-towns" checked>
+                            <label for="show-towns">Show Towns</label>
+                        </div>
+                        <div class="layer-toggle">
+                            <input type="checkbox" id="cluster-trails">
+                            <label for="cluster-trails">Cluster Trails</label>
+                        </div>
+                    </div>
+
+                    <!-- Population Filters -->
+                    <div class="filter-section">
+                        <h6>👥 Population Filters</h6>
+                        <div class="mb-2">
+                            <label class="form-label">City Population Range</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" id="city-pop-min" class="form-control form-control-sm" 
+                                           placeholder="Min" value="0">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="city-pop-max" class="form-control form-control-sm" 
+                                           placeholder="Max">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Town Population Range</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" id="town-pop-min" class="form-control form-control-sm" 
+                                           placeholder="Min" value="0">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="town-pop-max" class="form-control form-control-sm" 
+                                           placeholder="Max">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Filters -->
+                    <div class="filter-section">
+                        <h6>📏 Area Filters</h6>
+                        <div class="mb-2">
+                            <label class="form-label">City Urban Area (km²)</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" id="city-area-min" class="form-control form-control-sm" 
+                                           placeholder="Min" step="0.1">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="city-area-max" class="form-control form-control-sm" 
+                                           placeholder="Max" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Town Area (km²)</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" id="town-area-min" class="form-control form-control-sm" 
+                                           placeholder="Min">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="town-area-max" class="form-control form-control-sm" 
+                                           placeholder="Max">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="filter-section">
+                        <h6>🏛️ Category Filters</h6>
+                        <div class="mb-2">
+                            <label class="form-label">Country</label>
+                            <select id="country-filter" class="form-select form-select-sm">
+                                <option value="">All Countries</option>
+                                {% for country in countries %}
+                                <option value="{{ country }}">{{ country }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">City Type</label>
+                            <select id="city-type-filter" class="form-select form-select-sm">
+                                <option value="">All Types</option>
+                                {% for city_type in city_types %}
+                                <option value="{{ city_type }}">{{ city_type|title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Town Type</label>
+                            <select id="town-type-filter" class="form-select form-select-sm">
+                                <option value="">All Types</option>
+                                {% for town_type in town_types %}
+                                <option value="{{ town_type }}">{{ town_type|title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-grid gap-2">
+                        <button id="apply-filters" class="btn btn-primary">Apply Filters</button>
+                        <button id="clear-filters" class="btn btn-outline-secondary">Clear All</button>
+                    </div>
+
+                    <!-- Export Options -->
+                    <div class="filter-section">
+                        <h6>📥 Export Data</h6>
+                        <button id="export-trails" class="btn btn-outline-success export-btn">Trails GeoJSON</button>
+                        <button id="export-towns" class="btn btn-outline-success export-btn">Towns GeoJSON</button>
+                        <button id="export-statistics" class="btn btn-outline-info export-btn">Statistics</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="col-md-9">
+                <div class="position-relative">
+                    <div id="map"></div>
+                    <div class="loading" id="loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading data...</p>
+                    </div>
+                    <div class="feature-info" id="feature-info">
+                        <!-- Feature details will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Results Summary -->
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Trails Displayed</h5>
+                                    <h3 class="text-primary" id="trails-count">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Towns Displayed</h5>
+                                    <h3 class="text-success" id="towns-count">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Total Population</h5>
+                                    <h3 class="text-info" id="total-population">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- External JS file -->
+    <script src="{% static 'dashboard/js/dashboard_map.js' %}"></script>
+
+
+    <!-- Inline JS for Dashboard -->
+    <script>
+       
+        console.log('🎯 Dashboard script loading...');
+
+        // Handle browser extension errors
+        window.addEventListener('error', function(e) {
+            if (e.message && e.message.includes('message channel closed')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        window.addEventListener('unhandledrejection', function(e) {
+            if (e.reason && e.reason.message && e.reason.message.includes('message channel closed')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Initialize map
+        console.log('🗺️ Initializing map...');
+        const map = L.map('map').setView([54.5, 15.2], 4);
+
+        // Add tile layers
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        });
+
+        const cartoLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© CARTO © OpenStreetMap contributors'
+        });
+
+        // Add default layer
+        cartoLayer.addTo(map);
+        console.log('✅ Map tiles loaded');
+
+        // Layer control
+        const baseLayers = {
+            "CartoDB Light": cartoLayer,
+            "OpenStreetMap": osmLayer
+        };
+
+        L.control.layers(baseLayers).addTo(map);
+
+        // Data layers
+        let trailsLayer = L.layerGroup().addTo(map);
+        let townsLayer = L.layerGroup().addTo(map);
+        console.log('✅ Data layers initialized');
+
+        // Current data
+        let currentTrails = [];
+        let currentTowns = [];
+
+        // Utility functions
+        function showLoading(show) {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        function getCityColor(cityType) {
+            const colors = {
+                'capital': '#e74c3c',
+                'major': '#f39c12',
+                'townal': '#3498db',
+                'town': '#95a5a6'
+            };
+            return colors[cityType] || '#95a5a6';
+        }
+
+        function getTownColor(density) {
+            if (density > 500) return '#8e44ad';
+            if (density > 200) return '#e74c3c';
+            if (density > 100) return '#f39c12';
+            if (density > 50) return '#f1c40f';
+            return '#2ecc71';
+        }
+
+        function showFeatureInfo(properties, type) {
+            const info = document.getElementById('feature-info');
+            if (!info) return;
+
+            let content = `<strong>${properties.name || 'Unknown'}</strong><br>`;
+            if (type === 'city') {
+                content += `Population: ${(properties.population || 0).toLocaleString()}<br>`;
+                content += `Type: ${properties.city_type || 'Unknown'}`;
+            } else {
+                content += `Population: ${(properties.total_population || 0).toLocaleString()}<br>`;
+                content += `Area: ${(properties.area_km2 || 0).toLocaleString()} km²<br>`;
+                content += `Type: ${properties.town_type || 'Unknown'}`;
+            }
+
+            info.innerHTML = content;
+            info.style.display = 'block';
+        }
+
+        function hideFeatureInfo() {
+            const info = document.getElementById('feature-info');
+            if (info) {
+                info.style.display = 'none';
+            }
+        }
+
+        // Data loading functions
+        async function loadTrails(filters = {}) {
+            console.log('🏙️ Loading trails with filters:', filters);
+            try {
+                const params = new URLSearchParams(filters);
+                const url = `/api/trails/?${params}`;
+                console.log('🔗 Fetching:', url);
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('📦 Trails response:', data);
+
+                // Handle nested GeoJSON format
+                let features = [];
+                if (data && data.features) {
+                    // Check if features is an array directly
+                    if (Array.isArray(data.features)) {
+                        features = data.features;
+                    }
+                    // Check if features is a nested GeoJSON with its own features array
+                    else if (data.features.features && Array.isArray(data.features.features)) {
+                        features = data.features.features;
+                    }
+                } else if (Array.isArray(data)) {
+                    features = data;
+                }
+
+                currentTrails = features;
+                displayTrails(features);
+                console.log(`✅ Loaded ${features.length} trails`);
+
+                return features;
+            } catch (error) {
+                console.error('❌ Error loading trails:', error);
+                currentTrails = [];
+                return [];
+            }
+        }
+
+        async function loadTowns(filters = {}) {
+            console.log('🗺️ Loading towns with filters:', filters);
+            try {
+                const params = new URLSearchParams(filters);
+                const url = `/api/trails/towns/geojson/?${params}`;
+                console.log('🔗 Fetching:', url);
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('📦 Towns response:', data);
+
+                // Handle nested GeoJSON format
+                let features = [];
+                if (data && data.features) {
+                    // Check if features is an array directly
+                    if (Array.isArray(data.features)) {
+                        features = data.features;
+                    }
+                    // Check if features is a nested GeoJSON with its own features array
+                    else if (data.features.features && Array.isArray(data.features.features)) {
+                        features = data.features.features;
+                    }
+                } else if (Array.isArray(data)) {
+                    features = data;
+                }
+
+                currentTowns = features;
+                displayTowns(features);
+                console.log(`✅ Loaded ${features.length} towns`);
+
+                return features;
+            } catch (error) {
+                console.error('❌ Error loading towns:', error);
+                currentTowns = [];
+                return [];
+            }
+        }
+
+        // Display functions
+        function displayTrails(trails) {
+            console.log('🏙️ Displaying trails:', trails.length);
+            trailsLayer.clearLayers();
+
+            if (!Array.isArray(trails)) {
+                console.warn('Trails data is not an array:', trails);
+                return;
+            }
+
+            let displayed = 0;
+
+            trails.forEach((city, index) => {
+                try {
+                    let coords = null;
+                    let props = null;
+
+                    // Handle GeoJSON format
+                    if (city.geometry && city.geometry.coordinates && city.properties) {
+                        coords = city.geometry.coordinates;
+                        props = city.properties;
+                    }
+                    // Handle PostGIS string format like "SRID=4326;POINT (-0.1278 51.5074)"
+                    else if (city.geometry && typeof city.geometry === 'string' && city.properties) {
+                        const match = city.geometry.match(/POINT\s*/);
+                        if (match) {
+                            coords = [parseFloat(match[1]), parseFloat(match[2])];
+                            props = city.properties;
+                        }
+                    }
+                    // Handle direct object format
+                    else if (city.latitude && city.longitude) {
+                        coords = [city.longitude, city.latitude];
+                        props = city;
+                    }
+                    // Handle properties with lat/lng
+                    else if (city.properties && city.properties.latitude && city.properties.longitude) {
+                        coords = [city.properties.longitude, city.properties.latitude];
+                        props = city.properties;
+                    }
+
+                    if (!coords || coords.length < 2) {
+                        console.warn(`Invalid coordinates for city ${index}:`, city);
+                        return;
+                    }
+
+                    if (!props || !props.name) {
+                        console.warn(`Invalid properties for city ${index}:`, city);
+                        return;
+                    }
+
+                    // Create marker
+                    const lat = coords[1];
+                    const lng = coords[0];
+                    const population = props.population || 0;
+                    const radius = Math.max(3, Math.sqrt(population / 10000));
+
+                    const marker = L.circleMarker([lat, lng], {
+                        radius: radius,
+                        fillColor: getCityColor(props.city_type),
+                        color: '#ffffff',
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    });
+
+                    // Add popup
+                    const popupContent = `
+                        <div>
+                            <h6>${props.name}, ${props.country || 'Unknown'}</h6>
+                            <p><strong>Population:</strong> ${population.toLocaleString()}</p>
+                            <p><strong>Type:</strong> ${props.city_type || 'Unknown'}</p>
+                            ${props.population_density ? `<p><strong>Density:</strong> ${props.population_density.toFixed(1)} people/km²</p>` : ''}
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
+
+                    // Add event listeners
+                    marker.on('mouseover', () => showFeatureInfo(props, 'city'));
+                    marker.on('mouseout', hideFeatureInfo);
+
+                    trailsLayer.addLayer(marker);
+                    displayed++;
+
+                } catch (error) {
+                    console.error(`Error displaying city ${index}:`, error, city);
+                }
+            });
+
+            console.log(`✅ Successfully displayed ${displayed} trails`);
+        }
+
+        function displayTowns(towns) {
+            console.log('🗺️ Displaying towns:', towns.length);
+            townsLayer.clearLayers();
+
+            if (!Array.isArray(towns)) {
+                console.warn('Towns data is not an array:', towns);
+                return;
+            }
+
+            let displayed = 0;
+
+            towns.forEach((town, index) => {
+                try {
+                    let geometry = null;
+                    let props = null;
+
+                    // Handle GeoJSON format
+                    if (town.geometry && town.properties) {
+                        geometry = town.geometry;
+                        props = town.properties;
+                    } else if (town.geometry && town.name) {
+                        geometry = town.geometry;
+                        props = town;
+                    }
+
+                    // Skip if geometry is a PostGIS string (towns are more complex to parse)
+                    if (!geometry || typeof geometry === 'string') {
+                        console.warn(`Skipping town with PostGIS string geometry ${index}:`, town);
+                        return;
+                    }
+
+                    if (!geometry.coordinates) {
+                        console.warn(`Invalid geometry for town ${index}:`, town);
+                        return;
+                    }
+
+                    if (!props || !props.name) {
+                        console.warn(`Invalid properties for town ${index}:`, town);
+                        return;
+                    }
+
+                    // Create GeoJSON feature
+                    const geoJsonFeature = {
+                        type: 'Feature',
+                        geometry: geometry,
+                        properties: props
+                    };
+
+                    const layer = L.geoJSON(geoJsonFeature, {
+                        style: {
+                            fillColor: getTownColor(props.population_density || 0),
+                            weight: 1,
+                            opacity: 1,
+                            color: '#666666',
+                            fillOpacity: 0.5
+                        }
+                    });
+
+                    // Add popup
+                    const popupContent = `
+                        <div>
+                            <h6>${props.name}, ${props.country || 'Unknown'}</h6>
+                            <p><strong>Type:</strong> ${props.town_type || 'Unknown'}</p>
+                            <p><strong>Population:</strong> ${(props.total_population || 0).toLocaleString()}</p>
+                            <p><strong>Area:</strong> ${(props.area_km2 || 0).toLocaleString()} km²</p>
+                        </div>
+                    `;
+
+                    layer.bindPopup(popupContent);
+
+                    // Add event listeners
+                    layer.on('mouseover', () => showFeatureInfo(props, 'town'));
+                    layer.on('mouseout', hideFeatureInfo);
+
+                    townsLayer.addLayer(layer);
+                    displayed++;
+
+                } catch (error) {
+                    console.error(`Error displaying town ${index}:`, error, town);
+                }
+            });
+
+            console.log(`✅ Successfully displayed ${displayed} towns`);
+        }
+
+        // Update summary
+        function updateResultsSummary() {
+            console.log('📊 Updating summary...');
+
+            const trailsCount = Array.isArray(currentTrails) ? currentTrails.length : 0;
+            const townsCount = Array.isArray(currentTowns) ? currentTowns.length : 0;
+
+            // Update counts
+            const trailsCountEl = document.getElementById('trails-count');
+            const townsCountEl = document.getElementById('towns-count');
+            const totalPopEl = document.getElementById('total-population');
+
+            if (trailsCountEl) trailsCountEl.textContent = trailsCount;
+            if (townsCountEl) townsCountEl.textContent = townsCount;
+
+            // Calculate total population
+            let totalPopulation = 0;
+
+            if (Array.isArray(currentTrails)) {
+                totalPopulation += currentTrails.reduce((sum, city) => {
+                    const props = city.properties || city;
+                    return sum + (props.population || 0);
+                }, 0);
+            }
+
+            if (totalPopEl) {
+                totalPopEl.textContent = totalPopulation.toLocaleString();
+            }
+
+            console.log('✅ Summary updated:', { trails: trailsCount, towns: townsCount, population: totalPopulation });
+        }
+
+        // Filter functions
+        function getCurrentFilters() {
+            const cityFilters = {};
+            const townFilters = {};
+
+            // Population filters
+            const cityPopMin = document.getElementById('city-pop-min');
+            const cityPopMax = document.getElementById('city-pop-max');
+            const townPopMin = document.getElementById('town-pop-min');
+            const townPopMax = document.getElementById('town-pop-max');
+
+            if (cityPopMin && cityPopMin.value) cityFilters.population_min = cityPopMin.value;
+            if (cityPopMax && cityPopMax.value) cityFilters.population_max = cityPopMax.value;
+            if (townPopMin && townPopMin.value) townFilters.population_min = townPopMin.value;
+            if (townPopMax && townPopMax.value) townFilters.population_max = townPopMax.value;
+
+            // Area filters
+            const cityAreaMin = document.getElementById('city-area-min');
+            const cityAreaMax = document.getElementById('city-area-max');
+            const townAreaMin = document.getElementById('town-area-min');
+            const townAreaMax = document.getElementById('town-area-max');
+
+            if (cityAreaMin && cityAreaMin.value) cityFilters.urban_area_min = cityAreaMin.value;
+            if (cityAreaMax && cityAreaMax.value) cityFilters.urban_area_max = cityAreaMax.value;
+            if (townAreaMin && townAreaMin.value) townFilters.area_min = townAreaMin.value;
+            if (townAreaMax && townAreaMax.value) townFilters.area_max = townAreaMax.value;
+
+            // Category filters
+            const country = document.getElementById('country-filter');
+            const cityType = document.getElementById('city-type-filter');
+            const townType = document.getElementById('town-type-filter');
+
+            if (country && country.value) {
+                cityFilters.country = country.value;
+                townFilters.country = country.value;
+            }
+            if (cityType && cityType.value) cityFilters.city_type = cityType.value;
+            if (townType && townType.value) townFilters.town_type = townType.value;
+
+            return { trails: cityFilters, towns: townFilters };
+        }
+
+        async function applyFilters() {
+            console.log('🔍 Applying filters...');
+            showLoading(true);
+
+            try {
+                const filters = getCurrentFilters();
+                console.log('Filters to apply:', filters);
+
+                await Promise.all([
+                    loadTrails(filters.trails),
+                    loadTowns(filters.towns)
+                ]);
+
+                updateResultsSummary();
+            } catch (error) {
+                console.error('Error applying filters:', error);
+                alert('Error applying filters. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function clearFilters() {
+            console.log('🧹 Clearing filters...');
+
+            // Clear all inputs
+            const inputs = document.querySelectorAll('input[type="number"], select');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+
+            // Reset defaults
+            const cityPopMin = document.getElementById('city-pop-min');
+            const townPopMin = document.getElementById('town-pop-min');
+            if (cityPopMin) cityPopMin.value = '0';
+            if (townPopMin) townPopMin.value = '0';
+
+            // Reload data
+            loadInitialData();
+        }
+
+        function toggleTrailsLayer() {
+            const checkbox = document.getElementById('show-trails');
+            if (checkbox && checkbox.checked) {
+                if (!map.hasLayer(trailsLayer)) {
+                    map.addLayer(trailsLayer);
+                }
+            } else {
+                if (map.hasLayer(trailsLayer)) {
+                    map.removeLayer(trailsLayer);
+                }
+            }
+        }
+
+        function toggleTownsLayer() {
+            const checkbox = document.getElementById('show-towns');
+            if (checkbox && checkbox.checked) {
+                if (!map.hasLayer(townsLayer)) {
+                    map.addLayer(townsLayer);
+                }
+            } else {
+                if (map.hasLayer(townsLayer)) {
+                    map.removeLayer(townsLayer);
+                }
+            }
+        }
+
+        // Export functions
+        async function exportData(type) {
+            try {
+                const filters = getCurrentFilters();
+                const params = new URLSearchParams(filters[type] || {});
+                const response = await fetch(`/api/${type}/?${params}`);
+                const data = await response.json();
+
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${type}_export.geojson`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Export failed. Please try again.');
+            }
+        }
+
+        async function exportStatistics() {
+            try {
+                const [cityStats, townStats] = await Promise.all([
+                    fetch('/api/trails/statistics/').then(r => r.json()).catch(() => ({})),
+                    fetch('/api/towns/statistics/').then(r => r.json()).catch(() => ({}))
+                ]);
+
+                const stats = {
+                    export_date: new Date().toISOString(),
+                    city_statistics: cityStats,
+                    town_statistics: townStats
+                };
+
+                const blob = new Blob([JSON.stringify(stats, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `statistics_export.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Statistics export error:', error);
+                alert('Statistics export failed. Please try again.');
+            }
+        }
+
+        // Initial data loading
+        async function loadInitialData() {
+            console.log('🚀 Loading initial data...');
+            showLoading(true);
+
+            try {
+                await Promise.all([
+                    loadTrails({}),
+                    loadTowns({})
+                ]);
+
+                updateResultsSummary();
+                console.log('✅ Initial data loaded successfully');
+            } catch (error) {
+                console.error('❌ Error loading initial data:', error);
+                alert('Error loading data. Please refresh the page.');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM ready, setting up dashboard...');
+
+            // Set up event listeners
+            const elements = {
+                'apply-filters': applyFilters,
+                'clear-filters': clearFilters,
+                'show-trails': toggleTrailsLayer,
+                'show-towns': toggleTownsLayer,
+                'export-trails': () => exportData('trails'),
+                'export-towns': () => exportData('towns'),
+                'export-statistics': exportStatistics
+            };
+
+            Object.entries(elements).forEach(([id, handler]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (element.type === 'checkbox') {
+                        element.addEventListener('change', handler);
+                    } else {
+                        element.addEventListener('click', handler);
+                    }
+                    console.log(`✅ Event listener added for: ${id}`);
+                } else {
+                    console.warn(`⚠️ Element not found: ${id}`);
+                }
+            });
+
+            // Load initial data
+            loadInitialData();
+        });
+
+        console.log('✅ Dashboard script loaded');
+    </script>
+
+    
+{% endblock %}

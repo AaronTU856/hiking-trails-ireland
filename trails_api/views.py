@@ -19,6 +19,11 @@ from .serializers import (
 )
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from .models import Town
+from django.views import View
+from django.http import HttpResponse
+from django.core.serializers import serialize
+
+
 from rest_framework import generics
 
 from .filters import TrailFilter
@@ -189,6 +194,9 @@ class TownGeoJSONView(generics.ListAPIView):
     serializer_class = TownGeoJSONSerializer
     pagination_class = None
 
+    def get(self, request):
+        data = serialize('geojson', Town.objects.all())
+        return HttpResponse(data, content_type='application/json')
 
 
 
