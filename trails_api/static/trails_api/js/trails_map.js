@@ -1,197 +1,127 @@
 console.log("✅ trails_map.js loaded");
-// Trail Mapper - Main JavaScript functionality
-
 let map;
-
-let trailMarkers = L.layerGroup();
-
+let trailMarkers;
 let allTrailsData = [];
 
- 
-
-// Initialize map when page loads
-
 document.addEventListener('DOMContentLoaded', function() {
-
+    console.log("📍 DOM loaded, initializing map...");
     initializeMap();
-
     loadTrails();
-
     setupEventListeners();
 
-});
+    enableProximitySearch();
 
- 
+
+});
+    // initialize proximity search after map exists
+//     setTimeout(() => {
+//         if (window.map) {
+//             window.proximitySearch = new ProximitySearch(window.map);
+//             console.log("✅ Proximity search ready");
+//         } else {
+//             console.error("⚠️ Map not found for proximity search");
+//         }
+//     }, 1000);
+// });
 
 function initializeMap() {
+    console.log("🗺️ Map initializing...");
 
-    // Initialize the map - Center on Europe for better view
+    // If already created, skip
+    if (window.trailsMap instanceof L.Map) {
+        console.warn("Map already exists — skipping reinitialization");
+        return;
+    }
 
-    window.map = L.map('map').setView([53.5, -7.7], 7);
+    // ✅ Create and store globally (NO shadowing)
+    window.trailsMap = L.map('map').setView([53.5, -7.7], 7);
+    console.log("✅ Created trailsMap:", window.trailsMap instanceof L.Map, window.trailsMap);
 
- 
+    // ✅ Add tile layer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href=\"https://carto.com/\">CartoDB</a> contributors',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(window.trailsMap);
 
-    // Add OpenStreetMap tiles
+    // ✅ Initialize marker layer
+    window.trailMarkers = L.layerGroup().addTo(window.trailsMap);
+    console.log("✅ Trail marker layer added to map");
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-
-        attribution: '© OpenStreetMap contributors',
-
-        maxZoom: 18
-
-    }).addTo(map);
-
- 
-
-    // Add the markers layer group to map
-
-    trailMarkers.addTo(map);
-
- 
-
-    // Add map click event for adding new trails
-
-    map.on('click', function(e) {
-
-        const { lat, lng } = e.latlng;
-
-        document.getElementById('trail-lat').value = lat.toFixed(6);
-
-        document.getElementById('trail-lng').value = lng.toFixed(6);
-
-       
-
-        // Show add trail modal
-
-        const modal = new bootstrap.Modal(document.getElementById('addTrailModal'));
-
-        modal.show();
-
+    // ✅ Custom green icon
+    const greenIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
     });
+    L.Marker.prototype.options.icon = greenIcon;
 
+    console.log("✅ Map and base layer ready!");
 }
-
- 
-
 function loadTrails() {
-
-    console.log('Loading trails...');
-
+    console.log("🚀 Loading trails...");
     showLoading(true);
 
-   
-
-    // Try the geojson endpoint first
-
-    fetch('/api/trails/geojson/')
-
+    fetch("/api/trails/geojson/")
         .then(response => {
-
-            console.log('Response status:', response.status);
-
-            console.log('Response headers:', response.headers);
-
+            console.log("Response status:", response.status);
             if (!response.ok) {
-
                 throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
-
             }
-
             return response.json();
-
         })
-
         .then(data => {
+            console.log("Raw API response:", data);
+            console.log("Data type:", typeof data);
+            console.log("Data keys:", Object.keys(data || {}));
 
-            console.log('Raw API response:', data);
+            let features = [];
 
-            console.log('Data type:', typeof data);
+            // ✅ Handle GeoJSON FeatureCollection
+            if (data && data.type === "FeatureCollection" && Array.isArray(data.features)) {
+                features = data.features;
 
-            console.log('Data keys:', Object.keys(data || {}));
+            // ✅ Handle nested FeatureCollection (rare)
+            } else if (data && data.features && Array.isArray(data.features.features)) {
+                features = data.features.features;
 
-           
-
-            // Handle different response formats
-
-            if (data && data.features) {
-                // Handle both normal and nested GeoJSON structures
-                const features = Array.isArray(data.features)
-                    ? data.features
-                    : Array.isArray(data.features.features)
-                        ? data.features.features
-                        : [];
-            
-                console.log('Loaded', features.length, 'features (after flattening nested GeoJSON)');
-            
-                allTrailsData = features;
-                displayTrailsOnMap(allTrailsData);
-                updateTrailCount(allTrailsData.length);
-                console.log(`Successfully loaded ${allTrailsData.length} trails`);
-
-            } else if (data && data.error) {
-
-                // API returned an error
-
-                throw new Error(`API Error: ${data.error}`);
-
+            // ✅ Handle plain array (non-GeoJSON response)
             } else if (Array.isArray(data)) {
-
-                // API returned array of trails, convert to GeoJSON
-
-                console.log('Converting array to GeoJSON format');
-
-                const geojsonFeatures = data.map(trail => ({
-
+                console.warn("Converting non-GeoJSON array to GeoJSON format...");
+                features = data.map(trail => ({
                     type: "Feature",
-
                     geometry: {
-
                         type: "Point",
-
-                        coordinates: [parseFloat(trail.longitude || 0), parseFloat(trail.latitude || 0)]
-
+                        coordinates: [
+                            parseFloat(trail.longitude || 0),
+                            parseFloat(trail.latitude || 0)
+                        ]
                     },
-
                     properties: trail
-
                 }));
-
-                allTrailsData = geojsonFeatures;
-
-                displayTrailsOnMap(allTrailsData);
-
-                updateTrailCount(allTrailsData.length);
-
-                console.log(`Successfully converted and loaded ${allTrailsData.length} trails`);
-
-            } else {
-
-                // Unexpected format, try the regular API endpoint
-
-                console.warn('Unexpected API response format, trying regular endpoint');
-
-                return loadTrailsFromRegularAPI();
-
             }
 
+            // ✅ Handle results
+            if (features.length > 0) {
+                console.log(`✅ Loaded ${features.length} trail features`);
+                allTrailsData = features;
+                displayTrailsOnMap(features);
+                updateTrailCount(features.length);
+            } else {
+                console.warn("⚠️ No valid features found in API response, trying fallback...");
+                return loadTrailsFromRegularAPI();
+            }
         })
-
         .catch(error => {
-
-            console.error('Error with geojson endpoint:', error);
-
-            // Fallback to regular API
-
+            console.error("❌ Error with geojson endpoint:", error);
             return loadTrailsFromRegularAPI();
-
         })
-
         .finally(() => {
-
             showLoading(false);
-
         });
-
 }
 
  
@@ -310,141 +240,71 @@ function loadTrailsFromRegularAPI() {
 
 }
 
- 
-
- 
-
 function displayTrailsOnMap(trails) {
-
-    // Clear existing markers
-
-    trailMarkers.clearLayers();
-
-   
-
-    trails.forEach(trail => {
-
-        try {
-
-            // Fix: Access coordinates from geometry.coordinates
-
-            const { geometry, properties } = trail;
-
-           
-
-            if (!geometry || !geometry.coordinates || !Array.isArray(geometry.coordinates)) {
-
-                console.warn('Invalid geometry for trail:', properties?.name || 'Unknown');
-
-                return;
-
-            }
-
-           
-
-            const [lng, lat] = geometry.coordinates;
-
-           
-
-            // Validate coordinates
-
-            if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
-
-                console.warn('Invalid coordinates for trail:', properties?.name, lat, lng);
-
-                return;
-
-            }
-
-           
-
-            // Create custom icon based on population
-
-            const populationSize = getMarkerSize(properties.population || 0);
-
-            const customIcon = L.divIcon({
-
-                className: 'custom-marker',
-
-                html: `<div style="background-color: #007bff; border-radius: 50%; width: ${populationSize}px; height: ${populationSize}px; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
-
-                iconSize: [populationSize, populationSize],
-
-                iconAnchor: [populationSize/2, populationSize/2]
-
-            });
-
-           
-
-            // Create marker
-
-            const marker = L.marker([lat, lng], { icon: customIcon })
-
-                .bindPopup(createPopupContent(properties), {
-
-                    maxWidth: 300,
-
-                    className: 'custom-popup'
-
-                });
-
-           
-
-            // Add click event to show detailed info
-
-            marker.on('click', function() {
-
-                showTrailInfo(properties);
-
-            });
-
-           
-
-            // Store trail data with marker for reference
-
-            marker.trailData = properties;
-
-           
-
-            trailMarkers.addLayer(marker);
-
-           
-
-        } catch (error) {
-
-            console.error('Error creating marker for trail:', trail, error);
-
-        }
-
-    });
-
-   
-
-    // Fit map to show all markers if trails exist
-
-    if (trails.length > 0) {
-
-        try {
-
-            const group = new L.featureGroup(trailMarkers.getLayers());
-
-            if (group.getLayers().length > 0) {
-
-                map.fitBounds(group.getBounds().pad(0.1));
-
-            }
-
-        } catch (error) {
-
-            console.error('Error fitting bounds:', error);
-
-        }
-
+    if (!window.trailsMap) {
+        console.error("❌ trailsMap not initialized before displaying trails");
+        return;
     }
 
+    // ✅ Ensure layer group exists
+    if (!window.trailMarkers || !(window.trailMarkers instanceof L.LayerGroup)) {
+        console.log("🧭 Creating new trailMarkers LayerGroup...");
+        window.trailMarkers = L.layerGroup().addTo(window.trailsMap);
+    } else {
+        console.log("🧹 Clearing existing trail markers...");
+        window.trailMarkers.clearLayers();
+    }
+
+    let validMarkers = 0;
+
+    // ✅ Accept GeoJSON or plain objects
+    const trailArray = Array.isArray(trails)
+        ? trails
+        : trails.features || [];
+
+    trailArray.forEach(trail => {
+        try {
+            // Accept both GeoJSON + plain API trails
+            const geometry = trail.geometry || null;
+            const properties = trail.properties || trail;
+
+            let lat, lng;
+            if (geometry?.coordinates && Array.isArray(geometry.coordinates)) {
+                [lng, lat] = geometry.coordinates;
+            } else {
+                lat = parseFloat(properties.latitude);
+                lng = parseFloat(properties.longitude);
+            }
+
+            if (isNaN(lat) || isNaN(lng)) {
+                console.warn(`⚠️ Invalid coordinates for ${properties?.trail_name || 'Unnamed Trail'}`);
+                return;
+            }
+
+            // ✅ Unified marker icon
+            const marker = L.marker([lat, lng]).bindPopup(`
+                <strong>${properties.trail_name || 'Unnamed Trail'}</strong><br>
+                County: ${properties.county || 'Unknown'}<br>
+                Distance: ${properties.distance_km || '?'} km<br>
+                Difficulty: ${properties.difficulty || 'Unknown'}
+            `);
+
+            window.trailMarkers.addLayer(marker);
+            validMarkers++;
+        } catch (err) {
+            console.error("❌ Error creating marker:", err);
+        }
+    });
+
+    if (validMarkers > 0 && typeof window.trailMarkers.getBounds === "function") {
+        const bounds = window.trailMarkers.getBounds();
+        window.trailsMap.fitBounds(bounds, { padding: [30, 30] });
+        console.log(`✅ Displayed ${validMarkers} valid trail markers`);
+    } else {
+        console.warn("⚠️ No valid markers to display or invalid trailMarkers type");
+    }
 }
 
- 
 
 function createPopupContent(trail) {
     // Safely handle missing properties
@@ -1260,244 +1120,329 @@ function getCsrfToken() {
 
     }
 
-   
-
     console.warn('CSRF token not found');
-
     return '';
-
 }
 
+console.log("✅ trails_map.js fully loaded");
 
-class ProximitySearch {
-    constructor(map) {
-        this.map = map;
-        this.searchMarker = null;
-        this.nearestTrailsLayer = L.layerGroup().addTo(this.map);
-        this.radiusCircle = null;
-        this.isProximityMode = false;
-       
-        this.initializeProximityFeatures();
+
+function enableProximitySearch() {
+    const toggleBtn = document.getElementById("toggle-search");
+    const radiusInput = document.getElementById("radius-input");
+
+    if (!toggleBtn || !radiusInput) {
+        console.warn("⚠️ Proximity UI elements missing");
+        return;
     }
-   
-    initializeProximityFeatures() {
-        // Add proximity search toggle button
-        this.addProximityControls();
-       
-        // Add click handler for proximity search
-        this.map.on('click', (e) => {
-            if (this.isProximityMode) {
-                this.performProximitySearch(e.latlng.lat, e.latlng.lng);
-            }
-        });
-    }
-   
-    addProximityControls() {
-        // Add toggle button to existing controls
-        const proximityToggle = document.createElement('button');
-        proximityToggle.id = 'proximity-toggle';
-        proximityToggle.className = 'btn btn-outline-primary';
-        proximityToggle.innerHTML = '📍 Proximity Search';
-        proximityToggle.onclick = () => this.toggleProximityMode();
-       
-        // Add to existing control panel
-        const controlPanel = document.querySelector('.map-controls') || document.body;
-        controlPanel.appendChild(proximityToggle);
-       
-        // Add radius input
-        const radiusInput = document.createElement('input');
-        radiusInput.id = 'radius-input';
-        radiusInput.type = 'number';
-        radiusInput.value = '100';
-        radiusInput.placeholder = 'Radius (km)';
-        radiusInput.className = 'form-control d-none';
-        radiusInput.style.width = '120px';
-        radiusInput.style.display = 'inline-block';
-        radiusInput.style.marginLeft = '10px';
-       
-        controlPanel.appendChild(radiusInput);
-    }
-   
-    toggleProximityMode() {
-        this.isProximityMode = !this.isProximityMode;
-        const toggleBtn = document.getElementById('proximity-toggle');
-        const radiusInput = document.getElementById('radius-input');
-       
-        if (this.isProximityMode) {
-            toggleBtn.innerHTML = 'Exit Proximity';
-            toggleBtn.className = 'btn btn-danger';
-            radiusInput.classList.remove('d-none');
-            this.map.getContainer().style.cursor = 'crosshair';
-            showAlert('Click anywhere on the map to find nearest trails', 'info');
+
+    let searchEnabled = false;
+    let searchMarker = null;
+    let radiusCircle = null;
+
+    toggleBtn.addEventListener("click", () => {
+        searchEnabled = !searchEnabled;
+
+        if (searchEnabled) {
+            toggleBtn.textContent = "Disable Search";
+            toggleBtn.classList.remove("btn-success");
+            toggleBtn.classList.add("btn-danger");
+            showAlert("🧭 Click the map to find trails near a point", "info");
         } else {
-            toggleBtn.innerHTML = 'Proximity Search';
-            toggleBtn.className = 'btn btn-outline-primary';
-            radiusInput.classList.add('d-none');
-            this.map.getContainer().style.cursor = '';
-            this.clearProximityResults();
+            toggleBtn.textContent = "Enable Search";
+            toggleBtn.classList.remove("btn-danger");
+            toggleBtn.classList.add("btn-success");
+
+            if (searchMarker) window.trailsMap.removeLayer(searchMarker);
+            if (radiusCircle) window.trailsMap.removeLayer(radiusCircle);
         }
-    }
-   
-    async performProximitySearch(lat, lng) {
-        this.clearProximityResults();
-    
-        // Add search marker
-        this.searchMarker = L.marker([lat, lng], {
-            icon: L.icon({
-                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34]
-            })
-        }).addTo(this.map);
-    
-        this.searchMarker.bindPopup(`
-            <strong>Search Point</strong><br>
-            Lat: ${lat.toFixed(6)}<br>
-            Lng: ${lng.toFixed(6)}
-        `).openPopup();
-    
+    });
+
+    // ✅ Handle map click
+    window.trailsMap.on("click", async (e) => {
+        if (!searchEnabled) return;
+
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        const radiusKm = parseFloat(radiusInput.value) || 50;
+
+        console.log(`📍 Proximity search at (${lat}, ${lng}) radius: ${radiusKm}km`);
+
+        // Remove old marker/circle
+        if (searchMarker) window.trailsMap.removeLayer(searchMarker);
+        if (radiusCircle) window.trailsMap.removeLayer(radiusCircle);
+
+        // Add marker & circle
+        const blueIcon = L.icon({
+            iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png",
+            shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        
+        searchMarker = L.marker([lat, lng], { icon: blueIcon }).addTo(window.trailsMap);
+        
+        radiusCircle = L.circle([lat, lng], {
+            radius: radiusKm * 1000,
+            color: "blue",
+            fillOpacity: 0.15,
+        }).addTo(window.trailsMap);
+
         showLoading(true);
-    
+
         try {
-            const response = await fetch('/api/trails/within-radius/', {
-                method: 'POST',
+            const response = await fetch("/api/trails/within-radius/", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCsrfToken()
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCsrfToken(),
                 },
-                body: JSON.stringify({
-                    latitude: lat,
-                    longitude: lng,
-                    radius_km: parseFloat(document.getElementById('radius-input').value || 10)
-                })
+                body: JSON.stringify({ latitude: lat, longitude: lng, radius_km: radiusKm }),
             });
-    
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    
+
+            if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+
             const data = await response.json();
-    
-            // ✅ Your API returns data.nearest_trails (not data.trails)
-            this.displayNearestTrails(data.nearest_trails);
-            this.updateResultsPanel(data);
-    
-        } catch (error) {
-            console.error('Error finding nearest trails:', error);
-            showAlert('Error performing proximity search. Please try again.', 'danger');
+            console.log("✅ Proximity search response:", data);
+
+            if (data.nearest_trails?.length) {
+                const formatted = data.nearest_trails.map(t => ({
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [parseFloat(t.longitude), parseFloat(t.latitude)]
+                    },
+                    properties: t
+                }));
+            
+                displayTrailsOnMap(formatted);
+                showAlert(`✅ Found ${data.nearest_trails.length} trails within ${radiusKm} km`, "success");
+            
+                // ✅ Update results panel
+                const resultsDiv = document.getElementById("trail-results");
+                if (resultsDiv) {
+                    resultsDiv.innerHTML = `
+                        <h6 class="fw-bold mb-2">Trails Found (${data.nearest_trails.length})</h6>
+                        <ul class="list-unstyled m-0" style="max-height:25vh; overflow-y:auto;">
+                            ${data.nearest_trails
+                                .map(t => `
+                                    <li class="border-bottom py-1">
+                                        <strong>${t.trail_name || "Unnamed Trail"}</strong><br>
+                                        <small>${t.county || "Unknown"} • ${t.distance_km || "?"} km • ${t.difficulty || "?"}</small>
+                                    </li>
+                                `)
+                                .join("")}
+                        </ul>
+                    `;
+                }
+            } else {
+                showAlert("⚠️ No trails found nearby", "warning");
+                const resultsDiv = document.getElementById("trail-results");
+                if (resultsDiv) {
+                    resultsDiv.innerHTML = `<small class="text-muted">No trails found within ${radiusKm} km.</small>`;
+                }
+            }
+            
+        } catch (err) {
+            console.error("❌ Error performing proximity search:", err);
+            showAlert("❌ Error performing proximity search", "danger");
         } finally {
             showLoading(false);
         }
-    }
-
-    displayNearestTrails(trails) {
-        this.nearestTrailsLayer.clearLayers();
-    
-        trails.forEach((trail, index) => {
-            const { lat, lng } = trail.coordinates;
-            if (isNaN(lat) || isNaN(lng)) return;
-    
-            const marker = L.marker([lat, lng], {
-                icon: this.getNumberedIcon(index + 1)
-            });
-    
-            const popupContent = `
-                <strong>${trail.name}</strong><br>
-                County: ${trail.county}<br>
-                Difficulty: ${trail.difficulty}<br>
-                Distance: ${trail.distance_km} km<br>
-                From You: ${trail.distance_to_user} km
-            `;
-            marker.bindPopup(popupContent);
-            this.nearestTrailsLayer.addLayer(marker);
-        });
-    
-        // Fit map to bounds
-        if (trails.length > 0) {
-            const group = new L.featureGroup([
-                this.searchMarker,
-                ...this.nearestTrailsLayer.getLayers()
-            ]);
-            this.map.fitBounds(group.getBounds().pad(0.1));
-        }
-    }
-    
-    getNumberedIcon(number) {
-        return L.divIcon({
-            className: 'numbered-marker',
-            html: `<div class="marker-number">${number}</div>`,
-            iconSize: [30, 30],
-            iconAnchor: [15, 15]
-        });
-    }
-   
-    updateResultsPanel(data) {
-        let resultsPanel = document.getElementById('proximity-results');
-        if (!resultsPanel) {
-            resultsPanel = document.createElement('div');
-            resultsPanel.id = 'proximity-results';
-            resultsPanel.className = 'proximity-results-panel';
-            document.body.appendChild(resultsPanel);
-        }
-    
-        const trails = data.nearest_trails || [];
-        resultsPanel.innerHTML = `
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Nearest Trails</h5>
-                    <button type="button" class="btn-close btn-close-white" onclick="proximitySearch.clearProximityResults()"></button>
-                </div>
-                <div class="card-body" style="max-height:300px; overflow-y:auto;">
-                    <p><strong>Search Point:</strong> ${data.search_point.lat.toFixed(4)}, ${data.search_point.lng.toFixed(4)}</p>
-                    <p><strong>Trails Found:</strong> ${trails.length}</p>
-                    <div class="results-list">
-                        ${trails.map((trail, index) => `
-                            <div class="result-item border-bottom py-2" 
-                                 onclick="proximitySearch.zoomToTrail(${trail.coordinates.lat}, ${trail.coordinates.lng})">
-                                <strong>#${index + 1} ${trail.name}</strong><br>
-                                <small>${trail.county} • ${trail.difficulty} • ${trail.distance_to_user} km away</small>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </div>
-        `;
-        resultsPanel.style.display = 'block';
-    }
-    zoomToTrail(lat, lng) {
-        this.map.setView([lat, lng], 12);
-    }
-   
-    clearProximityResults() {
-        if (this.searchMarker) {
-            this.map.removeLayer(this.searchMarker);
-            this.searchMarker = null;
-        }
-       
-        this.nearestTrailsLayer.clearLayers();
-       
-        if (this.radiusCircle) {
-            this.map.removeLayer(this.radiusCircle);
-            this.radiusCircle = null;
-        }
-       
-        const resultsPanel = document.getElementById('proximity-results');
-        if (resultsPanel) {
-            resultsPanel.style.display = 'none';
-        }
-    }
+    });
 }
- 
-// Initialize proximity search when map loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Wait for your existing map to be initialized
-    setTimeout(() => {
-        if (window.map) {
-            window.proximitySearch = new ProximitySearch(window.map);
-        }
-    }, 1000);
-});
- 
+
+
+
+
+
+//         controlPanel.appendChild(proximityToggle);
+       
+//         // Add radius input
+//         const radiusInput = document.createElement('input');
+//         radiusInput.id = 'radius-input';
+//         radiusInput.type = 'number';
+//         radiusInput.value = '100';
+//         radiusInput.placeholder = 'Radius (km)';
+//         radiusInput.className = 'form-control d-none';
+//         radiusInput.style.width = '120px';
+//         radiusInput.style.display = 'inline-block';
+//         radiusInput.style.marginLeft = '10px';
+       
+//         controlPanel.appendChild(radiusInput);
+//     }
+   
+//     toggleProximityMode() {
+//         this.isProximityMode = !this.isProximityMode;
+//         const toggleBtn = document.getElementById('proximity-toggle');
+//         const radiusInput = document.getElementById('radius-input');
+       
+//         if (this.isProximityMode) {
+//             toggleBtn.innerHTML = 'Exit Proximity';
+//             toggleBtn.className = 'btn btn-danger';
+//             radiusInput.classList.remove('d-none');
+//             this.map.getContainer().style.cursor = 'crosshair';
+//             showAlert('Click anywhere on the map to find nearest trails', 'info');
+//         } else {
+//             toggleBtn.innerHTML = 'Proximity Search';
+//             toggleBtn.className = 'btn btn-outline-primary';
+//             radiusInput.classList.add('d-none');
+//             this.map.getContainer().style.cursor = '';
+//             this.clearProximityResults();
+//         }
+//     }
+   
+//     async performProximitySearch(lat, lng) {
+//         this.clearProximityResults();
+    
+//         // Add search marker
+//         this.searchMarker = L.marker([lat, lng], {
+//             icon: L.icon({
+//                 iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+//                 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+//                 iconSize: [25, 41],
+//                 iconAnchor: [12, 41],
+//                 popupAnchor: [1, -34],
+//                 shadowSize: [41, 41],
+//                 className: 'search-marker-icon'
+//             })
+//         }).addTo(this.map);
+    
+//         this.searchMarker.bindPopup(`
+//             <strong>Search Point</strong><br>
+//             Lat: ${lat.toFixed(6)}<br>
+//             Lng: ${lng.toFixed(6)}
+//         `).openPopup();
+    
+//         showLoading(true);
+    
+//         try {
+//             const response = await fetch('/api/trails/within-radius/', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'X-CSRFToken': getCsrfToken()
+//                 },
+//                 body: JSON.stringify({
+//                     latitude: lat,
+//                     longitude: lng,
+//                     radius_km: parseFloat(document.getElementById('radius-input').value || 10)
+//                 })
+//             });
+    
+//             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+//             const data = await response.json();
+    
+//             // ✅ Your API returns data.nearest_trails (not data.trails)
+//             this.displayNearestTrails(data.nearest_trails);
+//             this.updateResultsPanel(data);
+    
+//         } catch (error) {
+//             console.error('Error finding nearest trails:', error);
+//             showAlert('Error performing proximity search. Please try again.', 'danger');
+//         } finally {
+//             showLoading(false);
+//         }
+//     }
+
+//     displayNearestTrails(trails) {
+//         this.nearestTrailsLayer.clearLayers();
+    
+//         trails.forEach((trail, index) => {
+//             const { lat, lng } = trail.coordinates;
+//             if (isNaN(lat) || isNaN(lng)) return;
+    
+//             const marker = L.marker([lat, lng], {
+//                 icon: this.getNumberedIcon(index + 1)
+//             });
+    
+//             const popupContent = `
+//                 <strong>${trail.name}</strong><br>
+//                 County: ${trail.county}<br>
+//                 Difficulty: ${trail.difficulty}<br>
+//                 Distance: ${trail.distance_km} km<br>
+//                 From You: ${trail.distance_to_user} km
+//             `;
+//             marker.bindPopup(popupContent);
+//             this.nearestTrailsLayer.addLayer(marker);
+//         });
+    
+//         // Fit map to bounds
+//         if (trails.length > 0) {
+//             const group = new L.featureGroup([
+//                 this.searchMarker,
+//                 ...this.nearestTrailsLayer.getLayers()
+//             ]);
+//             this.window.map.fitBounds(group.getBounds().pad(0.1));
+//         }
+//     }
+    
+//     getNumberedIcon(number) {
+//         return L.divIcon({
+//             className: 'numbered-marker',
+//             html: `<div class="marker-number">${number}</div>`,
+//             iconSize: [30, 30],
+//             iconAnchor: [15, 15]
+//         });
+//     }
+   
+//     updateResultsPanel(data) {
+//         let resultsPanel = document.getElementById('proximity-results');
+//         if (!resultsPanel) {
+//             resultsPanel = document.createElement('div');
+//             resultsPanel.id = 'proximity-results';
+//             resultsPanel.className = 'proximity-results-panel';
+//             document.body.appendChild(resultsPanel);
+//         }
+    
+//         const trails = data.nearest_trails || [];
+//         resultsPanel.innerHTML = `
+//             <div class="card shadow">
+//                 <div class="card-header bg-success text-white">
+//                     <h5 class="mb-0">Nearest Trails</h5>
+//                     <button type="button" class="btn-close btn-close-white" onclick="proximitySearch.clearProximityResults()"></button>
+//                 </div>
+//                 <div class="card-body" style="max-height:300px; overflow-y:auto;">
+//                     <p><strong>Search Point:</strong> ${data.search_point.lat.toFixed(4)}, ${data.search_point.lng.toFixed(4)}</p>
+//                     <p><strong>Trails Found:</strong> ${trails.length}</p>
+//                     <div class="results-list">
+//                         ${trails.map((trail, index) => `
+//                             <div class="result-item border-bottom py-2" 
+//                                  onclick="proximitySearch.zoomToTrail(${trail.coordinates.lat}, ${trail.coordinates.lng})">
+//                                 <strong>#${index + 1} ${trail.name}</strong><br>
+//                                 <small>${trail.county} • ${trail.difficulty} • ${trail.distance_to_user} km away</small>
+//                             </div>
+//                         `).join('')}
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+//         resultsPanel.style.display = 'block';
+//     }
+//     zoomToTrail(lat, lng) {
+//         this.map.setView([lat, lng], 12);
+//     }
+   
+//     clearProximityResults() {
+//         if (this.searchMarker) {
+//             this.map.removeLayer(this.searchMarker);
+//             this.searchMarker = null;
+//         }
+       
+//         this.nearestTrailsLayer.clearLayers();
+       
+//         if (this.radiusCircle) {
+//             this.map.removeLayer(this.radiusCircle);
+//             this.radiusCircle = null;
+//         }
+       
+//         const resultsPanel = document.getElementById('proximity-results');
+//         if (resultsPanel) {
+//             resultsPanel.style.display = 'none';
+//        }
 
 
 
