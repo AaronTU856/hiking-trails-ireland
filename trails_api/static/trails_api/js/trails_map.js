@@ -305,6 +305,7 @@ function displayTrailsOnMap(trails) {
             const popupHTML = `
                 <strong>${name}</strong><br>
                 County: ${county}<br>
+                Parking: ${trail.parking_available ? "✅ Yes" : "❌ No"}<br>
                 Distance: ${distance} km<br>
                 Difficulty: ${difficulty}
             `;
@@ -1294,3 +1295,7 @@ window.trailsMap.on(L.Draw.Event.CREATED, function (e) {
         body: JSON.stringify({ path: coordinates }),
     }).then(() => showAlert("Trail path saved!", "success"));
 });
+
+
+
+
