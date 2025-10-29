@@ -1246,7 +1246,7 @@ function displayNearestTrails(trails) {
     window.nearestTrailsLayer.clearLayers();
 
     trails.forEach((trail, index) => {
-        
+
         trail.distance_to_user = trail.distance_to_user || trail.distance_from_point_km;
 
         const lat = parseFloat(trail.latitude || trail.coordinates?.lat);
@@ -1295,7 +1295,10 @@ function updateResultsPanel(data) {
         document.body.appendChild(resultsPanel);
     }
 
-    const trails = data.nearest_trails || [];
+    const trails = (data.nearest_trails || []).map(t => ({
+        ...t,
+        distance_to_user: t.distance_to_user || t.distance_from_point_km
+    }));
     resultsPanel.innerHTML = `
         <div class="card shadow">
             <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
