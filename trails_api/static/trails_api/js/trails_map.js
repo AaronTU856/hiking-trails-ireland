@@ -57,7 +57,15 @@ function initializeMap() {
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
     });
-    L.Marker.prototype.options.icon = greenIcon;
+    const defaultGreenIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+      
 
     console.log("✅ Map and base layer ready!");
 }
@@ -280,6 +288,15 @@ function displayTrailsOnMap(trails) {
                 console.warn(`⚠️ Invalid coordinates for ${properties?.trail_name || 'Unnamed Trail'}`);
                 return;
             }
+
+            const defaultGreenIcon = L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
 
             // ✅ Unified marker icon
             const marker = L.marker([lat, lng]).bindPopup(`
@@ -1254,6 +1271,68 @@ function enableProximitySearch() {
     });
 }
 
+function getNumberedIcon(number) {
+    return L.divIcon({
+        className: 'numbered-marker',
+        html: `<div class="marker-number">${number}</div>`,
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -30]
+    });
+}
+
+
+
+function displayNearestTrails(trails, searchMarker) {
+    console.log(`🎯 Displaying ${trails.length} nearest trails...`);
+
+    // Clear old trail markers (but keep the search marker)
+    if (!window.trailMarkers || !(window.trailMarkers instanceof L.LayerGroup)) {
+        window.trailMarkers = L.layerGroup().addTo(window.map);
+    } else {
+        window.trailMarkers.clearLayers();
+    }
+
+    let validMarkers = [];
+
+    trails.forEach((trail, index) => {
+        // Support for different API formats
+        const lat = parseFloat(trail.latitude || trail.coordinates?.lat);
+        const lng = parseFloat(trail.longitude || trail.coordinates?.lng);
+
+        if (isNaN(lat) || isNaN(lng)) return;
+
+        const name = trail.trail_name || trail.name || trail.properties?.trail_name || "Unnamed Trail";
+
+        const marker = L.marker([lat, lng], {
+            icon: getNumberedIcon(index + 1)
+        }).bindPopup(`
+            <strong>${trail.name || trail.properties?.trail_name || 'Unnamed Trail'}</strong><br>
+            County: ${trail.county || trail.properties?.county || 'Unknown'}<br>
+            Difficulty: ${trail.difficulty || trail.properties?.difficulty || 'N/A'}<br>
+            Distance: ${trail.distance_km || '?'} km<br>
+            From You: ${trail.distance_to_user?.toFixed(1) || '?'} km
+        `);
+        
+        window.trailMarkers.addLayer(marker);
+        validMarkers.push(marker);
+        
+    });
+
+    // Adjust map view
+    if (validMarkers.length > 0) {
+        const group = L.featureGroup([searchMarker, ...validMarkers]);
+        window.map.fitBounds(group.getBounds().pad(0.1));
+    } else {
+        console.warn("⚠️ No valid proximity markers to display");
+    }
+
+    
+}
+
+
+
+
 
 
 
@@ -1380,14 +1459,7 @@ function enableProximitySearch() {
 //         }
 //     }
     
-//     getNumberedIcon(number) {
-//         return L.divIcon({
-//             className: 'numbered-marker',
-//             html: `<div class="marker-number">${number}</div>`,
-//             iconSize: [30, 30],
-//             iconAnchor: [15, 15]
-//         });
-//     }
+//     
    
 //     updateResultsPanel(data) {
 //         let resultsPanel = document.getElementById('proximity-results');
@@ -1444,5 +1516,5 @@ function enableProximitySearch() {
 //             resultsPanel.style.display = 'none';
 //        }
 
-
+    
 
