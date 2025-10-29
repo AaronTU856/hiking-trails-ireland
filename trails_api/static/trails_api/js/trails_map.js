@@ -136,6 +136,31 @@ function loadTrails() {
         });
 }
 
+fetch('/api/trails/towns/geojson/')
+  .then(res => res.json())
+  .then(data => {
+    const townIcon = L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    L.geoJSON(data, {
+      pointToLayer: (feature, latlng) => L.marker(latlng, { icon: townIcon }),
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(`<b>${feature.properties.name}</b><br>Click to find nearby trails`);
+        layer.on('click', () => {
+          const [lng, lat] = feature.geometry.coordinates;
+          performProximitySearch(lat, lng);
+        });
+      }
+    }).addTo(window.trailsMap);
+  });
+
+
  
 
 function loadTrailsFromRegularAPI() {

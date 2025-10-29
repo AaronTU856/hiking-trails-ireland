@@ -204,9 +204,14 @@ class Trail(models.Model):
             models.Index(fields=['difficulty'], name='trails_api_difficulty_idx'),
         ]
 
-    def __str__(self):
-        return f"{self.trail_name or 'Unnamed Trail'} ({self.county})"
+from django.contrib.gis.db import models
 
+class Town(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.PointField(srid=4326)
+
+    def __str__(self):
+        return self.name
 
 
 # Add custom manager to City model

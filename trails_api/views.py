@@ -17,7 +17,9 @@ from .serializers import (
     TrailCreateSerializer, TrailSummarySerializer, DistanceSerializer,
     BoundingBoxSerializer
 )
-
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
+from .models import Town
+from rest_framework import generics
 
 from .filters import TrailFilter
 
@@ -175,6 +177,21 @@ def trail_map(request):
 #         if self.request.method in ['PUT', 'PATCH']:
 #             return CityCreateSerializer
 #         return CityDetailSerializer
+
+class TownGeoJSONSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Town
+        geo_field = 'location'
+        fields = ('id', 'name')
+
+class TownGeoJSONView(generics.ListAPIView):
+    queryset = Town.objects.all()
+    serializer_class = TownGeoJSONSerializer
+    pagination_class = None
+
+
+
+
 
 class TrailGeoJSONView(generics.ListAPIView):
     """
