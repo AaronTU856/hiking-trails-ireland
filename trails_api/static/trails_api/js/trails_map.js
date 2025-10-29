@@ -1246,6 +1246,9 @@ function displayNearestTrails(trails) {
     window.nearestTrailsLayer.clearLayers();
 
     trails.forEach((trail, index) => {
+        
+        trail.distance_to_user = trail.distance_to_user || trail.distance_from_point_km;
+
         const lat = parseFloat(trail.latitude || trail.coordinates?.lat);
         const lng = parseFloat(trail.longitude || trail.coordinates?.lng);
         if (isNaN(lat) || isNaN(lng)) return;
