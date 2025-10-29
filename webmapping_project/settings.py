@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     # GeoDjango
     'django.contrib.gis',
     
+    # Leaflet
+    'leaflet',
+    
     # Third party
     'rest_framework',
     'rest_framework_gis',
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_spectacular',
     "drf_spectacular_sidecar",
+    
     
     # Local apps
     'maps',
@@ -208,6 +212,15 @@ SPECTACULAR_SETTINGS = {
 
 
 }
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (53.3498, -6.2603),  # Dublin coordinates
+    'DEFAULT_ZOOM': 7,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'SCALE': 'both',
+}
+
 
 
 

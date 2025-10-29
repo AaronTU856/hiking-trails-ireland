@@ -775,156 +775,70 @@ function setupEventListeners() {
  
 
 function saveNewTrail() {
-
     const nameInput = document.getElementById('trail-name');
-
     const countryInput = document.getElementById('trail-country');
-
     const latInput = document.getElementById('trail-lat');
-
     const lngInput = document.getElementById('trail-lng');
-
-    const populationInput = document.getElementById('trail-population');
-
     const foundedInput = document.getElementById('trail-founded');
-
     const descriptionInput = document.getElementById('trail-description');
+    const townInput = document.getElementById('trail-town');
 
-   
-
-    if (!nameInput || !countryInput || !latInput || !lngInput || !populationInput) {
-
+    if (!nameInput || !countryInput || !latInput || !lngInput || !townInput) {
         showAlert('Required form elements not found.', 'danger');
-
         return;
-
     }
-
-   
 
     const formData = {
-
         name: nameInput.value.trim(),
-
         country: countryInput.value.trim(),
-
         latitude: parseFloat(latInput.value),
-
         longitude: parseFloat(lngInput.value),
-
-        population: parseInt(populationInput.value),
-
         founded_year: foundedInput?.value ? parseInt(foundedInput.value) : null,
-
-        description: descriptionInput?.value?.trim() || ''
-
+        description: descriptionInput?.value?.trim() || '',
+        nearest_town: townInput.value.trim()
     };
 
-   
-
-    // Validation
-
-    if (!formData.name || !formData.country || isNaN(formData.latitude) || isNaN(formData.longitude) || isNaN(formData.population)) {
-
+    // ✅ Validation
+    if (
+        !formData.name ||
+        !formData.country ||
+        isNaN(formData.latitude) ||
+        isNaN(formData.longitude) ||
+        !formData.nearest_town
+    ) {
         showAlert('Please fill in all required fields with valid values.', 'warning');
-
         return;
-
     }
-
-   
 
     if (formData.latitude < -90 || formData.latitude > 90 || formData.longitude < -180 || formData.longitude > 180) {
-
         showAlert('Please enter valid coordinates (latitude: -90 to 90, longitude: -180 to 180).', 'warning');
-
         return;
-
     }
 
-   
-
+    // Proceed with saving via API
     fetch('/api/trails/', {
-
         method: 'POST',
-
         headers: {
-
             'Content-Type': 'application/json',
-
             'X-CSRFToken': getCsrfToken()
-
         },
-
         body: JSON.stringify(formData)
-
     })
-
     .then(response => {
-
-        if (!response.ok) {
-
-            throw new Error(`HTTP error! status: ${response.status}`);
-
-        }
-
+        if (!response.ok) throw new Error('Network response was not ok.');
         return response.json();
-
     })
-
     .then(data => {
-
         showAlert('Trail added successfully!', 'success');
-
-       
-
-        // Close modal
-
-        const modalElement = document.getElementById('addTrailModal');
-
-        if (modalElement) {
-
-            const modal = bootstrap.Modal.getInstance(modalElement);
-
-            if (modal) {
-
-                modal.hide();
-
-            }
-
-        }
-
-       
-
-        // Reset form
-
-        const form = document.getElementById('add-trail-form');
-
-        if (form) {
-
-            form.reset();
-
-        }
-
-       
-
-        // Reload trails
-
-        loadTrails();
-
+        console.log('✅ New Trail Saved:', data);
+        loadAllTrails(); // refresh map
     })
-
     .catch(error => {
-
-        console.error('Error saving trail:', error);
-
+        console.error('❌ Error saving trail:', error);
         showAlert('Error saving trail. Please try again.', 'danger');
-
     });
-
 }
 
- 
 
 // Utility functions
 
@@ -1338,3 +1252,45 @@ function clearProximityResults() {
     const panel = document.getElementById("proximity-results");
     if (panel) panel.style.display = "none";
 }
+
+
+// Drawing Tool for Trail Paths
+
+// Initialize the draw control
+const drawControl = new L.Control.Draw({
+    draw: {
+        marker: false,
+        circle: false,
+        rectangle: false,
+        polygon: false,
+        polyline: {
+            shapeOptions: {
+                color: 'orange',
+                weight: 4
+            }
+        }
+    },
+    edit: {
+        featureGroup: L.featureGroup().addTo(window.trailsMap)
+    }
+});
+window.trailsMap.addControl(drawControl);
+
+// Handle created trail
+window.trailsMap.on(L.Draw.Event.CREATED, function (e) {
+    const layer = e.layer;
+    window.trailsMap.addLayer(layer);
+
+    const coordinates = layer.getLatLngs().map(p => [p.lat, p.lng]);
+    console.log("Trail coordinates:", coordinates);
+
+    // You can POST these to your Django API:
+    fetch("/api/trails/add-path/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCsrfToken(),
+        },
+        body: JSON.stringify({ path: coordinates }),
+    }).then(() => showAlert("Trail path saved!", "success"));
+});

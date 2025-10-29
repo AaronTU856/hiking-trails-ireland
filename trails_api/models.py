@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from django.contrib.gis.db import models
+from django.contrib.gis.db import models as gis_models
 from django.contrib.gis.geos import Point, Polygon
 from django.contrib.gis.measure import Distance
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -167,7 +167,9 @@ class Trail(models.Model):
         ('moderate', 'Moderate'),
         ('hard', 'Hard'),
     ]
-    
+    trail_name = models.CharField(max_length=100)
+
+    path = gis_models.LineStringField(srid=4326, null=True, blank=True)
     trail_name = models.CharField(max_length=200, db_index=True)
     county = models.CharField(max_length=100, db_index=True)
     region = models.CharField(max_length=200, blank=True)
@@ -175,7 +177,7 @@ class Trail(models.Model):
     difficulty = models.CharField(max_length=100, choices=DIFFICULTY_CHOICES, default='moderate')
     elevation_gain_m = models.IntegerField(help_text="Total elevation gain in meters")
     description = models.TextField(blank=True, null=True)
-    start_point = models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
+    start_point = gis_models.PointField(srid=4326, help_text="Trail start coordinates, longitude, latitude")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     activity = models.CharField(max_length=100, blank=True)
@@ -183,8 +185,9 @@ class Trail(models.Model):
     dogs_allowed = models.CharField(max_length=50, blank=True)
     facilities = models.TextField(blank=True)
     public_transport = models.TextField(blank=True)
-    start_point = models.PointField(srid=4326)
+   
     trail_type = models.CharField(max_length=100, blank=True)
+    parking_available = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = 'Trail'
