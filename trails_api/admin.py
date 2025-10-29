@@ -5,6 +5,14 @@ from .models import Trail
 
 @admin.register(Trail)
 class TrailAdmin(LeafletGeoAdmin):
-    list_display = ('trail_name', 'county', 'nearest_town', 'difficulty', 'distance_km')
+    list_display = (
+        'trail_name',
+        'county',
+        'nearest_town',
+        'difficulty',
+        'distance_km',
+        'dogs_allowed',
+        'parking_available',
+    )
     search_fields = ('trail_name', 'county', 'nearest_town')
     list_filter = ('county', 'difficulty', 'dogs_allowed')

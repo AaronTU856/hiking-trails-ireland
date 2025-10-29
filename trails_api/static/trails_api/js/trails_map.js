@@ -305,7 +305,8 @@ function displayTrailsOnMap(trails) {
             const popupHTML = `
                 <strong>${name}</strong><br>
                 County: ${county}<br>
-                Parking: ${trail.parking_available ? "✅ Yes" : "❌ No"}<br>
+                Parking: ${props.parking_available === "Yes" ? "✅ Yes" : "❌ No"}<br>
+                Dogs Allowed: ${props.dogs_allowed === "Yes" ? "✅ Yes" : "❌ No"}<br>
                 Distance: ${distance} km<br>
                 Difficulty: ${difficulty}
             `;

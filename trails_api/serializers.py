@@ -12,7 +12,8 @@ class TrailListSerializer(serializers.ModelSerializer):
         model = Trail
         fields = [
             'id', 'trail_name', 'county', 'region', 'distance_km',
-            'difficulty', 'elevation_gain_m', 'latitude', 'longitude'
+            'difficulty', 'elevation_gain_m', 'latitude', 'longitude', 'dogs_allowed',
+            'parking_available'
         ]
 
 
@@ -38,7 +39,8 @@ class TrailGeoJSONSerializer(GeoFeatureModelSerializer):
         fields = (
             'id', 'trail_name', 'county',
             'distance_km', 'difficulty',
-            'latitude', 'longitude'
+            'latitude', 'longitude','dogs_allowed',
+            'parking_available'
         )
 
     def get_latitude(self, obj):
@@ -57,7 +59,8 @@ class TrailCreateSerializer(serializers.ModelSerializer):
         fields = [
             'trail_name', 'county', 'region', 'distance_km',
             'difficulty', 'elevation_gain_m', 'description',
-            'latitude', 'longitude'
+            'latitude', 'longitude', 'dogs_allowed',
+            'parking_available'
         ]
         
     def validate(self, data):

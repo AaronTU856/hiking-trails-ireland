@@ -167,6 +167,12 @@ class Trail(models.Model):
         ('moderate', 'Moderate'),
         ('hard', 'Hard'),
     ]
+    
+    YES_NO_CHOICES = [
+        ('yes', 'Yes'),
+        ('no', 'No'),
+    ]
+    
     trail_name = models.CharField(max_length=100)
 
     path = gis_models.LineStringField(srid=4326, null=True, blank=True)
