@@ -39,14 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let townsLayer = null;
 
     
-    function loadTrails() {
-        const url = `/api/trails/geojson/`;
+    function loadTrails(filters = {}) {
+        let url = '/api/trails/geojson/';
+        const params = new URLSearchParams(filters).toString();
+        if (params) url += '?' + params;
         console.log("🔗 Fetching trails:", url);
     
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log("📦 Trails loaded:", data.features?.length || 0);
+
     
                 // Remove previous layers
                 if (trailsLayer) map.removeLayer(trailsLayer);
@@ -105,6 +108,27 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(err => console.error('❌ Error loading trails:', err));
     }
+
+    document.getElementById('apply-filters').addEventListener('click', () => {
+        const minLength = document.getElementById('trail-length-min').value;
+        const maxLength = document.getElementById('trail-length-max').value;
+        const difficulty = document.getElementById('trail-difficulty-max').value;
+        
+        const filters = {
+            min_length: minLength,
+            max_length: maxLength,
+            difficulty: difficulty
+        };
+        loadTrails(filters);
+    });
+
+    document.getElementById('clear-filters').addEventListener('click', () => {
+        document.querySelectorAll('#trail-length-min, #trail-length-max, #trail-difficulty-max')
+                .forEach(input => input.value = '');
+        loadTrails(); // reload all
+    });
+    
+    
     
     // ✅ Cluster toggle
     const clusterTrails = document.getElementById('cluster-trails');
