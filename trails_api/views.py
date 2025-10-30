@@ -221,6 +221,7 @@ def trails_geojson(request):
     max_length = request.GET.get('max_length')
     difficulty = request.GET.get('difficulty')
     county = request.GET.get('county')
+    trail_type = request.GET.get('trail_type')
 
     if min_length:
         trails = trails.filter(distance_km__gte=float(min_length))
@@ -230,11 +231,35 @@ def trails_geojson(request):
         trails = trails.filter(difficulty__iexact=difficulty.lower())
     if county:
         trails = trails.filter(county__icontains=county)
+    if trail_type:
+        trails = trails.filter(trail_type__icontains=trail_type)
 
     geojson = serialize(
         'geojson', trails,
         geometry_field='start_point',
         fields=('trail_name', 'county', 'distance_km', 'difficulty', 'dogs_allowed', 'parking_available')
+    )
+    return HttpResponse(geojson, content_type='application/json')
+
+@api_view(['GET'])
+def towns_geojson(request):
+    towns = Town.objects.all()
+
+    min_population = request.GET.get('min_population')
+    max_population = request.GET.get('max_population')
+    town_type = request.GET.get('town_type')
+
+    if min_population:
+        towns = towns.filter(population__gte=int(min_population))
+    if max_population:
+        towns = towns.filter(population__lte=int(max_population))
+    if town_type:
+        towns = towns.filter(town_type__icontains=town_type)
+
+    geojson = serialize(
+        'geojson', towns,
+        geometry_field='geom',
+        fields=('name', 'town_type', 'population', 'area')
     )
     return HttpResponse(geojson, content_type='application/json')
 

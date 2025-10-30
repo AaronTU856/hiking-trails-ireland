@@ -103,7 +103,10 @@ document.getElementById('apply-filters').addEventListener('click', () => {
     const maxLength = document.getElementById('trail-length-max')?.value.trim();
     const difficulty = document.getElementById('trail-difficulty-min')?.value.trim().toLowerCase();
     const county = document.getElementById('country-filter')?.value.trim();
-
+    const townType = document.getElementById('town-type-filter')?.value.trim();
+    const minTownPop = document.getElementById('town-pop-min')?.value.trim();
+    const maxTownPop = document.getElementById('town-pop-max')?.value.trim();
+    const trailType = document.getElementById('trail-type-filter')?.value.trim();
     const filters = {};
 
     if (minLength && !isNaN(minLength)) filters.min_length = minLength;
@@ -111,9 +114,15 @@ document.getElementById('apply-filters').addEventListener('click', () => {
     if (difficulty && ['easy', 'moderate', 'hard'].includes(difficulty))
         filters.difficulty = difficulty;
     if (county) filters.county = county;
+    if (townType) filters.town_type = townType;
+    if (minTownPop) filters.min_population = minTownPop;
+    if (maxTownPop) filters.max_population = maxTownPop;
+    if (trailType) filters.trail_type = trailType;
+
 
     console.log("🎯 Applying filters:", filters);
     loadTrails(filters);
+    loadTowns(filters);
 });
 
 document.getElementById('clear-filters').addEventListener('click', () => {
