@@ -97,17 +97,13 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Trail Difficulty</label>
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="number" id="trail-difficulty-min" class="form-control form-control-sm" 
-                                           placeholder="Min" value="0">
-                                </div>
-                                <div class="col-6">
-                                    <input type="number" id="trail-difficulty-max" class="form-control form-control-sm" 
-                                           placeholder="Max">
-                                </div>
-                            </div>
-                        </div>
+                            <select id="trail-difficulty-min" class="form-select form-select-sm">
+                              <option value="">All Difficulties</option>
+                              <option value="easy">Easy</option>
+                              <option value="moderate">Moderate</option>
+                              <option value="hard">Hard</option>
+                            </select>
+                          </div>
                     </div>
 
                     <!-- Town Filters -->
