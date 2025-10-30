@@ -44,7 +44,7 @@ and visualization using Leaflet and Mapbox.
 
 # Clone project
 git clone https://github.com/AaronTU856/hiking-trails-ireland.git
-cd trails_mapping
+cd trails_api
 
 # Activate environment
 source venv/bin/activate

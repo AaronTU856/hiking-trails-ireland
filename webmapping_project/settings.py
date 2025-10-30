@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     
     #New app from week 3
     'trails_api', # Trails API
-    'trails_mapping',
+    
     
     #New app for week 6
     #'european_mapping.regions',
