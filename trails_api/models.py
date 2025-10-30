@@ -212,7 +212,7 @@ class Town(models.Model):
     town_type = models.CharField(max_length=50, blank=True, null=True)
     population = models.IntegerField(blank=True, null=True)
     area = models.FloatField(blank=True, null=True)
-
+   
 
     def __str__(self):
         return self.name

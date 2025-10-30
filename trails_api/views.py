@@ -241,27 +241,37 @@ def trails_geojson(request):
     )
     return HttpResponse(geojson, content_type='application/json')
 
+
+
+
 @api_view(['GET'])
 def towns_geojson(request):
     towns = Town.objects.all()
 
+    # ✅ Only extract parameters relevant to towns
     min_population = request.GET.get('min_population')
     max_population = request.GET.get('max_population')
     town_type = request.GET.get('town_type')
+
+    print(" Incoming filters:", request.GET.dict())
 
     if min_population:
         towns = towns.filter(population__gte=int(min_population))
     if max_population:
         towns = towns.filter(population__lte=int(max_population))
     if town_type:
-        towns = towns.filter(town_type__icontains=town_type)
+        towns = towns.filter(town_type__iexact=town_type.strip())
+
+    print(" Filtered towns count:", towns.count())
 
     geojson = serialize(
-        'geojson', towns,
-        geometry_field='geom',
+        'geojson',
+        towns,
+        geometry_field='location',  # geometry field
         fields=('name', 'town_type', 'population', 'area')
     )
     return HttpResponse(geojson, content_type='application/json')
+
 
 @api_view(['GET'])
 def api_info(request):

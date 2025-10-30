@@ -107,6 +107,7 @@ document.getElementById('apply-filters').addEventListener('click', () => {
     const minTownPop = document.getElementById('town-pop-min')?.value.trim();
     const maxTownPop = document.getElementById('town-pop-max')?.value.trim();
     const trailType = document.getElementById('trail-type-filter')?.value.trim();
+
     const filters = {};
 
     if (minLength && !isNaN(minLength)) filters.min_length = minLength;
@@ -151,18 +152,19 @@ document.getElementById('clear-filters').addEventListener('click', () => {
     
 
     // ✅ Load Towns
-    function loadTowns() {
-        const url = `/api/trails/towns/geojson/`;
+    function loadTowns(filters = {}) {
+        let url = `/api/trails/towns/geojson/`;
+        const params = new URLSearchParams(filters).toString();
+        if (params) url += '?' + params;
+    
         console.log("🔗 Fetching towns:", url);
-
+    
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log("🏘️ Towns loaded:", data.features?.length || 0);
-
-                // Remove old towns
                 if (townsLayer) map.removeLayer(townsLayer);
-
+    
                 townsLayer = L.geoJSON(data, {
                     pointToLayer: (feature, latlng) => L.marker(latlng, { icon: townIcon }),
                     onEachFeature: (feature, layer) => {
@@ -177,17 +179,15 @@ document.getElementById('clear-filters').addEventListener('click', () => {
                         `);
                     }
                 }).addTo(map);
-
+    
                 const trailsCount = trailsLayer ? trailsLayer.getLayers().length : 0;
                 const townsCount = data.features ? data.features.length : 0;
-                console.log("🏙️ Sample town properties:", data.features[0]?.properties);
                 const totalPop = data.features.reduce((sum, f) => sum + (f.properties.population || 0), 0);
                 updateDashboardSummary(trailsCount, townsCount, totalPop);
-
             })
             .catch(err => console.error('❌ Error loading towns:', err));
     }
-
+    
     // ✅ Toggles
     const showTrails = document.getElementById('show-trails');
     const showTowns = document.getElementById('show-towns');

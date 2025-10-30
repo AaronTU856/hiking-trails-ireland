@@ -15,7 +15,8 @@ urlpatterns = [
     # Special format endpoints
     path('geojson/', views.trails_geojson, name='trails_geojson'),
 
-    path('towns/geojson/', views.TownGeoJSONView.as_view(), name='towns-geojson'),
+    path('towns/geojson/', views.towns_geojson, name='towns-geojson'),
+
     
     # Spatial query endpoints
     path('within-radius/', views.trails_within_radius, name='trails-within-radius'),

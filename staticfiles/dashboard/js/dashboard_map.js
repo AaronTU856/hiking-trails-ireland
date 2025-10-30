@@ -39,14 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let townsLayer = null;
 
     
-    function loadTrails() {
-        const url = `/api/trails/geojson/`;
+    function loadTrails(filters = {}) {
+        let url = '/api/trails/geojson/';
+        const params = new URLSearchParams(filters);
+        for (const [key, val] of params.entries()) {
+            if (!val) params.delete(key); // remove empty
+        }
+        const qs = params.toString();
+        if (qs) url += '?' + qs;
         console.log("🔗 Fetching trails:", url);
     
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log("📦 Trails loaded:", data.features?.length || 0);
+
     
                 // Remove previous layers
                 if (trailsLayer) map.removeLayer(trailsLayer);
@@ -62,49 +69,69 @@ document.addEventListener("DOMContentLoaded", () => {
                     pointToLayer: (feature, latlng) => L.marker(latlng, { icon: trailIcon }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
-                        const type = feature.geometry.type;
+                        
                 
                         // Bind popup for both line and point trails
                         layer.bindPopup(`
                             <b>${p.trail_name || 'Unknown Trail'}</b><br>
                             <b>County:</b> ${p.county || "Unknown"}<br>
                             <b>Distance:</b> ${p.distance_km || "?"} km<br>
-                            <b>Difficulty:</b> ${p.difficulty || "N/A"}<br>
-                            <b>Dogs Allowed:</b> ${p.dogs_allowed || "N/A"}<br>
-                            <b>Parking:</b> ${p.parking_available || "N/A"}
+                            <b>Difficulty:</b> ${p.difficulty || "N/A"}
                         `);
-                
-                        layer.on({
-                            mouseover: function (e) {
-                                if (e.target.setStyle) {
-                                    e.target.setStyle({ color: 'yellow', weight: 4 });
-                                }
-                            },
-                            mouseout: function (e) {
-                                if (e.target.setStyle) {
-                                    e.target.setStyle({ color: '#2ecc71', weight: 3 });
-                                }
-                            }
-                        });
-                        
                     }
                 }).addTo(map);
-    
+
+
                 // Cluster version
                 trailsClusterLayer = L.markerClusterGroup();
                 trailsClusterLayer.addLayer(trailsLayer);
     
                 // Default show normal trails
-                map.addLayer(trailsLayer);
                 const townsCount = townsLayer ? townsLayer.getLayers().length : 0;
-                const trailsCount = trailsLayer ? trailsLayer.getLayers().length : (data.features?.length || 0);
-                const currentPop = parseInt(document.getElementById('total-population').textContent.replace(/,/g, "")) || 0;
-                updateDashboardSummary(trailsCount, townsCount, currentPop);
-
+                const trailsCount = data.features?.length || 0;
+                const currentPop = parseInt(
+                    document.getElementById('total-population').textContent.replace(/,/g, "")
+                ) || 0;
                 
-            })
-            .catch(err => console.error('❌ Error loading trails:', err));
-    }
+                updateDashboardSummary(trailsCount, townsCount, currentPop);
+        })
+        .catch(err => console.error('❌ Error loading trails:', err));
+}
+
+document.getElementById('apply-filters').addEventListener('click', () => {
+    const minLength = document.getElementById('trail-length-min')?.value.trim();
+    const maxLength = document.getElementById('trail-length-max')?.value.trim();
+    const difficulty = document.getElementById('trail-difficulty-min')?.value.trim().toLowerCase();
+    const county = document.getElementById('country-filter')?.value.trim();
+    const townType = document.getElementById('town-type-filter')?.value.trim();
+    const minTownPop = document.getElementById('town-pop-min')?.value.trim();
+    const maxTownPop = document.getElementById('town-pop-max')?.value.trim();
+    const trailType = document.getElementById('trail-type-filter')?.value.trim();
+    const filters = {};
+
+    if (minLength && !isNaN(minLength)) filters.min_length = minLength;
+    if (maxLength && !isNaN(maxLength)) filters.max_length = maxLength;
+    if (difficulty && ['easy', 'moderate', 'hard'].includes(difficulty))
+        filters.difficulty = difficulty;
+    if (county) filters.county = county;
+    if (townType) filters.town_type = townType;
+    if (minTownPop) filters.min_population = minTownPop;
+    if (maxTownPop) filters.max_population = maxTownPop;
+    if (trailType) filters.trail_type = trailType;
+
+
+    console.log("🎯 Applying filters:", filters);
+    loadTrails(filters);
+    loadTowns(filters);
+});
+
+document.getElementById('clear-filters').addEventListener('click', () => {
+    document.querySelectorAll('#trail-length-min, #trail-length-max, #trail-difficulty-min, #country-filter')
+        .forEach(el => el.value = '');
+    loadTrails({});
+});
+
+    
     
     // ✅ Cluster toggle
     const clusterTrails = document.getElementById('cluster-trails');
