@@ -18,15 +18,19 @@ def index(request):
 
 def analytics(request):
     """Trail analytics page"""
-    trail_stats = Trail.objects.aggregate(
-        total_trails=Count('id'),
-        avg_distance=Avg('distance_km'),
-        avg_elevation=Avg('elevation_gain_m'),
-        total_distance=Sum('distance_km')
-    )
+    trail_stats = {
+        "total_trails": Trail.objects.count(),
+        "avg_distance": Trail.objects.aggregate(avg=Avg("distance_km"))["avg"] or 0,
+        "avg_elevation": Trail.objects.aggregate(avg=Avg("elevation_gain_m"))["avg"] or 0,
+        "total_distance": Trail.objects.aggregate(sum=Sum("distance_km"))["sum"] or 0,
+        "easy_count": Trail.objects.filter(difficulty="easy").count(),
+        "moderate_count": Trail.objects.filter(difficulty="moderate").count(),
+        "hard_count": Trail.objects.filter(difficulty="hard").count(),
+    }
 
     context = {
         'trail_stats': trail_stats,
         'total_towns': Town.objects.count(),
     }
     return render(request, 'dashboard/analytics.html', context)
+

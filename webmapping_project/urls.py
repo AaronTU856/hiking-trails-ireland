@@ -33,6 +33,7 @@ urlpatterns = [
     # City APIs
     
     path('api/trails/', include(('trails_api.urls', 'trails'), namespace='trails')),
+    
 
 
 
@@ -45,8 +46,12 @@ urlpatterns = [
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     
+    
+    
     # Dashboard
     path('dashboard/', include('dashboard.urls')),
+    
+    
 
     
 ]

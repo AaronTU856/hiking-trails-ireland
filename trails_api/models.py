@@ -173,7 +173,7 @@ class Trail(models.Model):
         ('no', 'No'),
     ]
     
-    trail_name = models.CharField(max_length=100)
+
 
     path = gis_models.LineStringField(srid=4326, null=True, blank=True)
     trail_name = models.CharField(max_length=200, db_index=True)
@@ -188,7 +188,7 @@ class Trail(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     activity = models.CharField(max_length=100, blank=True)
     nearest_town = models.CharField(max_length=100, blank=True)
-    dogs_allowed = models.CharField(max_length=50, blank=True)
+    dogs_allowed = models.CharField(max_length=3, choices=[('yes', 'Yes'), ('no', 'No')], default='yes')
     facilities = models.TextField(blank=True)
     public_transport = models.TextField(blank=True)
    

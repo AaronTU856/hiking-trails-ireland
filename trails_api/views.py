@@ -22,7 +22,8 @@ from .models import Town
 from django.views import View
 from django.http import HttpResponse
 from django.core.serializers import serialize
-
+from django.db.models import Count, Q, Value
+from django.db.models.functions import Trim
 
 from rest_framework import generics
 
@@ -152,6 +153,10 @@ def trail_statistics(request):
         "total_trails": Trail.objects.count(),
         "average_distance_km": Trail.objects.aggregate(avg=models.Avg("distance_km"))["avg"] or 0,
         "max_elevation_gain": Trail.objects.aggregate(max=models.Max("elevation_gain_m"))["max"] or 0,
+        "easy_count": Trail.objects.filter(difficulty__iexact="easy").count(),
+        "moderate_count": Trail.objects.filter(difficulty__iexact="moderate").count(),
+        "hard_count": Trail.objects.filter(difficulty__in=["hard", "challenging"]).count(),
+
     }
     serializer = TrailSummarySerializer(stats)
     return Response(serializer.data)

@@ -78,6 +78,10 @@ class TrailSummarySerializer(serializers.Serializer):
         total_trails = serializers.IntegerField()
         average_distance_km = serializers.FloatField()
         max_elevation_gain = serializers.FloatField()
+        easy_count = serializers.IntegerField()
+        moderate_count = serializers.IntegerField()
+        hard_count = serializers.IntegerField()
+        
 
 class DistanceSerializer(serializers.Serializer):
     latitude = serializers.FloatField(min_value=-90, max_value=90)

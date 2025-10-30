@@ -18,12 +18,23 @@
                     <table class="table table-striped">
                         <tr>
                             <td><strong>Total Trails:</strong></td>
-                            <td>{{ trail_stats.total|intcomma }}</td>
+                            <td>{{ trail_stats.total_trails|intcomma }}</td>
                         </tr>
                         <tr>
                             <td><strong>Average Distance (km):</strong></td>
                             <td>{{ trail_stats.avg_distance|floatformat:2 }}</td>
                         </tr>
+                        <tr>
+                            <td><strong>Easy Elevation:</strong></td>
+                            <td>{{ trail_stats.avg_elevation|intcomma }}</td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td><strong>Total Distance:</strong></td>
+                            <td>{{ trail_stats.total_distance|intcomma }}</td>
+                        </tr>
+                        <tr>
+
                         <tr>
                             <td><strong>Easy Trails:</strong></td>
                             <td>{{ trail_stats.easy_count|intcomma }}</td>
@@ -51,11 +62,7 @@
                     <table class="table table-striped">
                         <tr>
                             <td><strong>Total Towns:</strong></td>
-                            <td>{{ town_stats.total|intcomma }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Average Trails per Town:</strong></td>
-                            <td>{{ avg_trails_per_town|floatformat:2 }}</td>
+                            <td>{{ total_towns|intcomma }}</td>
                         </tr>
                     </table>
                 </div>

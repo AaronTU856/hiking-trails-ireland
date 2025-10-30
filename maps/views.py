@@ -9,7 +9,7 @@ from django.views.decorators.http import require_http_methods
 import json
 import django
 from django.db import connection
-from .models import Location, TestArea
+
 
 def hello_map(request):
     """Main map view with environment information"""
