@@ -41,8 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function loadTrails(filters = {}) {
         let url = '/api/trails/geojson/';
-        const params = new URLSearchParams(filters).toString();
-        if (params) url += '?' + params;
+        const params = new URLSearchParams(filters);
+        for (const [key, val] of params.entries()) {
+            if (!val) params.delete(key); // remove empty
+        }
+        const qs = params.toString();
+        if (qs) url += '?' + qs;
         console.log("🔗 Fetching trails:", url);
     
         fetch(url)
@@ -65,49 +69,34 @@ document.addEventListener("DOMContentLoaded", () => {
                     pointToLayer: (feature, latlng) => L.marker(latlng, { icon: trailIcon }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
-                        const type = feature.geometry.type;
+                        
                 
                         // Bind popup for both line and point trails
                         layer.bindPopup(`
                             <b>${p.trail_name || 'Unknown Trail'}</b><br>
                             <b>County:</b> ${p.county || "Unknown"}<br>
                             <b>Distance:</b> ${p.distance_km || "?"} km<br>
-                            <b>Difficulty:</b> ${p.difficulty || "N/A"}<br>
-                            <b>Dogs Allowed:</b> ${p.dogs_allowed || "N/A"}<br>
-                            <b>Parking:</b> ${p.parking_available || "N/A"}
+                            <b>Difficulty:</b> ${p.difficulty || "N/A"}
                         `);
-                
-                        layer.on({
-                            mouseover: function (e) {
-                                if (e.target.setStyle) {
-                                    e.target.setStyle({ color: 'yellow', weight: 4 });
-                                }
-                            },
-                            mouseout: function (e) {
-                                if (e.target.setStyle) {
-                                    e.target.setStyle({ color: '#2ecc71', weight: 3 });
-                                }
-                            }
-                        });
-                        
                     }
                 }).addTo(map);
-    
+
+
                 // Cluster version
                 trailsClusterLayer = L.markerClusterGroup();
                 trailsClusterLayer.addLayer(trailsLayer);
     
                 // Default show normal trails
-                map.addLayer(trailsLayer);
                 const townsCount = townsLayer ? townsLayer.getLayers().length : 0;
-                const trailsCount = trailsLayer ? trailsLayer.getLayers().length : (data.features?.length || 0);
-                const currentPop = parseInt(document.getElementById('total-population').textContent.replace(/,/g, "")) || 0;
-                updateDashboardSummary(trailsCount, townsCount, currentPop);
-
+                const trailsCount = data.features?.length || 0;
+                const currentPop = parseInt(
+                    document.getElementById('total-population').textContent.replace(/,/g, "")
+                ) || 0;
                 
-            })
-            .catch(err => console.error('❌ Error loading trails:', err));
-    }
+                updateDashboardSummary(trailsCount, townsCount, currentPop);
+        })
+        .catch(err => console.error('❌ Error loading trails:', err));
+}
 
     document.getElementById('apply-filters').addEventListener('click', () => {
         const minLength = document.getElementById('trail-length-min').value;
