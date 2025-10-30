@@ -13,7 +13,8 @@ urlpatterns = [
     path('map/', trail_map, name='map'),
     
     # Special format endpoints
-    path('geojson/', views.TrailGeoJSONView.as_view(), name='trail-geojson'),
+    path('geojson/', views.trails_geojson, name='trails_geojson'),
+
     path('towns/geojson/', views.TownGeoJSONView.as_view(), name='towns-geojson'),
     
     # Spatial query endpoints

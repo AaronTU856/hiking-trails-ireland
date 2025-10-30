@@ -213,30 +213,30 @@ class TownGeoJSONView(generics.ListAPIView):
 
 
 
-class TrailGeoJSONView(generics.ListAPIView):
-    """
-    Return trails as GeoJSON for mapping applications
-    """
-    queryset = Trail.objects.all()
-    serializer_class = TrailGeoJSONSerializer
-    pagination_class = None
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_class = TrailFilter
-    search_fields = ['trail_name', 'county']
+@api_view(['GET'])
+def trails_geojson(request):
+    trails = Trail.objects.all()
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data) 
+    min_length = request.GET.get('min_length')
+    max_length = request.GET.get('max_length')
+    difficulty = request.GET.get('difficulty')
+    county = request.GET.get('county')
 
-        # FIX: handle nested FeatureCollection returned by serializer
-        if isinstance(geojson_data, dict) and "features" in geojson_data:
-            geojson_data = geojson_data["features"]
+    if min_length:
+        trails = trails.filter(distance_km__gte=float(min_length))
+    if max_length:
+        trails = trails.filter(distance_km__lte=float(max_length))
+    if difficulty and difficulty.lower() in ['easy', 'moderate', 'hard']:
+        trails = trails.filter(difficulty__iexact=difficulty.lower())
+    if county:
+        trails = trails.filter(county__icontains=county)
 
-        return Response({
-            "type": "FeatureCollection",
-            "features": geojson_data
-        })
+    geojson = serialize(
+        'geojson', trails,
+        geometry_field='start_point',
+        fields=('trail_name', 'county', 'distance_km', 'difficulty', 'dogs_allowed', 'parking_available')
+    )
+    return HttpResponse(geojson, content_type='application/json')
 
 @api_view(['GET'])
 def api_info(request):

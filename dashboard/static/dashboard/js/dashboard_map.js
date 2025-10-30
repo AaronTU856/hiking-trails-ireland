@@ -98,25 +98,30 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error('❌ Error loading trails:', err));
 }
 
-    document.getElementById('apply-filters').addEventListener('click', () => {
-        const minLength = document.getElementById('trail-length-min').value;
-        const maxLength = document.getElementById('trail-length-max').value;
-        const difficulty = document.getElementById('trail-difficulty-max').value;
-        
-        const filters = {
-            min_length: minLength,
-            max_length: maxLength,
-            difficulty: difficulty
-        };
-        loadTrails(filters);
-    });
+document.getElementById('apply-filters').addEventListener('click', () => {
+    const minLength = document.getElementById('trail-length-min')?.value.trim();
+    const maxLength = document.getElementById('trail-length-max')?.value.trim();
+    const difficulty = document.getElementById('trail-difficulty-min')?.value.trim().toLowerCase();
+    const county = document.getElementById('country-filter')?.value.trim();
 
-    document.getElementById('clear-filters').addEventListener('click', () => {
-        document.querySelectorAll('#trail-length-min, #trail-length-max, #trail-difficulty-max')
-                .forEach(input => input.value = '');
-        loadTrails(); // reload all
-    });
-    
+    const filters = {};
+
+    if (minLength && !isNaN(minLength)) filters.min_length = minLength;
+    if (maxLength && !isNaN(maxLength)) filters.max_length = maxLength;
+    if (difficulty && ['easy', 'moderate', 'hard'].includes(difficulty))
+        filters.difficulty = difficulty;
+    if (county) filters.county = county;
+
+    console.log("🎯 Applying filters:", filters);
+    loadTrails(filters);
+});
+
+document.getElementById('clear-filters').addEventListener('click', () => {
+    document.querySelectorAll('#trail-length-min, #trail-length-max, #trail-difficulty-min, #country-filter')
+        .forEach(el => el.value = '');
+    loadTrails({});
+});
+
     
     
     // ✅ Cluster toggle
