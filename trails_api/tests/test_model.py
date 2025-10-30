@@ -1,11 +1,16 @@
 import pytest
 from django.contrib.gis.geos import Point
-from trails_api.models import City
+from trails_api.models import Trail, Town
 
 @pytest.mark.django_db
 def test_trail_str():
     t = Trail.objects.create(
-        name="Testville", country="IE", region="Leinster",
-        population=123456, location=Point(-6.26, 53.35, srid=4326)
+        trail_name="Test Trail", county="Mayo", distance_km=5,
+        difficulty="Moderate", elevation_gain_m=200, start_point=Point(-9.4, 53.8, srid=4326)
     )
-    assert "Testville" in str(t)
+    assert "Test Trail" in str(t)
+
+@pytest.mark.django_db
+def test_town_str():
+    town = Town.objects.create(name="Ballina", population=8000, town_type="Urban", location=Point(-9.15, 54.12, srid=4326))
+    assert "Ballina" in str(town)

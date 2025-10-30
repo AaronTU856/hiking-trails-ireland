@@ -1,0 +1,74 @@
+ dataset | feature_count 
+---------+---------------
+ Trails  |           470
+ Towns   |            47
+(2 rows)
+
+ town_type | total_population 
+-----------+------------------
+ Village   |            93670
+ Historic  |           226802
+ Urban     |          1939707
+(3 rows)
+
+ dogs_allowed | total 
+--------------+-------
+ No           |    86
+              |    60
+ Yes          |   324
+(3 rows)
+
+                 trail_name                 |   nearest_town    | distance_km |    difficulty    
+--------------------------------------------+-------------------+-------------+------------------
+ Sean Kelly Cycle Route - The Kelly Legacy  | Dungarvan         |      106.90 | very challenging
+ North Kilkenny Cycle Route                 | Kilkenny          |       80.50 | challenging
+ Slí An Earagail - Sli Dhun na nGall        | Bunbeg            |       76.20 | moderate
+ Sean Kelly Cycle Route - The Coastal Route | Dungarvan         |       75.00 | challenging
+ Ormond Way                                 | Upperchurch (6km) |       74.50 | challenging
+ Birr Cycle Hub Loop 3                      | Birr              |       73.10 | challenging
+ Slí Na Rosann - Sli Dhun na nGall          | Dungloe           |       64.60 | moderate
+ East Kilkenny Cycle Route                  | Kilkenny          |       62.60 | challenging
+ Kilmallock Cycle Hub Loop 3                | Kilmallock        |       61.40 | challenging
+ Inis Eoghain Cycleway                      |                   |       52.90 | challenging
+(10 rows)
+
+       county        | trail_count 
+---------------------+-------------
+ Cork                |          74
+ Mayo                |          45
+ Wicklow             |          35
+ Galway              |          27
+ Donegal             |          27
+ Wexford             |          27
+ Kerry               |          26
+ Limerick            |          22
+ Tipperary           |          21
+ Waterford           |          17
+ Clare               |          17
+ Laois               |          16
+ Roscommon           |          15
+ Cavan               |          15
+ Sligo               |          14
+ Leitrim             |          13
+ Dublin              |          13
+ Kilkenny            |          10
+ Offaly              |           7
+ Westmeath           |           7
+ Longford            |           5
+ Kildare             |           3
+ Limerick, Tipperary |           3
+ Monaghan            |           3
+ Cavan, Leitrim      |           2
+ Meath               |           2
+ Louth               |           2
+ Carlow              |           1
+ Kerry, Limerick     |           1
+(29 rows)
+
+ town_type | avg_population 
+-----------+----------------
+ Urban     |          80821
+ Historic  |          22680
+ Village   |           7205
+(3 rows)
+

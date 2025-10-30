@@ -1,0 +1,129 @@
+ trail_name | county | distance_km | difficulty 
+------------+--------+-------------+------------
+(0 rows)
+
+    name     | town_type | population 
+-------------+-----------+------------
+ Dublin      | Urban     |    1173179
+ Cork        | Urban     |     222333
+ Limerick    | Urban     |      94192
+ Drogheda    | Urban     |      40800
+ Dundalk     | Urban     |      39340
+ Bray        | Urban     |      33300
+ Navan       | Urban     |      33000
+ Ennis       | Urban     |      25400
+ Carlow      | Urban     |      24172
+ Portlaoise  | Urban     |      23900
+ Tralee      | Urban     |      23691
+ Naas        | Urban     |      21400
+ Athlone     | Urban     |      21100
+ Mullingar   | Urban     |      20900
+ Sligo       | Urban     |      20400
+ Letterkenny | Urban     |      19600
+ Greystones  | Urban     |      18500
+ Clonmel     | Urban     |      17600
+ Tullamore   | Urban     |      14500
+ Arklow      | Urban     |      13800
+ Castlebar   | Urban     |      12500
+ Ballina     | Urban     |      10600
+ Monaghan    | Urban     |       7900
+ Ballinasloe | Urban     |       7600
+(24 rows)
+
+       county        | avg_distance_km 
+---------------------+-----------------
+ Offaly              |           28.13
+ Kilkenny            |           21.67
+ Kerry, Limerick     |           16.00
+ Westmeath           |           15.24
+ Waterford           |           14.45
+ Donegal             |           10.81
+ Tipperary           |            8.64
+ Clare               |            8.58
+ Limerick            |            8.53
+ Louth               |            7.70
+ Dublin              |            7.69
+ Kerry               |            6.86
+ Mayo                |            6.62
+ Galway              |            5.96
+ Cavan, Leitrim      |            5.90
+ Monaghan            |            5.70
+ Meath               |            5.00
+ Cork                |            4.72
+ Laois               |            4.39
+ Wicklow             |            4.21
+ Limerick, Tipperary |            4.10
+ Cavan               |            4.01
+ Leitrim             |            3.86
+ Wexford             |            3.66
+ Carlow              |            3.60
+ Sligo               |            2.78
+ Roscommon           |            2.57
+ Kildare             |            2.53
+ Longford            |            1.36
+(29 rows)
+
+ trail_name | county | difficulty | dogs_allowed | parking_available 
+------------+--------+------------+--------------+-------------------
+(0 rows)
+
+       county        |                           trail_name                           | distance_km 
+---------------------+----------------------------------------------------------------+-------------
+ Carlow              | Clashganny Lock Loop                                           |        3.60
+ Cavan               | Cavan Way                                                      |       21.70
+ Cavan, Leitrim      | Cavan Leitrim Ballinamore to Aghawillin Greenway Walking Trail |        5.90
+ Clare               | Fanore Ballyvaughan Trek                                       |       20.80
+ Cork                | Ballingeary Loops – Gougane Barra Loop                         |       19.00
+ Donegal             | Slí An Earagail - Sli Dhun na nGall                            |       76.20
+ Dublin              | Dublin Mountains Way                                           |       41.10
+ Galway              | Slí Chonamara                                                  |       33.10
+ Kerry               | Kerry Head Cycleway                                            |       17.10
+ Kerry, Limerick     | Kingdom of Kerry Greenways - Listowel to Limerick              |       16.00
+ Kildare             | Donadea Forest Park - Alymer Walk                              |        4.50
+ Kilkenny            | North Kilkenny Cycle Route                                     |       80.50
+ Laois               | Durrow Leafy Loops - Leafy Loop                                |       14.30
+ Leitrim             | Crummy Loop                                                    |       10.20
+ Limerick            | Kilmallock Cycle Hub Loop 3                                    |       61.40
+ Limerick, Tipperary | Slieve Felim - Keeper Hill summit walk                         |        7.90
+ Longford            | Derrycassan - Main Avenue Walk                                 |        3.30
+ Louth               | Carlingford Greenway Walking Trail                             |        7.70
+ Mayo                | Achill Cycle Hub - Loop 2                                      |       27.50
+ Meath               | Boyne Blueway - Trim to Bective                                |        8.00
+ Monaghan            | Monaghan Way - Magoney Loop                                    |       10.00
+ Offaly              | Birr Cycle Hub Loop 3                                          |       73.10
+ Roscommon           | Lough O'Flynn - Wild Goose Bog Loop                            |        6.10
+ Sligo               | Ben Bulben loop                                                |        5.50
+ Tipperary           | Ormond Way                                                     |       74.50
+ Waterford           | Sean Kelly Cycle Route - The Kelly Legacy                      |      106.90
+ Westmeath           | Mullingar Cycle Hub Loop 2                                     |       47.60
+ Wexford             | Tintern Trails - Caesar Colclough Trail                        |       11.30
+ Wicklow             | Miners' Way                                                    |       16.90
+(29 rows)
+
+    difficulty    | avg_length_km 
+------------------+---------------
+ very challenging |         43.23
+ challenging      |         19.27
+ moderate         |          7.08
+ easy             |          3.56
+(4 rows)
+
+                   trail_name                    | distance_km | town_name | population 
+-------------------------------------------------+-------------+-----------+------------
+ Bray Head Loop Walk                             |        5.90 | Bray      |      33300
+ Coille an Fhaltaigh Millennium Park - Red Trail |        3.20 | Kilkenny  |      26985
+ North Kilkenny Cycle Route                      |       80.50 | Kilkenny  |      26985
+ East Kilkenny Cycle Route                       |       62.60 | Kilkenny  |      26985
+ South Kilkenny Cycle Loop                       |       43.10 | Kilkenny  |      26985
+ Kingdom of Kerry Greenways - Tralee to Fenit    |       13.60 | Tralee    |      23691
+ Mullingar Cycle Hub Loop 2                      |       47.60 | Mullingar |      20900
+ Deerpark - Court Tomb Trail                     |        2.50 | Sligo     |      20400
+ Hazelwood                                       |        3.20 | Sligo     |      20400
+ Union Wood - Mountain Access Route              |        2.90 | Sligo     |      20400
+ Arklow Loops Love Lane Walk                     |        4.50 | Arklow    |      13800
+ Arklow Loops Kynoch Walk                        |        3.30 | Arklow    |      13800
+ Great Western Greenway - Castlebar to Turlough  |        9.40 | Castlebar |      12500
+ Raheens Wood Multi Access                       |        0.00 | Castlebar |      12500
+ Ramsfort Wood Sweet Walk Trail                  |        1.10 | Gorey     |      10800
+(15 rows)
+

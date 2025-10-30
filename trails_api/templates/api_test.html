@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trails API Test</title>
+    <title>Trails & Towns API Test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .result-container { max-height: 400px; overflow-y: auto; }
@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1>Trails API Test Interface</h1>
+        <h1>Trails & Towns API Test Interface</h1>
        
         <div class="row">
             <div class="col-md-4">
@@ -22,21 +22,19 @@
                     </div>
                     <div class="card-body">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" onclick="testEndpoint('/api/trails/')">
+                            <button class="btn btn-primary" onclick="testEndpoint('/api/trails/geojson')">
                                 List Trails
                             </button>
                             <button class="btn btn-info" onclick="testEndpoint('/api/trails/geojson/')">
-                                GeoJSON Format
+                                List Towns
                             </button>
-                            <button class="btn btn-success" onclick="testEndpoint('/api/trails/stats/')">
-                                Statistics
+                            <button class="btn btn-success" onclick="testEndpoint('/api/trails/load-towns/')">
+                                Load Towns
                             </button>
-                            <button class="btn btn-warning" onclick="testEndpoint('/api/trails/counties/')">
-                                Counties
+                            <button class="btn btn-warning" onclick="testSpatialQuery()">
+                                Find Nearby Trails
                             </button>
-                            <button class="btn btn-secondary" onclick="testSpatialQuery()">
-                                Spatial Query
-                            </button>
+                            
                         </div>
                        
                         <hr>
@@ -93,31 +91,19 @@
             }
         }
        
-        function populateCountrySelect(cities) {
-            const select = document.getElementById('countrySelect');
-            const counties = [...new Set(trails.map(trail => trail.country))].sort();
-           
-            // Clear existing options (except "All Countries")
-            select.innerHTML = '<option value="">All Countries</option>';
-           
-            countries.forEach(country => {
-                const option = document.createElement('option');
-                option.value = county;
-                option.textContent = county;
-                select.appendChild(option);
-            });
-        }
+    
        
         function testWithFilters() {
             const search = document.getElementById('searchInput').value;
             const country = document.getElementById('countySelect').value;
            
-            let endpoint = '/api/trails/?';
+            let endpoint = '/api/trails/geojson/?';
             const params = [];
            
             if (search) params.push(`search=${encodeURIComponent(search)}`);
             if (country) params.push(`county=${encodeURIComponent(county)}`);
-           
+            if (difficulty) params.push(`difficulty=${encodeURIComponent(difficulty)}`);
+
             endpoint += params.join('&');
             testEndpoint(endpoint);
         }

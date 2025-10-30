@@ -1,0 +1,127 @@
+                         trail_name                         | nearest_town |     distance_km     
+------------------------------------------------------------+--------------+---------------------
+ Arklow Loops Love Lane Walk                                | Arklow       |       0.15813423683
+ Clifden Cycle Hub Loop 1                                   | Clifden      | 0.26326551039999996
+ Kingdom of Kerry Greenways - Tralee to Fenit               | Tralee       |  0.5299682754499999
+ Arklow Loops Kynoch Walk                                   | Arklow       |       0.56581847082
+ Boyne Blueway - Trim to Bective                            | Trim         |       0.59452748338
+ Westport Cycle Hub - Loop 2                                | Westport     |  0.7550299929100001
+ Westport Cycle Hub - Loop 1                                | Westport     |        0.9990223952
+ The Rocks Trails - Family Trail                            | Wexford      |       1.04716834258
+ Mullingar Cycle Hub Loop 2                                 | Mullingar    |  1.1095064446199998
+ Kingdom of Kerry Greenways - Listowel to Limerick          | Listowel     |       1.39910976088
+ Ramsfort Wood Deerpark Trail                               | Gorey        |  1.4767267879700001
+ Ramsfort Wood Sweet Walk Trail                             | Gorey        |       1.47931834355
+ Bantry Blueway - Blue Trail                                | Bantry       |       1.48937028029
+ Bantry Blueway - Red Trail                                 | Bantry       |       1.48937028029
+ Bantry Blueway - Green Trail                               | Bantry       |       1.48937028029
+ Old Rail Trail Greenway Walking Trail: Mullingar - Athlone | Mullingar    |       1.93305979743
+ Westport Greenway                                          | Westport     |       2.04100281849
+ Sli Eala                                                   | Nenagh       |       2.31132953635
+ Belleek - Multi Access                                     | Ballina      |       2.37315241429
+ Conair na Coille Fiáine - Wild Woodland Trail              | Monaghan     |  2.9307073141199997
+ Belmont Sweetwood Track                                    | Greystones   |       2.96478426821
+ Belmont Ground Control Loop                                | Greystones   |       2.96861688757
+ Bray Head Loop Walk                                        | Bray         |       3.04314057899
+ Kindlestown Trail                                          | Greystones   |       3.04637222566
+ Belmont Hike and Bike Loop (Short)                         | Greystones   |  3.0727537813200003
+ Belmont Hike and Bike Loop (Full)                          | Greystones   |  3.0727537813200003
+ Belmont Hike and Bike Loop (Medium)                        | Greystones   |  3.0727537813200003
+ Hazelwood                                                  | Sligo        |        3.3703612965
+ Bray Head Loop Walk                                        | Greystones   |  3.5495227604400004
+ Glenart Wood Walk                                          | Arklow       |       3.66759062969
+ Raheens Wood Multi Access                                  | Castlebar    |        3.8335195282
+ Belmont Way                                                | Bray         |       4.00399508925
+ Belmont Ground Control Loop                                | Bray         |       4.29421174207
+ Belmont Sweetwood Track                                    | Bray         |         4.299529848
+ Belmont Hike and Bike Loop (Medium)                        | Bray         |  4.3220459688199995
+ Belmont Hike and Bike Loop (Short)                         | Bray         |  4.3220459688199995
+ Belmont Hike and Bike Loop (Full)                          | Bray         |  4.3220459688199995
+ Carrickgollogan - Lead Mines Way - (Orange)                | Bray         |   4.444085478560001
+ Mote Park - Bluebell Loop                                  | Roscommon    |       4.46115977808
+ Mote Park - Crofton Trail                                  | Roscommon    |       4.46115977808
+ Barnaslingan - Pine loop trail (Blue)                      | Bray         |       4.68242116462
+ Barnaslingan - Scalp Lookout Trail (Red)                   | Bray         |       4.68430230554
+ Courtown - Kiltennel Trail                                 | Gorey        |       4.94437775652
+ Tara Hill - Slí an t-Suaimhnis                             | Gorey        |   5.018807289610001
+ Coille an Fhaltaigh Millennium Park - Red Trail            | Kilkenny     |       5.17863194967
+ Carrigmeal Woodlands Loops - Tir na nÓg                    | Portlaoise   |   5.352434579380001
+ Carrigmeal Woodlands Loops - Sheep's Walk Trail            | Portlaoise   |       5.39959693935
+ Siúlóid na nGleannta                                       | Dingle       |       5.46362631245
+ Belmont Way                                                | Greystones   |       5.54009118112
+ Kindlestown Trail                                          | Bray         |       5.90833917367
+ Union Wood - Mountain Access Route                         | Sligo        |       6.26348785496
+ Union Wood - Oakwood Trail                                 | Sligo        |       6.28078284823
+ Union Wood - Union Rock Trail                              | Sligo        |       6.28368496473
+ Coorycommane Loop                                          | Bantry       |        6.3116786127
+ Sugar Loaf Way                                             | Greystones   |       6.37467816657
+ Bunduff River Walk                                         | Bundoran     |   6.533766750030001
+ Deerpark - Court Tomb Trail                                | Sligo        |       6.66117866756
+ Sugar Loaf Way                                             | Bray         |        6.8692906128
+ Great Western Greenway - Castlebar to Turlough             | Castlebar    |  7.0150172158799995
+ Djouce Woods - Deerpark Walk                               | Bray         |       7.19518907622
+ Dingle - Siuloid Cholmain                                  | Dingle       |       7.41703556544
+ O'Briensbridge - Old Barge Loop                            | Limerick     |       7.84172333589
+ Murrisk Mountain Loop                                      | Westport     |       7.84358400496
+ Murrisk Loop                                               | Westport     |       7.84358400496
+ Burrishoole Loop - Newport Lecarrow Loop                   | Westport     |   7.849439744850001
+ Royal Canal Greenway - Drumcondra - Ashtown - Castleknock  | Dublin       |       7.89902568772
+ Warren Way                                                 | Ballina      |       7.93248236979
+ Carney Walk                                                | Sligo        |       8.12605910073
+ Crone Woods - Maulin Mountain Loop                         | Bray         |       8.26202560986
+ Sheep's Head - Coomkeen Loop                               | Bantry       |   8.284554978280001
+ O'Gormans Lane                                             | Kilkenny     |       8.49576244858
+ Ballykeeran Forest trail                                   | Letterkenny  |       8.52106627754
+ Djouce Woods - Deerpark Walk                               | Greystones   |       8.57973058066
+ Diamond Hill                                               | Clifden      |   8.679182008109999
+ Glenpatrick - Glenpatrick Bridge Loop                      | Clonmel      |       8.68045291781
+ Jenkinstown Wood - Jenkinstown Wood Loop                   | Kilkenny     |       8.68110526221
+ Strickeen Trail                                            | Killarney    |       8.78860484618
+ Ruan - Dromore Wood loop                                   | Ennis        |       8.80923428123
+ Jenkinstown Wood - Walled Garden Loop                      | Kilkenny     |       8.90829861659
+ Coolgreany Ballyfad Wood Linear Trail                      | Arklow       |       9.16159143098
+ Dingle - Siuloid na Faille                                 | Dingle       |       9.26503826997
+ O'Briensbridge - Errinagh Bridge                           | Limerick     |   9.506276135890001
+ Coolgreany Ballyfad Wood Linear Trail                      | Gorey        |        9.8294362393
+ Ballyhack to Dunbrody - Duncannon Coastal Walk             | Waterford    |       9.84156729294
+ Ballyshannon Cycle Hub Loop 2                              | Bundoran     |       9.85855936644
+ Moyvane Village Walks - Kiln Way                           | Listowel     |        9.9471314853
+(86 rows)
+
+ total_population_near_trails 
+------------------------------
+                      2234479
+(1 row)
+
+                           trail_name                           | distance_km 
+----------------------------------------------------------------+-------------
+ Siúlóidí na Ceathrún Rua - Trail 3 An Fhaithche                |        4.90
+ Bealach Siúlóidí Leitir Mealláin - Red Trail - Céibh na hAirde |        3.70
+ Bealach Siúlóidí Leitir Mealláin - Green Trail Ceann Gólaim    |        5.30
+ Bealach Siúlóidí Leitir Mealláin - Blue Trail Bóthar na Sop    |        8.00
+ Slieve Aughty Trails - Sonnagh Old Loop                        |        7.20
+ Slieve Aughty Trails - Gortnamanagh Loop                       |        6.50
+ Slieve Aughty Trails - Old Curragh Road                        |        1.20
+ Toms Lane Trail                                                |        5.50
+ Cahermurphy - Bleach River                                     |        2.00
+ Ard na Gaoithe - Ardnageeha loop                               |        2.20
+ Cong Forest - Cong Nature trail                                |        1.30
+ New Village - Lough Seecon trail                               |        5.10
+ Monivea - Mass Track trail                                     |        1.30
+ New Village - New Village walk                                 |        3.60
+ Tourmakeady - Nature Walk                                      |        2.00
+ Tourmakeady - Lake Walk                                        |        0.70
+ Coole Park 7 Woods Trail                                       |        4.50
+ An Seanbhóthar                                                 |        9.40
+ Fanore Ballyvaughan Trek                                       |       20.80
+ Kilmaine - Church walk                                         |        2.90
+ Kilmaine - Nature walk                                         |        1.50
+ Cliffs of Moher Coastal Walk                                   |       19.50
+ Carran Turlough Loop                                           |        5.00
+ Ballyvaughan - Wood Loop                                       |        8.80
+ Ruan - Dromore Wood loop                                       |        6.40
+ Ballinruan Loops - Ballinruan Loop                             |       10.40
+ Ballinruan Loops - Gortnamearacaun Loop                        |       14.90
+ Slí Chonamara                                                  |       33.10
+(28 rows)
+
