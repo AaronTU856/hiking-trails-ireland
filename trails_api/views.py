@@ -24,14 +24,15 @@ from django.http import HttpResponse
 from django.core.serializers import serialize
 from django.db.models import Count, Q, Value
 from django.db.models.functions import Trim
-
+import json
 from rest_framework import generics
-
+from django.contrib.gis.db.models.functions import Distance
 from .filters import TrailFilter
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.gis.gdal import SpatialReference, CoordTransform
 
 
 
@@ -79,6 +80,8 @@ class TrailListCreateView(generics.ListCreateAPIView):
             queryset = queryset.filter(difficulty__iexact=difficulty)
 
         return queryset
+    
+
 
     
  
@@ -204,17 +207,91 @@ def trail_map(request):
 #             return CityCreateSerializer
 #         return CityDetailSerializer
 
-class TownGeoJSONSerializer(GeoFeatureModelSerializer):
-    class Meta:
-        model = Town
-        geo_field = 'location'
-        fields = ('id', 'name', 'town_type', 'population', 'area')
+# class TownGeoJSONSerializer(GeoFeatureModelSerializer):
+#     class Meta:
+#         model = Town
+#         geo_field = 'location'
+#         fields = ('id', 'name', 'town_type', 'population', 'area')
 
 
-class TownGeoJSONView(generics.ListAPIView):
-    queryset = Town.objects.all()
-    serializer_class = TownGeoJSONSerializer
-    pagination_class = None
+# class TownGeoJSONView(generics.ListAPIView):
+#     queryset = Town.objects.all()
+#     serializer_class = TownGeoJSONSerializer
+#     pagination_class = None
+
+@api_view(['GET'])
+def towns_geojson(request):
+    towns = Town.objects.all()
+
+    # Optional filters
+    min_population = request.GET.get('min_population')
+    max_population = request.GET.get('max_population')
+    town_type = request.GET.get('town_type')
+
+    if min_population:
+        towns = towns.filter(population__gte=int(min_population))
+    if max_population:
+        towns = towns.filter(population__lte=int(max_population))
+    if town_type:
+        towns = towns.filter(town_type__iexact=town_type.strip())
+
+    geojson = serialize(
+        'geojson',
+        towns,
+        geometry_field='location',
+        fields=('name', 'town_type', 'population', 'area')
+    )
+    return HttpResponse(geojson, content_type='application/json')
+
+
+@api_view(['POST'])
+def nearest_town(request):
+    lat = request.data.get('latitude')
+    lng = request.data.get('longitude')
+    if not lat or not lng:
+        return Response({'error': 'Latitude and longitude required'}, status=400)
+
+    user_location = Point(float(lng), float(lat), srid=4326)
+    nearest = Town.objects.annotate(distance=Distance('location', user_location)).order_by('distance').first()
+
+    if not nearest:
+        return Response({'error': 'No towns found'}, status=404)
+
+    return Response({
+        'name': nearest.name,
+        'town_type': nearest.town_type,
+        'distance_km': round(nearest.distance.km, 2)
+    })
+
+
+@api_view(['GET'])
+def load_towns(request):
+    with open("trails_api/data/sample_towns.geojson") as f:
+        data = json.load(f)
+
+    Town.objects.all().delete()
+
+    count = 0
+    for feature in data["features"]:
+        props = feature["properties"]
+        name = props.get("ENGLISH") or props.get("name")
+        area = props.get("AREA")
+        population = props.get("POPULATION") or props.get("population") or 0
+        town_type = props.get("TOWN_TYPE") or props.get("town_type") or "Urban"
+
+        lon, lat = feature["geometry"]["coordinates"]
+        point = Point(float(lon), float(lat), srid=4326)  # ✅ already in lat/lon
+
+        Town.objects.create(
+            name=name,
+            area=area,
+            population=population,
+            town_type=town_type,
+            location=point
+        )
+        count += 1
+
+    return Response({"status": f"✅ Loaded {count} towns successfully"})
 
 
 
@@ -249,33 +326,33 @@ def trails_geojson(request):
 
 
 
-@api_view(['GET'])
-def towns_geojson(request):
-    towns = Town.objects.all()
+# @api_view(['GET'])
+# def towns_geojson(request):
+#     towns = Town.objects.all()
 
-    # ✅ Only extract parameters relevant to towns
-    min_population = request.GET.get('min_population')
-    max_population = request.GET.get('max_population')
-    town_type = request.GET.get('town_type')
+#     # ✅ Only extract parameters relevant to towns
+#     min_population = request.GET.get('min_population')
+#     max_population = request.GET.get('max_population')
+#     town_type = request.GET.get('town_type')
 
-    print(" Incoming filters:", request.GET.dict())
+#     print(" Incoming filters:", request.GET.dict())
 
-    if min_population:
-        towns = towns.filter(population__gte=int(min_population))
-    if max_population:
-        towns = towns.filter(population__lte=int(max_population))
-    if town_type:
-        towns = towns.filter(town_type__iexact=town_type.strip())
+#     if min_population:
+#         towns = towns.filter(population__gte=int(min_population))
+#     if max_population:
+#         towns = towns.filter(population__lte=int(max_population))
+#     if town_type:
+#         towns = towns.filter(town_type__iexact=town_type.strip())
 
-    print(" Filtered towns count:", towns.count())
+#     print(" Filtered towns count:", towns.count())
 
-    geojson = serialize(
-        'geojson',
-        towns,
-        geometry_field='location',  # geometry field
-        fields=('name', 'town_type', 'population', 'area')
-    )
-    return HttpResponse(geojson, content_type='application/json')
+#     geojson = serialize(
+#         'geojson',
+#         towns,
+#         geometry_field='location',  # geometry field
+#         fields=('name', 'town_type', 'population', 'area')
+#     )
+#     return HttpResponse(geojson, content_type='application/json')
 
 
 @api_view(['GET'])
@@ -370,6 +447,27 @@ def trails_within_radius(request):
         return Response({"error": str(e)}, status=500)
 
 
+# # Find closest town to trail
+# @api_view(['POST'])
+# def nearest_town(request):
+#     lat = request.data.get('latitude')
+#     lng = request.data.get('longitude')
+#     if not lat or not lng:
+#         return Response({'error': 'Latitude and longitude required'}, status=400)
+
+#     user_location = Point(float(lng), float(lat), srid=4326)
+#     nearest = Town.objects.annotate(distance=Distance('location', user_location)).order_by('distance').first()
+
+#     if not nearest:
+#         return Response({'error': 'No towns found'}, status=404)
+
+#     return Response({
+#         'name': nearest.name,
+#         'town_type': nearest.town_type,
+#         'distance_km': round(nearest.distance.km, 2)
+#     })
+    
+    
 
 #     examples=[
 #         OpenApiExample(
@@ -408,6 +506,23 @@ def trail_search(request):
     
     trails = Trail.objects.filter(name__icontains=q)[:10]
     return Response(TrailListSerializer(trails, many=True).data)
+
+
+# @api_view(['GET'])
+# def load_towns():
+#     with open("trails_api/data/towns_wgs84.geojson") as f:
+#         data = json.load(f)
+
+#     for feature in data["features"]:
+#         props = feature["properties"]
+#         name = props.get("ENGLISH")
+#         area = props.get("AREA")
+#         x = props.get("CENTROID_X")
+#         y = props.get("CENTROID_Y")
+
+#         if x and y:
+#             point = Point(float(x), float(y), srid=4326)
+#             Town.objects.get_or_create(name=name, area=area, location=point)
 
 # @api_view(['GET'])
 # def api_info(request):

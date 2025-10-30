@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // initialize proximity search after map exists
-//     setTimeout(() => {
-//         if (window.map) {
-//             window.proximitySearch = new ProximitySearch(window.map);
-//             console.log("✅ Proximity search ready");
-//         } else {
-//             console.error("⚠️ Map not found for proximity search");
-//         }
-//     }, 1000);
-// });
+    setTimeout(() => {
+        if (window.map) {
+            window.proximitySearch = new ProximitySearch(window.map);
+            console.log("✅ Proximity search ready");
+        } else {
+            console.error("⚠️ Map not found for proximity search");
+        }
+    }, 1000);
+
 
 
 
@@ -1125,6 +1125,13 @@ function enableProximitySearch() {
     });
 }
 
+
+
+
+
+
+
+
 // Main proximity search
 async function performProximitySearch(lat, lng) {
     clearProximityResults();
@@ -1147,6 +1154,19 @@ async function performProximitySearch(lat, lng) {
         `<strong>Search Point</strong><br>Lat: ${lat.toFixed(5)}<br>Lng: ${lng.toFixed(5)}`
     ).openPopup();
 
+    // 🔵 Add or update the search radius circle
+    if (window.searchCircle) {
+        window.trailsMap.removeLayer(window.searchCircle);
+    }
+
+    window.searchCircle = L.circle([lat, lng], {
+        radius: radiusKm * 1000,  // convert km → meters
+        color: "blue",
+        weight: 2,
+        fillColor: "blue",
+        fillOpacity: 0.1
+    }).addTo(window.trailsMap);
+
     showLoading(true);
 
     try {
@@ -1158,26 +1178,66 @@ async function performProximitySearch(lat, lng) {
             },
             body: JSON.stringify({ latitude: lat, longitude: lng, radius_km: radiusKm })
         });
-
+    
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         const data = await response.json();
-
+    
         if (!data.nearest_trails?.length) {
             showAlert(`⚠️ No trails found within ${radiusKm} km.`, "warning");
+            // 🔹 Still find the nearest town even if no trails found
+            await findNearestTown(lat, lng);
             return;
         }
-
+    
         displayNearestTrails(data.nearest_trails);
         updateResultsPanel(data);
         showAlert(`✅ Found ${data.nearest_trails.length} trails`, "success");
-
+    
+        // ✅ Always call this after trail results are shown
+        await findNearestTown(lat, lng);
+    
     } catch (err) {
         console.error("❌ Proximity search failed:", err);
         showAlert("Error performing proximity search.", "danger");
     } finally {
         showLoading(false);
     }
+    
+
+
+// Find closect town to trails
+async function findNearestTown(lat, lng) {
+    try {
+        const response = await fetch("/api/trails/nearest-town/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCsrfToken()
+            },
+            body: JSON.stringify({ latitude: lat, longitude: lng })
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+        const town = await response.json();
+
+        L.popup()
+            .setLatLng([lat, lng])
+            .setContent(`🏙️ <strong>${town.name}</strong><br>
+                         ${town.distance_km} km away<br>
+                         Type: ${town.town_type || 'N/A'}`)
+            .openOn(window.trailsMap);
+
+        console.log("Nearest town:", town);
+    } catch (err) {
+        console.error("Nearest town error:", err);
+    }
 }
+}
+
+
+
+
+
 
 // Display numbered trail markers
 function displayNearestTrails(trails) {
@@ -1311,7 +1371,7 @@ window.trailsMap.on(L.Draw.Event.CREATED, function (e) {
     const coordinates = layer.getLatLngs().map(p => [p.lat, p.lng]);
     console.log("Trail coordinates:", coordinates);
 
-    // You can POST these to your Django API:
+    // POST these to Django API
     fetch("/api/trails/add-path/", {
         method: "POST",
         headers: {
