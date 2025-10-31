@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error('❌ Error loading trails:', err));
 }
 
+// Apply filters when the user clicks
 document.getElementById('apply-filters').addEventListener('click', () => {
     const minLength = document.getElementById('trail-length-min')?.value.trim();
     const maxLength = document.getElementById('trail-length-max')?.value.trim();
@@ -110,6 +111,7 @@ document.getElementById('apply-filters').addEventListener('click', () => {
 
     const filters = {};
 
+    // Add filters only if valid values are provided
     if (minLength && !isNaN(minLength)) filters.min_length = minLength;
     if (maxLength && !isNaN(maxLength)) filters.max_length = maxLength;
     if (difficulty && ['easy', 'moderate', 'hard'].includes(difficulty))
@@ -126,6 +128,7 @@ document.getElementById('apply-filters').addEventListener('click', () => {
     loadTowns(filters);
 });
 
+// Clear filters when the user clicks
 document.getElementById('clear-filters').addEventListener('click', () => {
     document.querySelectorAll('#trail-length-min, #trail-length-max, #trail-difficulty-min, #country-filter')
         .forEach(el => el.value = '');
