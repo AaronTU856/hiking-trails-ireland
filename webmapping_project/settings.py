@@ -55,27 +55,17 @@ INSTALLED_APPS = [
     'drf_spectacular',
     "drf_spectacular_sidecar",
     
-    
     # Local apps
     'maps',
-    
-    # New app for week 2
-    # 'apps.spatial_data_app',
     
     #New app from week 3
     'trails_api', # Trails API
     
     
-    #New app for week 6
-    #'european_mapping.regions',
-    #'european_mapping.cities',
-    
     # Dashboard
     'dashboard',
     
     'django.contrib.humanize',
-    
-    
     
     
 ]
@@ -211,6 +201,7 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     "CONTACT": {"name": "Aaron Baggot", "programme": "TU856", "Module": "Web Mapping", "email": "C22716399@mytudublin.ie"},
     "LICENSE": {"name": "MIT"},
+    
     # Optional niceties:
     "COMPONENT_SPLIT_REQUEST": True,
     "SWAGGER_UI_SETTINGS": {"deepLinking": True, "displayOperationId": True},
