@@ -3,7 +3,7 @@
 ## 1. Project Overview
 The Trails API and web mapping project is a Django + GeoDjango based web application
 that provides RESTful and GeoJSON endpoints for Irish hiking trail data.
-The project integrates spatial analysis (radius and bounding box queries)
+The project integrates PostGIS, Leaflet and Mapbox for spatial analysis radius and bounding box queries.
 and visualization using Leaflet and Mapbox.
 
 
@@ -15,7 +15,7 @@ and visualization using Leaflet and Mapbox.
 - Spatial queries:
   - `within-radius`
   - `in-bounding-box`
-- Trail statistics summary (`/api/trails/stats/`)
+- Interactive Leaflet map (`/api/trails/map/`)
 - API info endpoint (`/api/trails/info/`)
 
 ### 🧭 Additional
@@ -29,7 +29,6 @@ and visualization using Leaflet and Mapbox.
 ---
 
 ## 3. Technologies Used
- Layer | Technology |
 
  **Backend**  Django 4.2 , GeoDjango 
  **Database**  PostgreSQL , PostGIS 
@@ -71,6 +70,8 @@ python manage.py runserver
 `/api/trails/info/`            GET                 API metadata                            
  `/api/trails/map/`            GET                 Map interface                           
  `/api/trails/test/`           GET                 Testing interface – not activated yet 
+`/api/trails/towns/geojson/`   GET                 GeoJSON of towns with filters
+
 
 ## 6. Tests & Validation
 
@@ -86,6 +87,34 @@ python manage.py runserver
 
 - Database model constraints
 
+### Debugging
+
+- The town filters (type and population) were not working because two URL routes were defined for the same endpoint (/api/trails/towns/geojson/).
+
+- The duplicate class-based view (TownGeoJSONView) was removed.
+
+- The function-based view (towns_geojson) was kept, allowing proper filtering and debug logging.
+
+- Confirmed working filters for town_type, min_population, and max_population.
+
+### Proximity Search
+
+- Trails and towns are now searchable by proximity using GeoDjango’s DistanceFunction.
+
+- Clicking on the map triggers a radius search that:
+
+- Returns trails ordered by distance.
+
+- Displays results on the map and in the side panel.
+
+- Each marker now uses a numbered icon for clarity.
+
+### GeoJSON Fix
+
+- Initially, trails did not appear on the map due to mismatched field names (location vs start_point).
+
+- Serializer and Leaflet JS were updated to use the correct coordinate field.
+
 ## 7. Future Enhancements
 
 - Add user accounts for trail submissions
@@ -95,6 +124,14 @@ python manage.py runserver
 - Connect frontend search UI for live queries
 
 - Automate tests via Django’s TestCase class
+
+## 8  Testing
+
+All API routes tested using pytest and Django’s test client.
+
+✅ Tests for GeoJSON endpoints, proximity search, and radius queries all pass.
+
+
 
 9. References
 
