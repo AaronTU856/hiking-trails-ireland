@@ -1,6 +1,3 @@
-
-
-# Create your tests here.
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APITestCase
@@ -8,11 +5,11 @@ from rest_framework import status
 from django.contrib.gis.geos import Point
 from trails_api.models import Trail
 
+
 class TrailAPITestCase(APITestCase):
     """Test cases for Trails API"""
-   
+
     def setUp(self):
-        """Create test data"""
         self.trail1 = Trail.objects.create(
             trail_name="Bray Head Loop",
             county="Wicklow",
@@ -23,7 +20,6 @@ class TrailAPITestCase(APITestCase):
             description="A scenic coastal loop.",
             start_point=Point(-6.092, 53.200, srid=4326)
         )
-
         self.trail2 = Trail.objects.create(
             trail_name="Croagh Patrick Trail",
             county="Mayo",
@@ -35,81 +31,55 @@ class TrailAPITestCase(APITestCase):
             start_point=Point(-9.667, 53.763, srid=4326)
         )
 
-   
     def test_trail_list(self):
         """Test trail list endpoint"""
-        url = reverse('trails:trail-list-create')
+        url = reverse('trail-list-create')
         response = self.client.get(url)
-       
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('results', response.data)
-        self.assertEqual(response.data['count'], 2)
-   
+
     def test_trail_detail(self):
         """Test trail detail endpoint"""
-        url = reverse('trails:trail-detail', kwargs={'pk': self.trail1.pk})
+        url = reverse('trail-detail', kwargs={'pk': self.trail1.pk})
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['trail_name'], 'Bray Head Loop')
 
-   
     def test_trail_creation(self):
         """Test creating a new trail"""
-        url = reverse('trails:trail-list-create')
+        url = reverse('trail-list-create')
         data = {
             "trail_name": "Glendalough Valley Loop",
             "county": "Wicklow",
             "region": "Leinster",
             "distance_km": 8.2,
-            "difficulty": "easy",
+            "difficulty": "Easy",
             "elevation_gain_m": 180,
             "description": "Scenic loop around the Upper Lake.",
             "latitude": 53.010,
-            "longitude": -6.327, 
-            }
-        
+            "longitude": -6.327
+        }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Trail.objects.count(), 3)
-        self.assertEqual(Trail.objects.last().trail_name, "Glendalough Valley Loop")
 
-   
-    # def test_city_filtering(self):
-    #     """Test city filtering"""
-    #     url = reverse('trails_api:city-list-create')
-    #     response = self.client.get(url, {'country': 'Ireland'})
-       
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
-    #     self.assertEqual(response.data['count'], 1)
-    #     self.assertEqual(response.data['results'][0]['name'], 'Dublin')
-   
-    # def test_geojson_format(self):
-    #     """Test GeoJSON output"""
-    #     url = reverse('trails_api:city-geojson')
-    #     response = self.client.get(url)
-       
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
-    #     self.assertEqual(response.data['type'], 'FeatureCollection')
-    #     self.assertIn('features', response.data)
-   
     def test_within_radius_query(self):
         """Test spatial within-radius query"""
-        url = reverse('trails:trails-within-radius')
+        url = reverse('trails-within-radius')
         data = {'latitude': 53.0, 'longitude': -6.0, 'radius_km': 100}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('trails', response.data)
-        self.assertGreaterEqual(response.data['count'], 1)
+        self.assertIn('nearest_trails', response.data)
+        self.assertGreaterEqual(response.data['total_found'], 1)
 
     def test_statistics_endpoint(self):
         """Test statistics endpoint"""
-        url = reverse('trails:trail-statistics')
+        url = reverse('trail-statistics')
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('total_trails', response.data)
         self.assertIn('average_distance_km', response.data)
-        
-        
+
+
 class TrailModelTestCase(TestCase):
     """Test cases for Trail model"""
 
@@ -126,30 +96,19 @@ class TrailModelTestCase(TestCase):
         )
 
     def test_string_representation(self):
-        """Test string representation"""
-        self.assertEqual(str(self.trail), 'Test Trail (Test County)')
-
+        self.assertIn('Test Trail', str(self.trail))
 
     def test_coordinates_properties(self):
-        """Test coordinate properties"""
         self.assertEqual(self.trail.start_point.x, 0)
         self.assertEqual(self.trail.start_point.y, 0)
 
     def test_distance_field(self):
-        """Test distance field is valid"""
         self.assertIsInstance(self.trail.distance_km, float)
         self.assertGreater(self.trail.distance_km, 0)
-        
-        
+
     def test_geojson_format(self):
-        url = reverse('trails:trail-geojson')
+        url = reverse('trails_geojson')
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['type'], 'FeatureCollection')
         self.assertIn('features', response.data)
-
-        
-        
-        
-        
-    

@@ -1,3 +1,5 @@
+app_name = 'trails_api'
+
 from django.urls import path
 from . import views
 from .views import trail_map
@@ -12,12 +14,12 @@ urlpatterns = [
     path('geojson/', views.trails_geojson, name='trails_geojson'),
 
     # Town endpoints
-    path('towns/geojson/', views.towns_geojson, name='towns-geojson'),
+    path('towns/geojson/', views.towns_geojson, name='towns_geojson'),
     path('nearest-town/', views.nearest_town, name='nearest-town'),
     path('load-towns/', views.load_towns, name='load-towns'),
 
     # Spatial
-    path('within-radius/', views.trails_within_radius, name='trails-within-radius'),
+    path('within-radius/', views.trails_within_radius, name='trails_within_radius'),
     path('bbox/', views.trails_in_bounding_box, name='trails-bbox'),
 
     # Statistics

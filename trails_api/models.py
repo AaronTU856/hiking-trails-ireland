@@ -173,6 +173,9 @@ class Trail(models.Model):
         ('no', 'No'),
     ]
     
+    def __str__(self):
+        return self.trail_name
+    
 
 
     path = gis_models.LineStringField(srid=4326, null=True, blank=True)

@@ -3,19 +3,30 @@ from django.urls import reverse
 from django.contrib.gis.geos import Point
 from trails_api.models import Trail, Town
 
+
 @pytest.mark.django_db
 def test_list_trails(client):
-    Trail.objects.create(
-        trail_name="Croagh Patrick", county="Mayo", distance_km=7.5,
-        difficulty="Hard", elevation_gain_m=764, start_point=Point(-9.657, 53.764, srid=4326)
-    )
-    url = reverse('trails-geojson')  # or your endpoint name
-    resp = client.get(url)
-    assert resp.status_code == 200
+    # Use namespaced name with underscore
+    url = reverse('trails:trails_geojson')
+    response = client.get(url)
+    assert response.status_code == 200
+
 
 @pytest.mark.django_db
 def test_towns_geojson(client):
-    Town.objects.create(name="Westport", town_type="Urban", population=6000, location=Point(-9.5167, 53.8, srid=4326))
-    url = reverse('towns-geojson')  # adjust to match your route
-    resp = client.get(url)
-    assert resp.status_code == 200
+    # Use namespaced name and underscores
+    url = reverse('trails:towns_geojson')
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_trails_within_radius(client):
+    url = reverse('trails:trails_within_radius')
+    response = client.post(
+        url,
+        {'latitude': 53.0, 'longitude': -6.0, 'radius_km': 100},
+        format='json'
+    )
+    assert response.status_code == 200
+

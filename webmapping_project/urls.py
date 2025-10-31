@@ -19,45 +19,32 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
-from trails_api.views import trail_map 
-
+from trails_api.views import trail_map
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Home page (map)
+    # Home page (main map view)
     path('', trail_map, name='home'),
+
+    # Maps app
     path('maps/', include('maps.urls')),
 
-    # City APIs
-    
+    # Trails API
     path('api/trails/', include(('trails_api.urls', 'trails'), namespace='trails')),
-    
 
 
-
-    # Region APIs (European Mapping)
-    # path('api/regions/', include('european_mapping.regions.urls')),
-
-    
     # API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    
-    
-    
+
     # Dashboard
     path('dashboard/', include('dashboard.urls')),
-    
-    
-
-    
 ]
 
-# Serve static files during development
+# Serve static and media files during development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

@@ -12,5 +12,5 @@ def test_trail_str():
 
 @pytest.mark.django_db
 def test_town_str():
-    town = Town.objects.create(name="Ballina", population=8000, town_type="Urban", location=Point(-9.15, 54.12, srid=4326))
-    assert "Ballina" in str(town)
+    town = Town.objects.create(name="Westport", town_type="Urban", population=6000, location=Point(-9.5167, 53.8, srid=4326))
+    assert "Westport" in str(town)
