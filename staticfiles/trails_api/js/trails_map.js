@@ -145,8 +145,39 @@ function loadTrails() {
         });
 }
 
+// Add search control when trails are loaded
+function addSearchControls() {
+    if (typeof L.Control.Search !== 'function') {
+      console.warn("⏳ Leaflet Search plugin not ready — retrying...");
+      setTimeout(addSearchControls, 500);
+      return;
+    }
+  
+    if (!window.trailMarkers || !(window.trailMarkers instanceof L.LayerGroup)) {
+      console.warn("⚠️ trailMarkers not ready yet — retrying...");
+      setTimeout(addSearchControls, 500);
+      return;
+    }
 
-
+    setTimeout(() => {
+        addSearchControls();
+      }, 1500);
+  
+    window.searchControl = new L.Control.Search({
+      layer: window.trailMarkers,
+      propertyName: 'name',
+      marker: false,
+      position: 'topleft',
+      moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, 11);
+      },
+      collapsed: false //Input box always visible
+    });
+  
+    window.trailsMap.addControl(window.searchControl);
+    console.log("✅ Search control added to map");
+  }
+  
 
 fetch('/api/trails/towns/geojson/')
   .then(res => res.json())
@@ -339,7 +370,6 @@ function displayTrailsOnMap(trails) {
             const county = props.county || 'Unknown';
             const distance = props.distance_km || '?';
             const difficulty = props.difficulty || 'Unknown';
-            
 
             const popupHTML = `
                 <strong>${name}</strong><br>
@@ -350,12 +380,7 @@ function displayTrailsOnMap(trails) {
                 Difficulty: ${difficulty}
             `;
 
-            const marker = L.marker([lat, lng], {
-                icon: markerIcon,
-                title: name,
-                county: props.county || ""
-            }).bindPopup(popupHTML);
-
+            const marker = L.marker([lat, lng], { icon: markerIcon }).bindPopup(popupHTML);
             window.trailMarkers.addLayer(marker);
             validMarkers++;
         } catch (err) {
@@ -370,60 +395,16 @@ function displayTrailsOnMap(trails) {
     } else {
         console.warn("⚠️ No valid markers to display or invalid trailMarkers type");
     }
-    
-    // ✅ Add search controls only when markers exist
-    setTimeout(() => {
-        if (typeof L.Control.Search === 'function' && window.trailMarkers.getLayers().length > 0) {
-            addSearchControls();
-            console.log("✅ Search controls initialized after markers loaded");
-        } else {
-            console.warn("❌ Search plugin or markers not ready yet");
-        }
-    }, 1000);
-}
 
+    // Add search control after markers are added
+    addSearchControls();
 
-function addSearchControls() {
-    if (!window.trailsMap) return;
-    if (window.searchTrail) return;
-
-    // ✅ Collect only existing, non-empty layers
-    const layers = [];
-    if (window.trailMarkers && window.trailMarkers.getLayers().length > 0) layers.push(window.trailMarkers);
-    if (window.nearestTrailsLayer && window.nearestTrailsLayer.getLayers().length > 0) layers.push(window.nearestTrailsLayer);
-
-    // 🔁 Merge into one searchable group
-    const searchableLayer = L.layerGroup(layers);
-
-    // 🔍 Trail name search
-    window.searchTrail = new L.Control.Search({
-        layer: searchableLayer,
-        propertyName: 'title',
-        initial: false,
-        casesensitive: false,
-        textPlaceholder: 'Search trail…',
-        marker: false,
-        position: 'topleft',
-        collapsed: false,
-        moveToLocation: function(latlng, title, map) {
-            map.setView(latlng, 13); // zoom level 13 or adjust as you like
-            
-            // Highlights the marker briefly
-            const circle = L.circleMarker(latlng, {
-                radius: 20,
-                color: 'orange',
-                weight: 3,
-                fillColor: 'yellow',
-                fillOpacity: 0.4
-            }).addTo(map);
-        
-            setTimeout(() => {
-                map.removeLayer(circle);
-            }, 1500);
-        }
-    }).addTo(window.trailsMap);
-
-    
+    if (typeof L.Control.Search === 'function') {
+        addSearchControls();
+    } else {
+        console.warn("Leaflet Search plugin not ready — retrying...");
+        setTimeout(addSearchControls, 500);
+    }
 }
 
 
@@ -1319,21 +1300,15 @@ function displayNearestTrails(trails) {
         if (isNaN(lat) || isNaN(lng)) return;
 
         const name = trail.name || trail.trail_name || "Unnamed Trail";
-        const town = trail.nearest_town || trail.town || "";
-        const county = trail.county || "Unknown";
 
         const marker = L.marker([lat, lng], {
-            icon: getNumberedIcon(index + 1),
-            title: name,
-            town: town,
-            county: county
+            icon: getNumberedIcon(index + 1)
         }).bindPopup(`
             <strong>#${index + 1} ${name}</strong><br>
             County: ${trail.county || "Unknown"}<br>
             Difficulty: ${trail.difficulty || "N/A"}<br>
             Distance: ${trail.distance_km || "?"} km<br>
             From You: ${trail.distance_to_user?.toFixed(1) || "?"} km
-            
         `);
 
         window.nearestTrailsLayer.addLayer(marker);
