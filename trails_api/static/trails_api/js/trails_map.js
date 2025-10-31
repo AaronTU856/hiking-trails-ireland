@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
     // initialize proximity search after map exists
     setTimeout(() => {
         if (window.map) {
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("⚠️ Map not found for proximity search");
         }
     }, 1000);
-
 
 
 
@@ -1127,11 +1125,6 @@ function enableProximitySearch() {
 
 
 
-
-
-
-
-
 // Main proximity search
 async function performProximitySearch(lat, lng) {
     clearProximityResults();
@@ -1233,10 +1226,6 @@ async function findNearestTown(lat, lng) {
     }
 }
 }
-
-
-
-
 
 
 // Display numbered trail markers
