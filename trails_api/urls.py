@@ -25,4 +25,5 @@ urlpatterns = [
     path('counties/', views.counties_list, name='countries-list'),
     path('info/', views.api_info, name='api-info'),
     path('test/', views.api_test_page, name='api-test'),
+    
 ]

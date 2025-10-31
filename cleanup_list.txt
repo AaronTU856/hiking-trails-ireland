@@ -1,0 +1,1868 @@
+./maps/apps.py
+./staticfiles_production/admin/css/dashboard.e90f2068217b.css
+./staticfiles_production/admin/css/dashboard.css
+./staticfiles_production/admin/css/dashboard.css.gz
+./staticfiles_production/admin/css/dashboard.e90f2068217b.css.gz
+./trails_api/management/commands/__pycache__/load_towns.cpython-313.pyc
+./trails_api/management/commands/__pycache__/validate_trails_data.cpython-313.pyc
+./trails_api/management/commands/__pycache__/fetch_trails_from_arcgis.cpython-313.pyc
+./trails_api/__pycache__/views.cpython-313.pyc
+./trails_api/__pycache__/filters.cpython-313.pyc
+./trails_api/__pycache__/urls.cpython-313.pyc
+./trails_api/__pycache__/serializers.cpython-313.pyc
+./trails_api/__pycache__/models.cpython-313.pyc
+./trails_api/__pycache__/admin.cpython-313.pyc
+./trails_api/__pycache__/__init__.cpython-313.pyc
+./trails_api/__pycache__/apps.cpython-313.pyc
+./trails_api/apps.py
+./docs/screenshots/hello-map.png
+./docs/screenshots/search_bar.png
+./docs/screenshots/working_map_cities.png
+./docs/screenshots/city_popup.png
+./docs/screenshots/api-network.png
+./docs/screenshots/admin.png
+./docs/screenshots/lab4_added_city_corkork.png
+./docs/screenshots/env-test.png
+./docs/DEPLOYMENT.md
+./dashboard/migrations/__init__.py
+./dashboard/models.py
+./dashboard/__init__.py
+./dashboard/apps.py
+./dashboard/admin.py
+./dashboard/static/dashboard/js/dashboard_map.js
+./dashboard/templates/dashboard/index.html
+./dashboard/templates/dashboard/base.html
+./dashboard/templates/dashboard/analytics.html
+./dashboard/tests.py
+./dashboard/urls.py
+./dashboard/views.py
+./.venv/lib/python3.13/site-packages/asgiref/__pycache__/local.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/asgiref/__pycache__/current_thread_executor.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/asgiref/__pycache__/sync.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/asgiref/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/aligned_indent.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/tokens.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/reindent.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/output.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/others.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/right_margin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/filters/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/formatter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/lexer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/tokens.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/sql.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/sql.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/lexer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/tokens.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/cli.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/formatter.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/keywords.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/cli.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/__pycache__/keywords.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/engine/__pycache__/grouping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/engine/__pycache__/statement_splitter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/engine/__pycache__/filter_stack.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/sqlparse/engine/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/filters/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/special.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/diff.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/special.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/_mapping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/python.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/_mapping.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/lexers/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/formatters/__pycache__/html.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/formatters/__pycache__/terminal.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/formatters/__pycache__/_mapping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/formatters/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/formatter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/regexopt.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/lexer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/plugin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/style.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/regexopt.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/token.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/modeline.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/lexer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/unistring.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/util.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/modeline.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/formatter.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/util.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/token.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/plugin.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/filter.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/filter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/__pycache__/console.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/styles/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/styles/__pycache__/emacs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/styles/__pycache__/_mapping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pygments/styles/__pycache__/_mapping.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pygments/styles/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytest/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/idna/__pycache__/core.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/idna/__pycache__/idnadata.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/idna/__pycache__/package_data.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/idna/__pycache__/intranges.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/idna/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/inflection/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/apps.py
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/__init__ 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular_sidecar/apps 2.py
+./.venv/lib/python3.13/site-packages/faker/providers/misc/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/user_agent/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/credit_card/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/isbn/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/isbn/__pycache__/isbn.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/doi/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/file/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/python/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/person/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/bank/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/color/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/color/__pycache__/color.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/geo/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/emoji/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/automotive/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/date_time/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/passport/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/ssn/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/lorem/en_US/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/lorem/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/phone_number/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/internet/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/profile/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/sbn/__pycache__/rules.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/sbn/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/sbn/__pycache__/sbn.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/address/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/job/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/barcode/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/currency/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/providers/company/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/decorators.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/distribution.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/loading.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/datasets.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/utils/__pycache__/text.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/factory.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/proxy.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/config.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/typing.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/exceptions.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/__pycache__/generator.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/contrib/pytest/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/contrib/pytest/__pycache__/plugin.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/contrib/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/decode/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/decode/__pycache__/codes.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/faker/sphinx/docstring.py
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/tzfile.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/lazy.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/tzinfo.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/tzinfo.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/tzfile.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/lazy.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytz/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/conf.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/conf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/middleware.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/defaults.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/defaults.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/middleware.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/corsheaders/apps.py
+./.venv/lib/python3.13/site-packages/__pycache__/py.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/constant.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/api.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/legacy.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/cd.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/charset_normalizer/__pycache__/version.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/__version__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/api.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/adapters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/_internal_utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/compat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/sessions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/hooks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/status_codes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/cookies.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/packages.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/auth.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/certs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/requests/__pycache__/structures.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/templatetags/__pycache__/leaflet_tags.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/templatetags/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/templatetags/__pycache__/leaflet_tags.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/templatetags/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/forms/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/forms/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/forms/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/forms/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/admin.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/admin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/leaflet/apps.py
+./.venv/lib/python3.13/site-packages/rest_framework/settings 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/templatetags/__pycache__/rest_framework.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/templatetags/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/relations 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/permissions 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/viewsets 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/views 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/request 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/authtoken/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/authtoken/__pycache__/serializers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/authtoken/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/authtoken/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/authtoken/apps.py
+./.venv/lib/python3.13/site-packages/rest_framework/test 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/urlpatterns 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/metadata 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/exceptions 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/authentication 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/fields 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/mixins 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/breadcrumbs.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/html.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/mediatypes.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/humanize_datetime.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/representation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/humanize_datetime.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/mediatypes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/field_mapping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/model_meta.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/urls.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/breadcrumbs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/serializer_helpers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/encoders.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/model_meta.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/formatting.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/encoders.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/field_mapping.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/serializer_helpers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/formatting.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/json.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/urls.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/html.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/json.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/utils/__pycache__/representation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/generics.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/viewsets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/validators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/renderers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/viewsets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/versioning.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/views.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/reverse.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/filters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/permissions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/validators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/serializers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/relations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/status.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/compat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/compat.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/settings.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/decorators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/pagination.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/negotiation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/pagination.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/response.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/test.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/status.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/serializers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/parsers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/relations.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/authentication.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/authentication.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/decorators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/metadata.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/filters.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/test.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/mixins.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/mixins.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/generics.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/parsers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/negotiation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/settings.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/request.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/renderers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/versioning.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/permissions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/request.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/response.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/reverse.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/metadata.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/throttling 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/apps.py
+./.venv/lib/python3.13/site-packages/rest_framework/validators 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/inspectors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/coreapi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/openapi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/schemas/__pycache__/generators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework/reverse 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/urls 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/routers 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/negotiation 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/compat 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/filters 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/css/highlight.css
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/css/base.css
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/css/jquery.json-view.min.css
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/js/highlight.pack.js
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/js/api.js
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/js/jquery.json-view.min.js
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/img/favicon.ico
+./.venv/lib/python3.13/site-packages/rest_framework/static/rest_framework/docs/img/grid.png
+./.venv/lib/python3.13/site-packages/rest_framework/checks 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/link.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/index.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/auth/basic.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/auth/token.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/auth/session.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/document.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/python.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/javascript.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/shell.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/shell-intro.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/python-intro.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/langs/javascript-intro.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/interact.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/sidebar.html
+./.venv/lib/python3.13/site-packages/rest_framework/templates/rest_framework/docs/error.html
+./.venv/lib/python3.13/site-packages/rest_framework/generics 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/__init__ 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/status 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/renderers 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/decorators 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/serializers 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/documentation 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/parsers 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/response 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/versioning 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/apps 2.py
+./.venv/lib/python3.13/site-packages/rest_framework/pagination 2.py
+./.venv/lib/python3.13/site-packages/certifi/__pycache__/core.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/certifi/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/django_compat.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/lazy_django.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/__init__.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/plugin.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/live_server_helper.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/_version.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pytest_django/__pycache__/fixtures.cpython-313-pytest-8.4.2.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_warnings.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_result.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_manager.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_version.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_hooks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_callers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/pluggy/__pycache__/_tracing.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/cyaml.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/serializer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/constructor.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/resolver.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/nodes.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/representer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/loader.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/scanner.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/emitter.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/reader.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/cyaml.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/dumper.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/resolver.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/parser.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/tokens.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/loader.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/events.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/representer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/scanner.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/tokens.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/nodes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/serializer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/reader.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/composer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/error.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/events.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/emitter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/dumper.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/constructor.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/composer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/parser.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/yaml/__pycache__/error.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/wait.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/ssltransport.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/ssl_match_hostname.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/response.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/timeout.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/util.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/proxy.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/connection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/ssl_.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/request.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/retry.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/util/__pycache__/url.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/connectionpool.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/poolmanager.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/connectionpool.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/filepost.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/connection.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_request_methods.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_request_methods.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/response.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_version.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_version.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_base_connection.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_collections.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/filepost.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/poolmanager.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/connection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_base_connection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/response.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/urllib3/__pycache__/_collections.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/contrib/__pycache__/socks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/contrib/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/http2/__pycache__/probe.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/urllib3/http2/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/extensions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_ipaddress.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/sql.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/errors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/sql.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_range.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/errors.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/extras.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_range.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_ipaddress.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/extensions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/extras.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_json.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/psycopg2/__pycache__/_json.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_extensions/apps.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/settings 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/generators 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/views 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/authentication 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/drainage 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/types 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/extensions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/types.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/renderers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/drainage.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/drainage.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/views.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/plumbing.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/serializers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/settings.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/hooks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/serializers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/authentication.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/authentication.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/plumbing.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/types.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/settings.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/extensions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/generators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/renderers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/openapi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/generators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/openapi.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/apps.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/pydantic.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_jwt.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_jwt.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/knox_auth_token.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/django_oauth_toolkit.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_dataclasses.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_recursive.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_simplejwt.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/djangorestframework_camel_case.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_recursive.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/django_filters.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_gis.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_auth.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/django_filters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/django_oauth_toolkit.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_gis.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_polymorphic.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_auth.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_simplejwt.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/knox_auth_token.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_framework_dataclasses.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/pydantic.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/djangorestframework_camel_case.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/contrib/__pycache__/rest_polymorphic.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/drf_spectacular/hooks 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/extensions 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/checks 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/utils 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/openapi 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/__init__ 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/renderers 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/serializers 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/plumbing 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/apps 2.py
+./.venv/lib/python3.13/site-packages/drf_spectacular/helpers 2.py
+./.venv/lib/python3.13/site-packages/iniconfig/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/iniconfig/__pycache__/_parse.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/iniconfig/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/l10n.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/tz.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/cache.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/i18n.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/static.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/templatetags/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/clickjacking.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/common.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/security.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/csrf.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/common.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/cache.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/clickjacking.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/cache.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/http.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/csrf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/security.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/middleware/__pycache__/http.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/boundfield.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/renderers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/formsets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/boundfield.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/forms.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/forms.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/renderers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/forms/__pycache__/formsets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/filebased.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/filebased.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/locmem.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/locmem.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/backends/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/cache/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/message.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/message.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/mail/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/compatibility/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/compatibility/__pycache__/django_4_0.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/compatibility/__pycache__/django_4_0.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/compatibility/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/csrf.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/sessions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/sessions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/csrf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/security/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/templates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/registry.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/urls.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/registry.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/messages.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/caches.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/files.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/translation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/model_checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/async_checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/files.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/caches.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/urls.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/database.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/database.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/messages.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/checks/__pycache__/async_checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/color.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/color.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/sql.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/sql.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/shell.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/migrate.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/makemigrations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/runserver.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/flush.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/management/commands/__pycache__/runserver.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/validators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/wsgi.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/paginator.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/validators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/signing.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/paginator.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/wsgi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/__pycache__/signing.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/pyyaml.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/jsonl.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/pyyaml.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/xml_serializer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/jsonl.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/python.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/json.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/python.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/xml_serializer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/serializers/__pycache__/json.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/uploadedfile.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/temp.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/locks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/uploadhandler.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/move.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/images.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/images.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/uploadedfile.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/locks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/temp.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/move.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/uploadhandler.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/handler.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/memory.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/memory.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/handler.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/filesystem.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/mixins.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/mixins.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/files/storage/__pycache__/filesystem.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/exception.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/wsgi.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/exception.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/asgi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/wsgi.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/asgi.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/core/handlers/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/servers/__pycache__/basehttp.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/core/servers/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/html.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/client.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/client.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/testcases.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/html.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/testcases.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/test/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/dispatch/__pycache__/dispatcher.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/dispatch/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/django.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/django.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/backends/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/defaulttags.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/defaultfilters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/context_processors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/loader.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/context.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/response.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/smartif.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/loader_tags.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/engine.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/library.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/__pycache__/autoreload.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/app_directories.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/cached.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/app_directories.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/filesystem.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/cached.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/template/loaders/__pycache__/filesystem.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/trans_real.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/reloader.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/reloader.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/trans_real.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/utils/translation/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/datastructures.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/html.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/timesince.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/formats.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/termcolors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/deconstruct.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/hashable.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/encoding.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/functional.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/xmlutils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/crypto.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/timezone.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/regex_helper.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/dates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/deprecation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/dateformat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/safestring.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/text.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/decorators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/tree.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/cache.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/asyncio.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/module_loading.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/topological_sort.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/log.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/itercompat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/lorem_ipsum.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/duration.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/ipv6.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/dateparse.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/connection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/_os.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/numberformat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/version.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/inspect.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/autoreload.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/utils/__pycache__/http.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/__pycache__/shortcuts.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/__pycache__/shortcuts.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/syndication/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/api.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/context_processors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/context_processors.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/api.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/constants.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/constants.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/middleware.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/middleware.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/fallback.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/session.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/fallback.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/cookie.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/session.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/cookie.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/messages/storage/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0008_alter_user_username_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0011_update_proxy_permissions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0007_alter_validators_add_error_messages.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0010_alter_group_name_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0009_alter_user_last_name_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0004_alter_user_username_opts.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0009_alter_user_last_name_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0005_alter_user_last_login_null.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0001_initial.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0006_require_contenttypes_0002.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0012_alter_user_first_name_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0002_alter_permission_name_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0007_alter_validators_add_error_messages.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0005_alter_user_last_login_null.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0006_require_contenttypes_0002.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0001_initial.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0002_alter_permission_name_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0012_alter_user_first_name_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0008_alter_user_username_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0003_alter_user_email_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0010_alter_group_name_max_length.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0011_update_proxy_permissions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0004_alter_user_username_opts.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/migrations/__pycache__/0003_alter_user_email_max_length.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/management/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/validators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/password_validation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/validators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/base_user.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/context_processors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/tokens.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/context_processors.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/backends.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/decorators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/forms.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/password_validation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/admin.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/backends.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/base_user.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/tokens.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/hashers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/decorators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/admin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/forms.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/middleware.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/hashers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/middleware.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/auth/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/log.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_urls.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_modify.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_modify.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_list.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_urls.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/log.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/admin_list.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/templatetags/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0001_initial.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0002_logentry_remove_auto_add.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0003_logentry_add_action_flag_choices.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0001_initial.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0002_logentry_remove_auto_add.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/migrations/__pycache__/0003_logentry_add_action_flag_choices.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/helpers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/helpers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/sites.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/filters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/actions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/decorators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/decorators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/filters.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/options.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/options.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/sites.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/actions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/admin/static/admin/css/dashboard.css
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/main.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/autocomplete.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/main.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/decorators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/autocomplete.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/decorators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admin/views/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/commands/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/commands/__pycache__/runserver.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/commands/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/management/commands/__pycache__/runserver.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/storage.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/handlers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/finders.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/staticfiles/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/flatpages/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/shortcuts.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/requests.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/requests.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/shortcuts.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sites/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/hstore.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/hstore.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/array.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/array.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/ranges.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/ranges.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/forms/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/search.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/validators.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/validators.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/lookups.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/lookups.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/search.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/hstore.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/hstore.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/array.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/citext.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/jsonb.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/array.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/citext.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/ranges.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/ranges.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/postgres/fields/__pycache__/jsonb.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/redirects/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/migrations/__pycache__/0001_initial.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/migrations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/migrations/__pycache__/0001_initial.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/migrations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/db.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/backends/__pycache__/db.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/serializers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/base_session.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/serializers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/base_session.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/middleware.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/middleware.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/sessions/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/sitemaps/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/templatetags/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/templatetags/__pycache__/humanize.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/templatetags/__pycache__/humanize.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/templatetags/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/humanize/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/0002_remove_content_type_name.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/0001_initial.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/0002_remove_content_type_name.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/0001_initial.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/migrations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/management/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/views.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/forms.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/admin.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/checks.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/admin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/forms.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/checks.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/contenttypes/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/point.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/io.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/io.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/collections.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/prepared.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/libgeos.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/linestring.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/collections.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/libgeos.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/factory.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/coordseq.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/error.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/point.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/prepared.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/coordseq.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/mutable_list.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/polygon.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/polygon.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/geometry.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/linestring.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/factory.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/geometry.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/mutable_list.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/__pycache__/error.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/errcheck.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/geom.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/io.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/io.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/prepared.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/predicates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/threadsafe.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/misc.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/threadsafe.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/topology.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/geom.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/errcheck.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/coordseq.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/misc.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/predicates.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/prepared.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/coordseq.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/geos/prototypes/__pycache__/topology.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/forms/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/layer.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/geomtype.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/driver.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/libgdal.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/srs.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/srs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/geomtype.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/envelope.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/field.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/datasource.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/layer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/error.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/driver.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/geometries.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/envelope.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/feature.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/datasource.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/field.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/geometries.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/error.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/feature.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/__pycache__/libgdal.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/errcheck.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/geom.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/raster.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/generation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/generation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/ds.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/srs.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/srs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/geom.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/errcheck.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/raster.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/prototypes/__pycache__/ds.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/const.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/band.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/source.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/source.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/const.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/band.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/gdal/raster/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/options.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/options.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/admin/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/management/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/utils/__pycache__/ogrinspect.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/utils/__pycache__/srs.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/utils/__pycache__/layermapping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/utils/__pycache__/ogrinfo.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/utils/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/shortcuts.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/ptr.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/measure.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/shortcuts.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/measure.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/ptr.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/geometry.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/geometry.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/gis/serializers/__pycache__/geojson.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/serializers/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/serializers/__pycache__/geojson.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/serializers/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/operations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/const.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/features.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/pgraster.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/introspection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/pgraster.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/schema.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/features.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/adapter.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/operations.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/adapter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/const.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/introspection.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/postgis/__pycache__/schema.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/operations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/features.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/features.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/operations.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/backends/base/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/functions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/aggregates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/proxy.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/lookups.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/lookups.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/aggregates.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/proxy.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/functions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/sql/__pycache__/conversion.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/sql/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/sql/__pycache__/conversion.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/models/sql/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/gis/db/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sl/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sl/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sk/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sk/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ur/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ur/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sw/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sw/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kab/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kab/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pl/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pl/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/vi/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/vi/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sq/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sq/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sv/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sv/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ga/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ga/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/he/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/he/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ms/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ms/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/km/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/km/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/udm/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/udm/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ar_DZ/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ar_DZ/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nn/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nn/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/be/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/be/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/da/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/da/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mr/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mr/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kk/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kk/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ky/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ky/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mn/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mn/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pt_BR/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pt_BR/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_CO/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_CO/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ja/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ja/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/el/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/el/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lv/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lv/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fy/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fy/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lb/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lb/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/it/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/it/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ca/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ca/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/is/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/is/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/cs/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/cs/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ia/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ia/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/io/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/io/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/te/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/te/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/zh_Hans/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/zh_Hans/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ru/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ru/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/zh_Hant/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/zh_Hant/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ro/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ro/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hsb/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hsb/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ckb/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ckb/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pt/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pt/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/uk/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/uk/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sr/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sr/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_VE/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_VE/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en_AU/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en_AU/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pa/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/pa/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en_GB/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en_GB/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ml/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ml/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_MX/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_MX/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mk/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/mk/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kn/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/kn/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bs/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bs/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/my/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/my/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ar/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ar/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/gl/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/gl/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hr/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hr/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hu/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hu/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nl/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nl/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bg/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bg/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bn/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/bn/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_AR/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es_AR/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ne/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ne/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ast/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ast/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/af/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/af/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nb/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/nb/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hi/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/hi/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ka/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ka/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/de/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/de/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/az/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/az/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/gd/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/gd/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/br/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/br/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ko/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ko/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fi/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fi/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sr_Latn/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/sr_Latn/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/os/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/os/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/eo/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/eo/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/id/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/id/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fr/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fr/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/es/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/et/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/et/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/en/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fa/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/fa/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lt/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/lt/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/cy/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/cy/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/eu/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/eu/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tt/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tt/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/dsb/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/dsb/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ta/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/ta/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/th/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/th/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tr/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tr/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tg/LC_MESSAGES/django.mo
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/locale/tg/LC_MESSAGES/django.po
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__init__.py
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/views.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/views.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/apps.py
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/utils.py
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/index.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/template_detail.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/bookmarklets.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/model_detail.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/view_index.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/view_detail.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/template_filter_index.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/template_tag_index.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/model_index.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/templates/admin_doc/missing_docutils.html
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/urls.py
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/middleware.py
+./.venv/lib/python3.13/site-packages/django/contrib/admindocs/views.py
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/multipartparser.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/multipartparser.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/cookie.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/response.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/cookie.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/request.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/request.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/http/__pycache__/response.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/converters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/resolvers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/conf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/urls/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/serializer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/migration.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/executor.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/loader.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/recorder.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/optimizer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/autodetector.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/loader.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/executor.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/graph.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/recorder.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/migration.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/graph.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/state.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/state.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/questioner.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/__pycache__/writer.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/special.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/models.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/special.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/models.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/migrations/operations/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/operations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/features.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/client.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/introspection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/schema.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/features.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/creation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/client.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/operations.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/creation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/psycopg_any.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/psycopg_any.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/introspection.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/postgresql/__pycache__/schema.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/ddl_references.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/ddl_references.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/operations.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/features.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/client.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/introspection.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/schema.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/features.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/creation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/client.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/validation.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/operations.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/creation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/validation.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/introspection.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/backends/base/__pycache__/schema.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/manager.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/expressions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/constraints.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/deletion.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/deletion.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/constraints.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/signals.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/aggregates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/enums.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/lookups.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/expressions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/lookups.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/aggregates.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/query.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/manager.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/options.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/constants.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/options.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/enums.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/constants.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/indexes.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/indexes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/signals.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/query_utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/query_utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/__pycache__/query.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/window.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/window.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/comparison.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/text.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/mixins.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/datetime.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/mixins.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/math.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/math.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/text.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/datetime.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/comparison.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/functions/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related_lookups.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related_descriptors.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/proxy.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/reverse_related.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/files.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/reverse_related.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/proxy.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/files.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/mixins.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/mixins.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related_lookups.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/json.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related_descriptors.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/json.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/fields/__pycache__/related.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/datastructures.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/where.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/compiler.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/where.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/subqueries.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/query.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/datastructures.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/constants.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/constants.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/subqueries.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/compiler.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/models/sql/__pycache__/query.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/transaction.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/transaction.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/db/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/common.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/debug.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/cache.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/csrf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/decorators/__pycache__/http.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/debug.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/i18n.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/static.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/csrf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/__pycache__/defaults.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/detail.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/list.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/base.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/edit.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/list.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/dates.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/dates.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/base.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/edit.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/detail.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/views/generic/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/en/__pycache__/formats.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/en/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/en/__pycache__/formats.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/locale/en/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/__pycache__/global_settings.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/__pycache__/global_settings.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/app_template/apps.py-tpl
+./.venv/lib/python3.13/site-packages/django/conf/urls/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/urls/__pycache__/static.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django/conf/urls/__pycache__/static.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/conf/urls/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/apps/config.py
+./.venv/lib/python3.13/site-packages/django/apps/registry.py
+./.venv/lib/python3.13/site-packages/django/apps/__init__.py
+./.venv/lib/python3.13/site-packages/django/apps/__pycache__/config.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/apps/__pycache__/registry.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django/apps/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/views 2.py
+./.venv/lib/python3.13/site-packages/django_filters/constants 2.py
+./.venv/lib/python3.13/site-packages/django_filters/conf 2.py
+./.venv/lib/python3.13/site-packages/django_filters/exceptions 2.py
+./.venv/lib/python3.13/site-packages/django_filters/fields 2.py
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/exceptions.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/filterset.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/filters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/conf.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/conf.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/compat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/compat.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/filterset.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/widgets.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/utils.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/widgets.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/filters.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/constants.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/constants.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/utils.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/django_filters/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/compat 2.py
+./.venv/lib/python3.13/site-packages/django_filters/rest_framework/__pycache__/filters.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/rest_framework/__pycache__/filterset.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/rest_framework/__pycache__/backends.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/rest_framework/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/django_filters/filters 2.py
+./.venv/lib/python3.13/site-packages/django_filters/utils 2.py
+./.venv/lib/python3.13/site-packages/django_filters/filterset 2.py
+./.venv/lib/python3.13/site-packages/django_filters/__init__ 2.py
+./.venv/lib/python3.13/site-packages/django_filters/widgets 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/fields 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/fields.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/serializers.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/__init__.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/serializers.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/apps.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/fields.cpython-313 2.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__pycache__/apps.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/rest_framework_gis/apps.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/schema 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/filters 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/filterset 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/__init__ 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/serializers 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/apps 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/tilenames 2.py
+./.venv/lib/python3.13/site-packages/rest_framework_gis/pagination 2.py
+./.venv/lib/python3.13/site-packages/uritemplate/__pycache__/orderedset.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/uritemplate/__pycache__/api.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/uritemplate/__pycache__/template.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/uritemplate/__pycache__/variable.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/uritemplate/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/config/__pycache__/compat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/config/__pycache__/findpaths.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/config/__pycache__/argparsing.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/config/__pycache__/exceptions.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/config/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/mark/__pycache__/expression.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/mark/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/mark/__pycache__/structures.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_code/__pycache__/code.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_code/__pycache__/source.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_code/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/main.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/stepwise.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/tmpdir.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/freeze_support.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/pathlib.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/setupplan.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/capture.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/scope.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/unraisableexception.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/cacheprovider.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/logging.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/recwarn.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/unittest.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/skipping.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/compat.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/setuponly.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/warning_types.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/runner.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/pytester.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/debugging.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/python_api.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/_version.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/junitxml.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/nodes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/outcomes.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/warnings.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/deprecated.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/legacypath.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/timing.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/fixtures.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/faulthandler.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/monkeypatch.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/terminal.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/threadexception.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/hookspec.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/helpconfig.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/_argcomplete.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/reports.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/tracemalloc.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/python.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/raises.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/pastebin.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/stash.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/__pycache__/doctest.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/assertion/__pycache__/truncate.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/assertion/__pycache__/util.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/assertion/__pycache__/rewrite.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/assertion/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_io/__pycache__/wcwidth.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_io/__pycache__/saferepr.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_io/__pycache__/terminalwriter.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_io/__pycache__/pprint.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_io/__pycache__/__init__.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_py/__pycache__/path.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_py/__pycache__/error.cpython-313.pyc
+./.venv/lib/python3.13/site-packages/_pytest/_py/__pycache__/__init__.cpython-313.pyc
+./apps/.DS_Store
+./apps/spatial_data_app/migrations/__init__.py
+./apps/spatial_data_app/models.py
+./apps/spatial_data_app/management/__init__.py
+./apps/spatial_data_app/management/commands/__init__.py
+./apps/spatial_data_app/management/commands/validate_spatial_data.py
+./apps/spatial_data_app/apps.py
+./apps/spatial_data_app/admin.py
+./apps/spatial_data_app/tests.py
+./apps/spatial_data_app/admin_utils.py
+./apps/spatial_data_app/views.py
