@@ -3,6 +3,7 @@ app_name = 'trails_api'
 from django.urls import path
 from . import views
 from .views import trail_map
+from .views import api_test_view
 
 app_name = 'trails'
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('counties/', views.counties_list, name='countries-list'),
     path('info/', views.api_info, name='api-info'),
     path('test/', views.api_test_page, name='api-test'),
+    
     
 ]

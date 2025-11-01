@@ -419,7 +419,7 @@ function addSearchControls() {
         
             setTimeout(() => {
                 map.removeLayer(circle);
-            }, 1500);
+            }, 4000);
         }
     }).addTo(window.trailsMap);
 

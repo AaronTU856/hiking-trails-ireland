@@ -335,3 +335,6 @@ def api_test_page(request):
 def trail_map(request):
     """Render main project map (templates/trails/map.html)."""
     return render(request, 'trails/map.html')
+
+def api_test_view(request):
+    return render(request, "api_test.html")

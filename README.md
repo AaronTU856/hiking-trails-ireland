@@ -129,7 +129,7 @@ python manage.py runserver
 
 All API routes tested using pytest and Django’s test client.
 
-✅ Tests for GeoJSON endpoints, proximity search, and radius queries all pass.
+Tests for GeoJSON endpoints, proximity search, and radius queries all pass.
 
 
 
