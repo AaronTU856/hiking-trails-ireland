@@ -406,40 +406,6 @@ function addSearchControls() {
   }).addTo(window.trailsMap);
 }
 
-// function createPopupContent(trail) {
-//   // Safely handle missing properties
-//   const props = trail.properties || {};
-//   const name = props.trail_name || props.name || props.NAMN1 || "Unnamed Trail";
-//   const county = trail.county || "Unknown County";
-//   const distance = trail.distance_km ? `${trail.distance_km} km` : "Unknown";
-//   const difficulty = trail.difficulty || "Unknown";
-//   const description = trail.description || "No description available";
-//   const coords = trail.geometry?.coordinates || [0, 0];
-//   const [lng, lat] = coords; // GeoJSON order is [longitude, latitude]
-
-//   return `
-//         <div class="trail-popup">
-//             <h6>${name}</h6>
-//             <div class="trail-popup-info">
-//                 <span>📍 <strong>County:</strong> ${county}</span><br>
-//                 <span>📏 <strong>Distance:</strong> ${distance}</span><br>
-//                 <span>🏔️ <strong>Difficulty:</strong> ${difficulty}</span><br>
-//                 <span>🗺️ <strong>Coordinates:</strong> ${lat.toFixed(
-//                   4
-//                 )}, ${lng.toFixed(4)}</span>
-//                 ${
-//                   description
-//                     ? `<div style="margin-top: 8px; font-style: italic;">${description}</div>`
-//                     : ""
-//                 }
-//             </div>
-//             <div class="popup-buttons" style="margin-top: 8px;">
-//                 <button class="btn btn-sm btn-primary" onclick="zoomToTrail(${latitude}, ${longitude})">Zoom</button>
-//                 <button class="btn btn-sm btn-info" onclick="showTrailDetails('${name}')">Details</button>
-//             </div>
-//         </div>
-//     `;
-// }
 
 function performSearch() {
   const query = document.getElementById("trail-search").value.trim();
@@ -470,7 +436,6 @@ function performSearch() {
 
       if (Array.isArray(data)) {
         // If search returns array of trail objects, convert to GeoJSON
-
         filteredTrails = data.map((trail) => ({
           type: "Feature",
 
@@ -487,7 +452,6 @@ function performSearch() {
         }));
       } else if (data.features && Array.isArray(data.features)) {
         // If search returns GeoJSON
-
         filteredTrails = data.features;
       } else {
         // Filter from existing data as fallback
@@ -500,7 +464,6 @@ function performSearch() {
       }
 
       displayTrailsOnMap(filteredTrails);
-
       updateTrailCount(filteredTrails.length);
 
       if (filteredTrails.length === 0) {
@@ -562,9 +525,7 @@ function showTrailInfo(trail) {
 
     return;
   }
-
   // Safely handle missing properties
-
   const name =
     trail.name ||
     trail.trail_name ||
@@ -700,23 +661,16 @@ function setupEventListeners() {
   // Search functionality
 
   const searchBtn = document.getElementById("search-btn");
-
   const searchInput = document.getElementById("trail-search");
-
   const clearSearchBtn = document.getElementById("clear-search");
-
   const refreshBtn = document.getElementById("refresh-map");
-
   const closeInfoBtn = document.getElementById("close-info");
-
   const addTrailBtn = document.getElementById("add-trail-btn");
-
   const saveTrailBtn = document.getElementById("save-trail");
 
   if (searchBtn) {
     searchBtn.addEventListener("click", performSearch);
   }
-
   if (searchInput) {
     searchInput.addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
@@ -724,7 +678,6 @@ function setupEventListeners() {
       }
     });
   }
-
   if (clearSearchBtn) {
     clearSearchBtn.addEventListener("click", function () {
       if (searchInput) {
@@ -732,7 +685,6 @@ function setupEventListeners() {
       }
 
       displayTrailsOnMap(allTrailsData);
-
       updateTrailCount(allTrailsData.length);
     });
   }
@@ -740,7 +692,6 @@ function setupEventListeners() {
   if (refreshBtn) {
     refreshBtn.addEventListener("click", loadTrails);
   }
-
   if (closeInfoBtn) {
     closeInfoBtn.addEventListener("click", function () {
       const infoPanel = document.getElementById("trail-info");
@@ -750,7 +701,6 @@ function setupEventListeners() {
       }
     });
   }
-
   if (addTrailBtn) {
     addTrailBtn.addEventListener("click", function () {
       const modalElement = document.getElementById("addTrailModal");
@@ -845,7 +795,6 @@ function saveNewTrail() {
 }
 
 // Utility functions
-
 function zoomToTrail(trailId) {
   const trail = allTrailsData.find(
     (c) => c.properties.id === parseInt(trailId)
@@ -870,7 +819,6 @@ function updateTrailCount(count) {
 
 function showLoading(show) {
   const searchBtn = document.getElementById("search-btn");
-
   if (searchBtn) {
     if (show) {
       searchBtn.innerHTML = '<span class="loading"></span> Loading...';
@@ -888,17 +836,11 @@ function showAlert(message, type) {
   // Create alert element
 
   const alertDiv = document.createElement("div");
-
   alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-
   alertDiv.style.top = "20px";
-
   alertDiv.style.right = "20px";
-
   alertDiv.style.zIndex = "9999";
-
   alertDiv.style.minWidth = "300px";
-
   alertDiv.innerHTML = `
 
         ${message}
@@ -956,7 +898,6 @@ function getCsrfToken() {
 console.log("✅ trails_map.js fully loaded");
 
 // Proximity Search Functionality
-
 function enableProximitySearch() {
   const toggleBtn = document.getElementById("toggle-search");
   const radiusInput = document.getElementById("radius-input");

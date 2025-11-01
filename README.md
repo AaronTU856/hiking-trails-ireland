@@ -72,6 +72,13 @@ python manage.py runserver
  `/api/trails/test/`           GET                 Testing interface – not activated yet 
 `/api/trails/towns/geojson/`   GET                 GeoJSON of towns with filters
 
+URL                     Description                         
+
+`/dashboard/`            Dashboard home page                  
+`/dashboard/analytics/`  Data analytics and charts for trails 
+`/maps/api/status/`          Health/status check endpoint
+
+
 
 ## 6. Tests & Validation
 
