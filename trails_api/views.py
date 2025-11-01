@@ -22,6 +22,7 @@ from .serializers import (
     TrailCreateSerializer, TrailSummarySerializer, DistanceSerializer,
     BoundingBoxSerializer
 )
+from .serializers import TrailPathGeoSerializer
 from .filters import TrailFilter
 import json
 
@@ -323,6 +324,15 @@ def trail_search(request):
 
     trails = Trail.objects.filter(name__icontains=q)[:10]
     return Response(TrailListSerializer(trails, many=True).data)
+
+#Trail paths
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def trails_paths_geojson(request):
+    qs = Trail.objects.exclude(path__isnull=True)
+    serializer = TrailPathGeoSerializer(qs, many=True)
+    return Response(serializer.data)
 
 
 

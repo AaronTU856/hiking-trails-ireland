@@ -123,3 +123,10 @@ class TownGeoJSONSerializer(GeoFeatureModelSerializer):
         model = Town
         geo_field = 'location'
         fields = ('id', 'name', 'town_type', 'population', 'area')
+
+    
+class TrailPathGeoSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Trail
+        geo_field = 'path'  # LineString
+        fields = ('id', 'trail_name', 'county', 'distance_km', 'difficulty')

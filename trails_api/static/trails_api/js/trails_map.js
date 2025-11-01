@@ -7,10 +7,12 @@ console.log("✅ trails_map.js loaded");
 let map;
 let allTrailsData = [];
 
+
 document.addEventListener("DOMContentLoaded", function () {
   console.log("📍 DOM loaded, initializing map...");
   initializeMap();
   loadTrails();
+  loadTrailPaths();
   setupEventListeners();
   enableProximitySearch();
 });
@@ -166,6 +168,42 @@ fetch("/api/trails/towns/geojson/")
       },
     }).addTo(window.trailsMap);
   });
+
+// Load trails paths
+let trailPathsLayer;
+
+
+function loadTrailPaths() {
+  fetch("/api/trails/paths/geojson/")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("🟧 Trail paths loaded:", data.features?.length || 0);
+
+      if (trailPathsLayer) window.trailsMap.removeLayer(trailPathsLayer);
+
+      trailPathsLayer = L.geoJSON(data, {
+        style: {
+          color: "#ff6600",
+          weight: 4,
+          opacity: 0.9,
+        },
+        onEachFeature: (feature, layer) => {
+          const p = feature.properties || {};
+          layer.bindPopup(`
+            <b>${p.trail_name || "Unnamed Trail"}</b><br>
+            County: ${p.county || "Unknown"}<br>
+            Distance: ${p.distance_km || "?"} km<br>
+            Difficulty: ${p.difficulty || "N/A"}
+          `);
+        },
+      }).addTo(window.trailsMap);
+
+      
+      trailPathsLayer.bringToFront(); // ensure it’s visible on top
+    })
+    .catch((err) => console.error("❌ Error loading trail paths:", err));
+}
+
 
 function loadTrailsFromRegularAPI() {
   console.log("Trying regular API endpoint...");
