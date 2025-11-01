@@ -1,0 +1,17 @@
+{
+  "name": "awm_assignment",
+  "version": "1.0.0",
+  "description": "## 1. Project Overview The Trails API and web mapping project is a Django + GeoDjango based web application that provides RESTful and GeoJSON endpoints for Irish hiking trail data. The project integrates PostGIS, Leaflet and Mapbox for spatial analysis radius and bounding box queries. and visualization using Leaflet and Mapbox.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "globals": "^16.4.0"
+  }
+}
