@@ -8,7 +8,7 @@ and visualization using Leaflet and Mapbox.
 
 
 ## 2. Features Implemented
-### ✅ Core
+### Core
 - REST API for Trails (`/api/trails/`)
 - GeoJSON endpoint (`/api/trails/geojson/`)
 - Map view with Leaflet and Mapbox tiles
@@ -18,7 +18,7 @@ and visualization using Leaflet and Mapbox.
 - Interactive Leaflet map (`/api/trails/map/`)
 - API info endpoint (`/api/trails/info/`)
 
-### 🧭 Additional
+### Additional
 - Django admin for Trails
 - Custom management command `create_sample_trails`
 - Interactive Leaflet map (`/api/trails/map/`)
@@ -26,7 +26,7 @@ and visualization using Leaflet and Mapbox.
 - CORS support for external clients
 - DRF Spectacular for auto-generated Swagger documentation
 
----
+
 
 ## 3. Technologies Used
 
@@ -37,7 +37,7 @@ and visualization using Leaflet and Mapbox.
  **Spatial Tools**  Mapbox, django-geojson 
  **Dev Environment**  Homebrew GDAL/GEOS/PROJ setup 
 
----
+
 
 ## 4. Installation & Setup
 
