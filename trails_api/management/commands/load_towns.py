@@ -7,7 +7,8 @@ class Command(BaseCommand):
     help = "Load towns from simplified GeoJSON"
 
     def handle(self, *args, **kwargs):
-        file_path = "trails_api/data/towns_sample.geojson"
+        file_path = "trails_api/data/sample_towns.geojson"
+
 
         with open(file_path, "r") as f:
             data = json.load(f)
@@ -32,7 +33,7 @@ class Command(BaseCommand):
                         "location": point,
                         "town_type": county,
                         "area": area,
-                        "population": None,
+                        "population": props.get("POPULATION"),
                     },
                 )
                 count += 1

@@ -15,9 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-GDAL_LIBRARY_PATH = '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
-GEOS_LIBRARY_PATH = '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
-PROJ_LIBRARY_PATH = '/opt/homebrew/opt/proj/lib/libproj.dylib'
+#GDAL_LIBRARY_PATH = '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+#GEOS_LIBRARY_PATH = '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
+#PROJ_LIBRARY_PATH = '/opt/homebrew/opt/proj/lib/libproj.dylib'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -109,13 +109,14 @@ WSGI_APPLICATION = 'webmapping_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'webmapping_db',
-        'USER': 'webmapping',
-        'PASSWORD': 'awm123',
-        'HOST': 'localhost',
+        'NAME': 'trails_db',      #  match your docker-compose service
+        'USER': 'postgres',       # match docker-compose credentials
+        'PASSWORD': 'postgres',
+        'HOST': 'db',             # internal hostname for the Postgres container
         'PORT': '5432',
     }
 }
+
 
 
 # Password validation

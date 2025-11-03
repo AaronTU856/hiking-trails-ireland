@@ -151,3 +151,20 @@ Django REST Framework – https://www.django-rest-framework.org/api-guide/metada
 DRF Spectacular – https://drf-spectacular.readthedocs.io/en/latest/readme.html#testing
 
 LeafletJS – https://leafletjs.com/examples/geojson/
+
+10. ## Docker Setup (Final Deployment)
+Ensure Docker Desktop is running before executing these commands.
+
+docker compose up -d --build
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py fetch_trails_from_arcgis
+docker compose exec web python manage.py load_towns
+
+# Restore
+docker compose exec web python manage.py loaddata trails_api/data/towns_backup.json
+docker compose exec web python manage.py loaddata trails_api/data/trails_backup.json
+
+### Open Browser
+http://localhost:8000/dashboard/
+
+
