@@ -208,4 +208,10 @@ URL: http://localhost:8000/maps/intersect_test/
 # Description: 
 Displays a test interface for validating trail intersection points and spatial operations using Leaflet.
 
+# Data Sources
+
+The trail data used in this project comes from the Sport Ireland “Get Ireland Active Trail Routes” dataset, which is published through ArcGIS. I fetched it directly from their ArcGIS REST API in GeoJSON format using a Django management command. This data includes the names, locations, and details for walking and cycling trails around Ireland.
+
+The towns data is loaded from a local GeoJSON file called sample_towns.geojson in the trails_api/data/ folder. It’s a simplified dataset that includes Irish towns with their coordinates, county names, and a few extra fields. It was originally taken from Irish open data data.gov.ie and cleaned up before being added to the project.
+
 
