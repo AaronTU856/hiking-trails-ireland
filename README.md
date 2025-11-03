@@ -214,4 +214,6 @@ The trail data used in this project comes from the Sport Ireland “Get Ireland 
 
 The towns data is loaded from a local GeoJSON file called sample_towns.geojson in the trails_api/data/ folder. It’s a simplified dataset that includes Irish towns with their coordinates, county names, and a few extra fields. It was originally taken from Irish open data data.gov.ie and cleaned up before being added to the project.
 
-
+- Markers
+https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png
+https://github.com/pointhi/leaflet-color-markers
