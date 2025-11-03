@@ -244,7 +244,7 @@ def load_towns(request):
         )
         count += 1
 
-    return Response({"status": f"✅ Loaded {count} towns successfully"})
+    return Response({"status": f"Loaded {count} towns successfully"})
 
 
 

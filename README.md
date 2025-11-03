@@ -201,4 +201,11 @@ docker ps
 
 docker system prune -a
 
+## Intersection Test Page
+
+URL: http://localhost:8000/maps/intersect_test/
+
+# Description: 
+Displays a test interface for validating trail intersection points and spatial operations using Leaflet.
+
 

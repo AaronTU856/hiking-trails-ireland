@@ -1,74 +1,125 @@
- dataset | feature_count 
----------+---------------
- Trails  |           470
- Towns   |            47
-(2 rows)
+-- 1. Count of trails and towns
+===============================
+dataset | feature_count
+------------------------------------------------------------
+Trails | 472
+Towns | 47
 
- town_type | total_population 
------------+------------------
- Village   |            93670
- Historic  |           226802
- Urban     |          1939707
-(3 rows)
 
- dogs_allowed | total 
---------------+-------
- No           |    86
-              |    60
- Yes          |   324
-(3 rows)
+-- 2. Average trail length and elevation
+========================================
+avg_distance_km | avg_elevation_m
+------------------------------------------------------------
+6.94 | 75.06
 
-                 trail_name                 |   nearest_town    | distance_km |    difficulty    
---------------------------------------------+-------------------+-------------+------------------
- Sean Kelly Cycle Route - The Kelly Legacy  | Dungarvan         |      106.90 | very challenging
- North Kilkenny Cycle Route                 | Kilkenny          |       80.50 | challenging
- Slí An Earagail - Sli Dhun na nGall        | Bunbeg            |       76.20 | moderate
- Sean Kelly Cycle Route - The Coastal Route | Dungarvan         |       75.00 | challenging
- Ormond Way                                 | Upperchurch (6km) |       74.50 | challenging
- Birr Cycle Hub Loop 3                      | Birr              |       73.10 | challenging
- Slí Na Rosann - Sli Dhun na nGall          | Dungloe           |       64.60 | moderate
- East Kilkenny Cycle Route                  | Kilkenny          |       62.60 | challenging
- Kilmallock Cycle Hub Loop 3                | Kilmallock        |       61.40 | challenging
- Inis Eoghain Cycleway                      |                   |       52.90 | challenging
-(10 rows)
 
-       county        | trail_count 
----------------------+-------------
- Cork                |          74
- Mayo                |          45
- Wicklow             |          35
- Galway              |          27
- Donegal             |          27
- Wexford             |          27
- Kerry               |          26
- Limerick            |          22
- Tipperary           |          21
- Waterford           |          17
- Clare               |          17
- Laois               |          16
- Roscommon           |          15
- Cavan               |          15
- Sligo               |          14
- Leitrim             |          13
- Dublin              |          13
- Kilkenny            |          10
- Offaly              |           7
- Westmeath           |           7
- Longford            |           5
- Kildare             |           3
- Limerick, Tipperary |           3
- Monaghan            |           3
- Cavan, Leitrim      |           2
- Meath               |           2
- Louth               |           2
- Carlow              |           1
- Kerry, Limerick     |           1
-(29 rows)
+-- 3. Population by town type
+=============================
+town_type | total_population
+------------------------------------------------------------
+Village | 93670
+Historic | 226802
+Urban | 1939707
 
- town_type | avg_population 
------------+----------------
- Urban     |          80821
- Historic  |          22680
- Village   |           7205
-(3 rows)
+
+-- 4. Count of trails allowing dogs
+===================================
+dogs_allowed | total
+------------------------------------------------------------
+No | 86
+no | 1
+ | 60
+Yes | 324
+yes | 1
+
+
+-- 5. List all trails with their nearest town
+=============================================
+trail_name | nearest_town | distance_km | difficulty
+------------------------------------------------------------
+Sean Kelly Cycle Route - The Kelly Legacy | Dungarvan | 106.90 | very challenging
+North Kilkenny Cycle Route | Kilkenny | 80.50 | challenging
+Slí An Earagail - Sli Dhun na nGall | Bunbeg | 76.20 | moderate
+Sean Kelly Cycle Route - The Coastal Route | Dungarvan | 75.00 | challenging
+Ormond Way | Upperchurch (6km) | 74.50 | challenging
+Birr Cycle Hub Loop 3 | Birr | 73.10 | challenging
+Slí Na Rosann - Sli Dhun na nGall | Dungloe | 64.60 | moderate
+East Kilkenny Cycle Route | Kilkenny | 62.60 | challenging
+Kilmallock Cycle Hub Loop 3 | Kilmallock | 61.40 | challenging
+Inis Eoghain Cycleway |  | 52.90 | challenging
+
+
+-- 6. Show total number of trails by county
+===========================================
+county | trail_count
+------------------------------------------------------------
+Cork | 74
+Mayo | 45
+Wicklow | 35
+Wexford | 27
+Galway | 27
+Donegal | 27
+Kerry | 26
+Limerick | 22
+Tipperary | 21
+Waterford | 17
+Clare | 17
+Laois | 16
+Cavan | 15
+Roscommon | 15
+Sligo | 14
+Leitrim | 13
+Dublin | 13
+Kilkenny | 10
+Offaly | 9
+Westmeath | 7
+Longford | 5
+Limerick, Tipperary | 3
+Monaghan | 3
+Kildare | 3
+Meath | 2
+Cavan, Leitrim | 2
+Louth | 2
+Kerry, Limerick | 1
+Carlow | 1
+
+
+-- 7. Average population per town type
+======================================
+town_type | avg_population
+------------------------------------------------------------
+Urban | 80821
+Historic | 22680
+Village | 7205
+
+
+-- 8. Trails that intersect or touch town boundaries
+====================================================
+No results found.
+
+-- 9. Towns within 5 km of a Trail
+==================================
+trail_name | nearest_town | distance_km
+------------------------------------------------------------
+Arklow Loops Love Lane Walk | Arklow | 0.16
+Clifden Cycle Hub Loop 1 | Clifden | 0.26
+Kingdom of Kerry Greenways - Tralee to Fenit | Tralee | 0.53
+Arklow Loops Kynoch Walk | Arklow | 0.57
+Boyne Blueway - Trim to Bective | Trim | 0.59
+Westport Cycle Hub - Loop 2 | Westport | 0.76
+Westport Cycle Hub - Loop 1 | Westport | 1.00
+The Rocks Trails - Family Trail | Wexford | 1.05
+Mullingar Cycle Hub Loop 2 | Mullingar | 1.11
+Kingdom of Kerry Greenways - Listowel to Limerick | Listowel | 1.40
+Ramsfort Wood Deerpark Trail | Gorey | 1.48
+Ramsfort Wood Sweet Walk Trail | Gorey | 1.48
+Bantry Blueway - Red Trail | Bantry | 1.49
+Bantry Blueway - Green Trail | Bantry | 1.49
+Bantry Blueway - Blue Trail | Bantry | 1.49
+Old Rail Trail Greenway Walking Trail: Mullingar - Athlone | Mullingar | 1.93
+Westport Greenway | Westport | 2.04
+Sli Eala | Nenagh | 2.31
+Belleek - Multi Access | Ballina | 2.37
+Conair na Coille Fiáine - Wild Woodland Trail | Monaghan | 2.93
+
 

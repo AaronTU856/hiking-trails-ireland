@@ -36,3 +36,27 @@ SELECT town_type, AVG(population)::INT AS avg_population
 FROM trails_api_town
 GROUP BY town_type
 ORDER BY avg_population DESC;
+
+-- 8. Trails that intersect or touch town boundaries
+SELECT 
+    t.trail_name,
+    tw.name AS town_name,
+    ST_AsText(ST_Intersection(t.start_point, tw.location)) AS intersection_geom
+FROM trails_api_trail AS t
+JOIN trails_api_town AS tw
+ON ST_Intersects(t.start_point, tw.location)
+LIMIT 10;
+
+-- 9 Towns within 5 km of aTrail
+SELECT 
+    t.trail_name,
+    tw.name AS nearest_town,
+    ROUND((ST_Distance(t.start_point::geography, tw.location::geography) / 1000)::numeric, 2) AS distance_km
+FROM trails_api_trail AS t
+JOIN trails_api_town AS tw
+ON ST_DWithin(t.start_point::geography, tw.location::geography, 5000)
+ORDER BY distance_km ASC
+LIMIT 20;
+
+
+

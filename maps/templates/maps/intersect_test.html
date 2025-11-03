@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Trail Intersection Test</h3>
+<p>{{ message }}</p>
+<p><strong>{{ trail_a }}</strong> intersects with <strong>{{ trail_b }}</strong></p>
+
+<div id="map" style="height: 500px;"></div>
+
+<script>
+  const map = L.map('map').setView([53.321348451041224, -7.586203962517108], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Add intersection marker
+  const intersection = {{ intersection_point.geojson|safe }};
+  L.geoJSON(intersection, {
+    pointToLayer: (f, latlng) => L.marker(latlng, { title: "Intersection" })
+  }).addTo(map);
+</script>
+{% endblock %}
