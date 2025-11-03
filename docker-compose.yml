@@ -15,7 +15,7 @@ services:
 
   db:
     image: postgis/postgis:15-3.4
-    platform: linux/amd64  # ✅ Use amd64 to work on your M1 Mac
+    platform: linux/amd64  # Use amd64 to work on your M1 Mac
     environment:
       POSTGRES_DB: trails_db
       POSTGRES_USER: postgres
