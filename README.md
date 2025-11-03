@@ -153,6 +153,7 @@ DRF Spectacular – https://drf-spectacular.readthedocs.io/en/latest/readme.html
 LeafletJS – https://leafletjs.com/examples/geojson/
 
 10. ## Docker Setup (Final Deployment)
+
 Ensure Docker Desktop is running before executing these commands.
 
 docker compose up -d --build
@@ -166,5 +167,38 @@ docker compose exec web python manage.py loaddata trails_api/data/trails_backup.
 
 ### Open Browser
 http://localhost:8000/dashboard/
+
+## 🐋 Docker Usage Guide
+
+### Start the Application
+Run from project root (where `docker-compose.yml` is located):
+
+docker compose up -d
+
+
+## Stop the Application
+
+- Stop and remove running containers:
+
+  docker compose down
+
+- Pause them without removing:
+
+docker compose stop
+
+## Restart the Application
+
+docker compose down
+docker compose up -d
+
+## Check Running Containers
+
+docker ps
+
+## Clean Up Unused Containers & Images
+
+- Removes all stopped containers, images, and volumes:
+
+docker system prune -a
 
 
