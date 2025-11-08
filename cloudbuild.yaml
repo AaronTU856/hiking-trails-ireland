@@ -1,4 +1,7 @@
 # cloudbuild.yaml
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   # Step 1: Install dependencies and run unit tests (Placeholder for now)
   # This step can be customized for your Django app's unit tests (e.g., pytest, manage.py test)
