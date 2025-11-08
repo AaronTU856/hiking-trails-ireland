@@ -5,7 +5,12 @@ options:
 steps:
   # Step 1: Install dependencies and run unit tests (Placeholder for now)
   # This step can be customized for your Django app's unit tests (e.g., pytest, manage.py test)
-  - name: 'python:3.11-slim' # Use the same base image as your Dockerfile for consistency
+
+
+
+
+  # Step 1: Install dependencies and run unit tests
+  - name: 'python:3.11-slim'
     entrypoint: 'bash'
     args:
       - '-c'
