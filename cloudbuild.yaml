@@ -11,9 +11,9 @@ steps:
       - '-c'
       - |
         pip install --no-cache-dir -r requirements.txt
-        # Replace with your actual Django unit test command
-        # python manage.py test --settings=your_project.settings.test
-       
+        echo "Running Django unit tests..."
+        python manage.py test --settings=webmapping_project.settings
+  
         python manage.py test --settings=trails_api.settings
     id: UnitTests
 
