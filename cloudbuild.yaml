@@ -13,8 +13,6 @@ steps:
         pip install --no-cache-dir -r requirements.txt
         echo "Running Django unit tests..."
         python manage.py test --settings=webmapping_project.settings
-  
-        python manage.py test --settings=trails_api.settings
     id: UnitTests
 
   # Step 2: Build the Docker image
