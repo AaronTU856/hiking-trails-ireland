@@ -58,6 +58,9 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret.
 SECRET_KEY = os.environ.get('SECRET_KEY', 'replace-me-in-local-env')
+if os.getenv('K_SERVICE') and SECRET_KEY in ('', 'replace-me-in-local-env'):
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured('SECRET_KEY must be configured for Cloud Run.')
 OPENWEATHERMAP_API_KEY = os.getenv('OPENWEATHERMAP_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -314,9 +317,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Open for development
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -376,9 +380,3 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    
-import os
-
-# These are the standard paths for the libraries we installed in your Dockerfile
-GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/usr/lib/libgeos_c.so'

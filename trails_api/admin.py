@@ -237,3 +237,41 @@ class RiversAdmin(LeafletGeoAdmin):
     @admin.display(boolean=True, description='Description')
     def has_description(self, obj):
         return bool(obj.description)
+
+
+from django.db import transaction
+from .models import TrailDescriptionSuggestion
+
+
+@admin.register(TrailDescriptionSuggestion)
+class TrailDescriptionSuggestionAdmin(admin.ModelAdmin):
+    list_display = ('trail', 'submitted_by', 'status', 'created_at')
+    list_filter = ('status',)
+    readonly_fields = ('trail', 'submitted_by', 'description', 'status', 'created_at')
+    actions = ('approve', 'reject')
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_approve_permission(self, request):
+        return self.has_change_permission(request) and request.user.has_perm('trails_api.change_trail')
+
+    @admin.action(description='Approve selected suggestions', permissions=['approve'])
+    def approve(self, request, queryset):
+        with transaction.atomic():
+            for suggestion in queryset.select_for_update().filter(status='pending').order_by('created_at', 'pk'):
+                trail = Trail.objects.select_for_update().get(pk=suggestion.trail_id)
+                trail.description = suggestion.description
+                trail.status = 'verified'
+                trail.save(update_fields=['description', 'status', 'updated_at'])
+                suggestion.status = 'approved'
+                suggestion.save(update_fields=['status'])
+                self.log_change(request, suggestion, 'Approved description and updated trail.')
+
+    @admin.action(description='Reject selected suggestions', permissions=['change'])
+    def reject(self, request, queryset):
+        with transaction.atomic():
+            for suggestion in queryset.select_for_update().filter(status='pending'):
+                suggestion.status = 'rejected'
+                suggestion.save(update_fields=['status'])
+                self.log_change(request, suggestion, 'Rejected description.')

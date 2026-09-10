@@ -27,7 +27,7 @@ steps:
             -e DJANGO_SETTINGS_MODULE=webmapping_project.settings_ci \
             -e SPATIALITE_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/mod_spatialite.so \
             europe-west1-docker.pkg.dev/long-octane-477515-k6/cloud-run-source-deploy/stay-and-trek-service:latest \
-            python manage.py test trails_api.tests.test_models trails_api.tests.test_filters trails_api.tests.test_api trails_api.tests.test_views trails_api.tests.test_integration -v 2
+            python manage.py test trails_api.tests.test_models trails_api.tests.test_filters trails_api.tests.test_api trails_api.tests.test_views trails_api.tests.test_integration trails_api.tests.test_security -v 2
 
   # Step 3: Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
@@ -57,8 +57,8 @@ steps:
       - --set-env-vars=NEW_DB_NAME=trails_db
       - --set-env-vars=NEW_DB_USER=postgres
       - --set-env-vars=NEW_DB_HOST=/cloudsql/long-octane-477515-k6:europe-west1:stay-trek-db
-      - --set-env-vars=SECRET_KEY=django-insecure-nehw-)k@fa!el1zw5jdj#bn-x&@c)ph7sjd7i%%91$xwrcze)b
-      - --set-env-vars=OPENWEATHERMAP_API_KEY=d7f38f79ac1c83a0ed6867548326ece9
+      - --set-secrets=SECRET_KEY=django_secret_key:latest
+      - --set-secrets=OPENWEATHERMAP_API_KEY=openweathermap_api_key:latest
       - --set-secrets=NEW_DB_PASSWORD=cloud_sql_password:latest
       - --allow-unauthenticated
     id: DeployToCloudRun

@@ -76,24 +76,3 @@ if settings.DEBUG:
         re_path(r'^static/(?P<path>.*)$', static_files_view),
         re_path(r'^media/(?P<path>.*)$', static_serve, {'document_root': str(settings.BASE_DIR / 'media')}),
     ]
-
-from django.contrib.auth import get_user_model
-import threading
-import logging
-
-# Creates a fallback admin account if the default one is missing.
-def create_emergency_admin():
-    try:
-        User = get_user_model()
-        if not User.objects.filter(username='admin').exists():
-            User.objects.create_superuser(
-                username='admin',
-                email='admin@example.com',
-                password=os.getenv('EMERGENCY_ADMIN_PASSWORD', 'set-in-environment')
-            )
-            print("✅ Successfully created superuser: admin")
-    except Exception as e:
-        print(f"⚠️ Superuser check skipped: {e}")
-
-# Runs the admin check in the background so startup is not blocked.
-threading.Thread(target=create_emergency_admin, daemon=True).start()

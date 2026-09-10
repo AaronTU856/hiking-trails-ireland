@@ -24,7 +24,6 @@ urlpatterns = [
     # Town endpoints
     path('towns/geojson/', views.towns_geojson, name='towns_geojson'),
     path('nearest-town/', views.nearest_town, name='nearest-town'),
-    path('load-towns/', views.load_towns, name='load-towns'),
 
     # Spatial
     path('within-radius/', views.trails_within_radius, name='trails-within-radius'),

@@ -830,7 +830,7 @@
             longitude: document.getElementById('townLongitude').value,
         };
         
-        fetch(`/advanced-mapping/api/town/edit/${townId}/`, {
+        fetch(`/advanced-js-mapping/api/town/edit/${townId}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -896,7 +896,7 @@
     // Deletes the selected town after confirmation.
     document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
         if (selectedTownId) {
-            fetch(`/advanced-mapping/api/town/edit/${selectedTownId}/`, {
+            fetch(`/advanced-js-mapping/api/town/edit/${selectedTownId}/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

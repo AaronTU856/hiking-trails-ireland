@@ -508,3 +508,20 @@ class Rivers(models.Model):
         if trail.path:
             return trail.path.intersection(self.geom)
         return None
+
+
+class TrailDescriptionSuggestion(models.Model):
+    """Unpublished contributions, kept separate from the public trail record."""
+
+    trail = models.ForeignKey(Trail, on_delete=models.CASCADE, related_name='description_suggestions')
+    submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
+    description = models.TextField(max_length=10000)
+    status = models.CharField(
+        max_length=10,
+        choices=[('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')],
+        default='pending',
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.trail} ({self.status})'

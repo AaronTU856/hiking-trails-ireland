@@ -31,7 +31,7 @@ RUN rm -f /etc/nginx/sites-enabled/default
 
 # 7. Create staticfiles and media directories
 RUN mkdir -p /app/staticfiles /app/media
-RUN python manage.py collectstatic --noinput --clear || true
+RUN python manage.py collectstatic --noinput --clear
 
 # 8. Copy and prepare entrypoint script
 # Make sure the entrypoint.sh in your root matches the background-gunicorn version
