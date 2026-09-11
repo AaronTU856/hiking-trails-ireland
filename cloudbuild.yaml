@@ -54,8 +54,11 @@ steps:
       - cloud-run-service-account@${PROJECT_ID}.iam.gserviceaccount.com
       - --remove-env-vars=SECRET_KEY,OPENWEATHERMAP_API_KEY
       - --update-env-vars=ACTIVE_DB=new,NEW_DB_NAME=stay_and_trek,NEW_DB_USER=postgres,NEW_DB_HOST=/cloudsql/long-octane-477515-k6:europe-west1:stay-trek-db
-      - --update-secrets=MY_API_KEY=api_key_secret:latest,SECRET_KEY=django_secret_key:1,OPENWEATHERMAP_API_KEY=openweathermap_api_key:1,NEW_DB_PASSWORD=cloud_sql_password:latest
+      - --update-secrets=MY_API_KEY=api_key_secret:latest,SECRET_KEY=django_secret_key:1,OPENWEATHERMAP_API_KEY=openweathermap_api_key:1,NEW_DB_PASSWORD=cloud_sql_password:latest,CARTO_BASEMAP_API_KEY=carto_basemap_api_key:1
       - --allow-unauthenticated
+      # Promote traffic only after candidate smoke tests pass.
+      - --no-traffic
+      - --tag=carto-candidate
     id: DeployToCloudRun
     env:
       - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
