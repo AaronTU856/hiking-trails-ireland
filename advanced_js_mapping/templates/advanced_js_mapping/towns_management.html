@@ -650,24 +650,13 @@
     function loadTowns() {
         showMessage('<span class="loading"></span> Loading towns...', 'info');
         
-        fetch('{% url "advanced_js_mapping:towns_management" %}', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': CSRF_TOKEN
-            }
+        fetch('{% url "advanced_js_mapping:towns_management" %}?format=json', {
+            headers: { 'Accept': 'application/json' }
         })
-        .then(response => response.json())
-        .catch(error => {
-            return fetch('{% url "api:town_list" %}', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': CSRF_TOKEN
-                }
-            });
+        .then(response => {
+            if (!response.ok) throw new Error('Unable to load towns');
+            return response.json();
         })
-        .then(response => response.json())
         .then(data => {
             towns = data.results || data.towns || [];
             renderTownsList();
@@ -770,7 +759,7 @@
     
     // Opens the add form for a new town.
     document.getElementById('addTownBtn').addEventListener('click', () => {
-        document.getElementById('addTownModal').classList.add('show');
+        window.location.href = '{% url "admin:trails_api_town_add" %}';
     });
     
     // Opens the edit form for the current selection.
@@ -830,7 +819,7 @@
             longitude: document.getElementById('townLongitude').value,
         };
         
-        fetch(`/advanced-mapping/api/town/edit/${townId}/`, {
+        fetch(`/advanced-js-mapping/api/town/edit/${townId}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -896,7 +885,7 @@
     // Deletes the selected town after confirmation.
     document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
         if (selectedTownId) {
-            fetch(`/advanced-mapping/api/town/edit/${selectedTownId}/`, {
+            fetch(`/advanced-js-mapping/api/town/edit/${selectedTownId}/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

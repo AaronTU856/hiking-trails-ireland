@@ -23,7 +23,7 @@ SPATIALITE_LIBRARY_PATH = os.getenv(
 )
 
 
-ROOT_URLCONF = "webmapping_project.urls_test_local"
+ROOT_URLCONF = "webmapping_project.urls"
 
 
 MIGRATION_MODULES = {

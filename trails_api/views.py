@@ -45,6 +45,8 @@ from .serializers import (
 )
 from .serializers import TrailPathGeoSerializer
 from .filters import TrailFilter
+from .permissions import IsStaffOrReadOnly
+from .models import TrailDescriptionSuggestion
 import json
 
 ROUTE_ESTIMATE_WALKING_SPEED_KMH = 4.5
@@ -207,30 +209,18 @@ class TrailListCreateView(generics.ListCreateAPIView):
             queryset = queryset.filter(difficulty__iexact=difficulty)
 
         return queryset
-    # Allows public reads and requires login for writes.
-    def get_permissions(self):
-        if self.request.method == 'POST':
-            permission_classes = [IsAuthenticated]
-        else:
-            permission_classes = [AllowAny]
-        return [permission() for permission in permission_classes]
+    permission_classes = [IsStaffOrReadOnly]
 
 
-# Handles one town record at a time.
 class TownDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Town.objects.all()
+    permission_classes = [IsStaffOrReadOnly]
 
-    # Allows public reads and requires login for edits.
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
-            permission_classes = [IsAuthenticated]
-        else:
-            permission_classes = [AllowAny]
-        return [permission() for permission in permission_classes]
 
 # Handles one trail record at a time.
 @extend_schema(tags=["Trails"], summary="Retrieve, update or delete a trail")
 class TrailDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsStaffOrReadOnly]
     queryset = Trail.objects.all()
     serializer_class = TrailDetailSerializer
 
@@ -340,20 +330,21 @@ def trail_statistics(request):
 
 # Saves a suggested trail description for moderation.
 @api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
 def suggest_description(request, pk):
     try:
         trail = Trail.objects.get(pk=pk)
         description = request.data.get('description')
 
-        if not description or len(description) < 10:
+        if not isinstance(description, str) or not 10 <= len(description.strip()) <= 10000:
             return Response(
-                {"error": "Description too short or missing."}, 
+                {"error": "Description must contain between 10 and 10000 characters."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        trail.description = description
-        trail.status = 'pending'
-        trail.save()
+        TrailDescriptionSuggestion.objects.create(
+            trail=trail, submitted_by=request.user, description=description.strip()
+        )
 
         return Response({"message": "Submission received. Awaiting approval."}, status=status.HTTP_200_OK)
     except Trail.DoesNotExist:
@@ -395,6 +386,7 @@ def towns_geojson(request):
 
 # Finds the closest town to the supplied coordinates.
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def nearest_town(request):
     lat = request.data.get('latitude')
     lng = request.data.get('longitude')
@@ -416,36 +408,6 @@ def nearest_town(request):
     })
 
 # Loads sample towns from the bundled GeoJSON file.
-@api_view(['GET'])
-def load_towns(request):
-    with open("trails_api/data/sample_towns.geojson") as f:
-        data = json.load(f)
-    Town.objects.all().delete()
-    count = 0
-
-    for feature in data["features"]:
-        props = feature["properties"]
-        name = props.get("ENGLISH") or props.get("name")
-        area = props.get("AREA")
-        population = props.get("POPULATION") or props.get("population") or 0
-        town_type = props.get("TOWN_TYPE") or props.get("town_type") or "Urban"
-
-        # Convert each GeoJSON coordinate pair into a PostGIS point so the
-        # towns can be used by nearest-town lookup, filtering, and weather views.
-        lon, lat = feature["geometry"]["coordinates"]
-        point = Point(float(lon), float(lat), srid=4326)
-
-        Town.objects.create(
-            name=name,
-            area=area,
-            population=population,
-            town_type=town_type,
-            location=point
-        )
-        count += 1
-
-    return Response({"status": f"Loaded {count} towns successfully"})
-
 # Returns trails as GeoJSON for the main map page.
 @api_view(['GET'])
 def trails_geojson(request):
@@ -1604,4 +1566,3 @@ def accommodations_near_town(request):
         "features": features,
         "count": len(features)
     })
-    

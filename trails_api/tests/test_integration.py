@@ -15,6 +15,7 @@ class TrailIntegrationTests(TestCase):
         self.client = APIClient()
         self.user = User.objects.create_user(
             username="integrationuser",
+            is_staff=True,
             password="testpass123",
         )
         self.accommodation = Accommodation.objects.create(

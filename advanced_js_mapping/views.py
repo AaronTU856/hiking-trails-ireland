@@ -1,6 +1,6 @@
 # advanced_js_mapping/views.py
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.contrib.gis.geos import GEOSGeometry, Polygon
@@ -598,19 +598,28 @@ def analytics_view(request):
 @login_required
 # Shows the town management page or returns town data for it.
 def towns_management_view(request):
-    """Town management interface for authenticated users"""
-    context = {
-        'user': request.user,
-    }
-    return render(request, 'advanced_js_mapping/towns_management.html', context)
+    """Town management interface for staff."""
+    if not request.user.is_staff:
+        return HttpResponseForbidden("Staff access required.")
+    if request.GET.get('format') == 'json':
+        towns = [{
+            'id': town.pk, 'name': town.name, 'country': town.country,
+            'population': town.population, 'area_km2': town.area,
+            'town_type': town.town_type,
+            'latitude': town.location.y if town.location else None,
+            'longitude': town.location.x if town.location else None,
+        } for town in Town.objects.all().order_by('name')]
+        return JsonResponse({'towns': towns})
+    return render(request, 'advanced_js_mapping/towns_management.html', {'user': request.user})
 
-# Town editing API endpoint with authentication and CSRF exemption
-@csrf_exempt
+# Town editing requires staff authentication and normal CSRF protection.
 @login_required
 @require_http_methods(["GET", "PUT", "DELETE"])
 # Updates or deletes one town record from the management page.
 def edit_town_api(request, town_id):
-    """API endpoint for editing town data - requires authentication"""
+    """Edit catalogue towns with staff authorization and CSRF protection."""
+    if not request.user.is_staff:
+        return JsonResponse({"error": "Staff access required."}, status=403)
     try:
         town = Town.objects.get(id=town_id)
 
@@ -709,7 +718,6 @@ def edit_town_api(request, town_id):
         }, status=500)
 
 # Trails API endpoint to list or create trails
-@csrf_exempt
 @require_http_methods(["GET", "POST"])
 # Returns trail data used by the advanced mapping pages.
 def trails_api(request):
@@ -723,8 +731,8 @@ def trails_api(request):
     
     elif request.method == 'POST':
         # Create new trail (requires authentication)
-        if not request.user.is_authenticated:
-            return JsonResponse({'success': False, 'error': 'Authentication required'}, status=401)
+        if not request.user.is_authenticated or not request.user.is_staff:
+            return JsonResponse({'success': False, 'error': 'Staff access required'}, status=403)
         
         try:
             from trails_api.models import Trail

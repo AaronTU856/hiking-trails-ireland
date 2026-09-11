@@ -58,6 +58,9 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret.
 SECRET_KEY = os.environ.get('SECRET_KEY', 'replace-me-in-local-env')
+if os.getenv('K_SERVICE') and SECRET_KEY in ('', 'replace-me-in-local-env'):
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured('SECRET_KEY must be configured for Cloud Run.')
 OPENWEATHERMAP_API_KEY = os.getenv('OPENWEATHERMAP_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -66,7 +69,6 @@ OPENWEATHERMAP_API_KEY = os.getenv('OPENWEATHERMAP_API_KEY')
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes', 'on')
 
 ALLOWED_HOSTS = [
-    '*', 
     'localhost',
     '127.0.0.1',
     '0.0.0.0', # Common for Docker internal routing
@@ -85,7 +87,7 @@ if os.getenv('K_SERVICE'):
 
 CSRF_TRUSTED_ORIGINS = [
     'https://stay-and-trek.com',
-    'https://www.stay-and-trek.com'
+    'https://www.stay-and-trek.com',
     'https://*.run.app',
 ]
 
@@ -194,10 +196,10 @@ else:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.contrib.gis.db.backends.postgis',
-                'NAME': 'stay_and_trek',
-                'USER': 'postgres',
+                'NAME': os.getenv('NEW_DB_NAME', 'stay_and_trek'),
+                'USER': os.getenv('NEW_DB_USER', 'postgres'),
                 'PASSWORD': os.getenv('NEW_DB_PASSWORD', 'set-in-environment'),
-                'HOST': '/cloudsql/long-octane-477515-k6:europe-west1:stay-trek-db',
+                'HOST': os.getenv('NEW_DB_HOST', '/cloudsql/long-octane-477515-k6:europe-west1:stay-trek-db'),
                 'PORT': '', 
             }
         }
@@ -208,11 +210,11 @@ else:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.contrib.gis.db.backends.postgis',
-                'NAME': 'stay_and_trek',
-                'USER': 'postgres',
+                'NAME': os.getenv('NEW_DB_NAME', 'stay_and_trek'),
+                'USER': os.getenv('NEW_DB_USER', 'postgres'),
                 'PASSWORD': os.getenv('NEW_DB_PASSWORD', 'set-in-environment'),
                 'HOST': os.getenv('DB_HOST', '127.0.0.1'),
-                'PORT': '8080',
+                'PORT': os.getenv('DB_PORT', '8080'),
             }
         }
     elif os.getenv('DATABASE_URL'):
@@ -250,7 +252,7 @@ else:
 #     'default': {
 #         'ENGINE': 'django.contrib.gis.db.backends.postgis',
 #         'NAME': 'trails_db',      #  match your docker-compose service
-#         'USER': 'postgres',       # match docker-compose credentials
+#         'USER': os.getenv('NEW_DB_USER', 'postgres'),       # match docker-compose credentials
 #         'PASSWORD': 'postgres',
 #         'HOST': 'db',             # internal hostname for the Postgres container
 #         'PORT': '5432',
@@ -314,9 +316,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Open for development
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -376,9 +379,3 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    
-import os
-
-# These are the standard paths for the libraries we installed in your Dockerfile
-GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/usr/lib/libgeos_c.so'

@@ -79,7 +79,7 @@ class TrailApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["trail_name"], "Bray Head Loop")
 
-    def test_authenticated_user_can_create_trail(self):
+    def test_staff_user_can_create_trail(self):
         payload = {
             "trail_name": "Glendalough Valley Loop",
             "county": "Wicklow",
@@ -94,6 +94,8 @@ class TrailApiTests(TestCase):
             "parking_available": "Yes",
         }
 
+        self.user.is_staff = True
+        self.user.save(update_fields=["is_staff"])
         self.client.force_authenticate(user=self.user)
         response = self.client.post(
             reverse("trails:trail-list-create"),
