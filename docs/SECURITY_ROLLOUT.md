@@ -75,3 +75,28 @@ python manage.py test trails_api.tests --noinput
 The migration state consistency check reports no missing migrations. Local
 PostgreSQL on port 5432 was unavailable; PostGIS migration execution and the
 actual Docker image remain release checks, not verified results.
+
+## Release preparation — 2026-09-11
+
+- Draft PR: https://github.com/AaronTU856/stay-and-trek-platform/pull/10
+- Production-platform Docker build and 41 application/security tests passed.
+- Secret Manager `django_secret_key:1` and `openweathermap_api_key:1` are prepared
+  with runtime secret access. The replacement weather key returned valid data.
+- Isolated Cloud SQL instance: `stay-trek-security-staging` (europe-west1).
+- Restore source: backup `1789074915017` from `stay-trek-db`.
+- Restore operation: `d7e77bcd-7e2d-4df3-97fb-7bb400000024`; completion is pending.
+- Migration/verification job: `stay-trek-staging-migrate`.
+- `scripts/verify_staging.py` refuses any database host except the staging socket,
+  exercises web login, mobile JWT submissions, staff edits, and approval, and
+  cleans up its disposable fixtures. It does not accept production as a target.
+- Settings now honour NEW_DB_HOST/NEW_DB_NAME so staging cannot silently use the
+  production socket. The production database remains `stay_and_trek`.
+- Build images use commit tags; replacement secret versions are pinned to 1.
+
+Rollback target before this release: Cloud Run revision
+`stay-and-trek-service-00310-dqb`, image digest
+`sha256:76e5422a1369b443b4901c9b600d839d676c7dd495b30fc672e648dcaa1841c5`.
+Migration 0023 is additive. Roll back traffic without dropping the suggestion
+storage; preserve contributions for investigation. Rolling back to the old
+revision also restores its old credentials and security weaknesses, so rollback
+is a short-term recovery measure, not a permanent fix.

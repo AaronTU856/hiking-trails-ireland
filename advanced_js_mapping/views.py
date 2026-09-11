@@ -601,10 +601,16 @@ def towns_management_view(request):
     """Town management interface for staff."""
     if not request.user.is_staff:
         return HttpResponseForbidden("Staff access required.")
-    context = {
-        'user': request.user,
-    }
-    return render(request, 'advanced_js_mapping/towns_management.html', context)
+    if request.GET.get('format') == 'json':
+        towns = [{
+            'id': town.pk, 'name': town.name, 'country': town.country,
+            'population': town.population, 'area_km2': town.area,
+            'town_type': town.town_type,
+            'latitude': town.location.y if town.location else None,
+            'longitude': town.location.x if town.location else None,
+        } for town in Town.objects.all().order_by('name')]
+        return JsonResponse({'towns': towns})
+    return render(request, 'advanced_js_mapping/towns_management.html', {'user': request.user})
 
 # Town editing requires staff authentication and normal CSRF protection.
 @login_required
@@ -712,7 +718,6 @@ def edit_town_api(request, town_id):
         }, status=500)
 
 # Trails API endpoint to list or create trails
-@csrf_exempt
 @require_http_methods(["GET", "POST"])
 # Returns trail data used by the advanced mapping pages.
 def trails_api(request):
@@ -726,8 +731,8 @@ def trails_api(request):
     
     elif request.method == 'POST':
         # Create new trail (requires authentication)
-        if not request.user.is_authenticated:
-            return JsonResponse({'success': False, 'error': 'Authentication required'}, status=401)
+        if not request.user.is_authenticated or not request.user.is_staff:
+            return JsonResponse({'success': False, 'error': 'Staff access required'}, status=403)
         
         try:
             from trails_api.models import Trail

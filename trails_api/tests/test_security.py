@@ -122,3 +122,15 @@ class SecurityTests(TestCase):
             reload(webmapping_project.urls)
         thread.assert_not_called()
         create.assert_not_called()
+
+    def test_staff_town_page_and_listing_load(self):
+        self.client.force_login(self.staff)
+        self.assertEqual(self.client.get('/advanced-js-mapping/towns/', secure=True).status_code, 200)
+        response = self.client.get('/advanced-js-mapping/towns/?format=json', secure=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['towns'][0]['name'], self.town.name)
+
+    def test_alternative_trail_creation_route_rejects_regular_users(self):
+        self.client.force_login(self.user)
+        response = self.client.post('/advanced-js-mapping/api/trails/', {}, format='json', secure=True)
+        self.assertEqual(response.status_code, 403)
