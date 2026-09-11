@@ -84,7 +84,7 @@ actual Docker image remain release checks, not verified results.
   with runtime secret access. The replacement weather key returned valid data.
 - Isolated Cloud SQL instance: `stay-trek-security-staging` (europe-west1).
 - Restore source: backup `1789074915017` from `stay-trek-db`.
-- Restore operation: `d7e77bcd-7e2d-4df3-97fb-7bb400000024`; completion is pending.
+- Restore operation: `d7e77bcd-7e2d-4df3-97fb-7bb400000024`; completed successfully on 2026-09-11.
 - Migration/verification job: `stay-trek-staging-migrate`.
 - `scripts/verify_staging.py` refuses any database host except the staging socket,
   exercises web login, mobile JWT submissions, staff edits, and approval, and
@@ -100,3 +100,16 @@ Migration 0023 is additive. Roll back traffic without dropping the suggestion
 storage; preserve contributions for investigation. Rolling back to the old
 revision also restores its old credentials and security weaknesses, so rollback
 is a short-term recovery measure, not a permanent fix.
+
+Staging verification completed successfully in execution
+`stay-trek-staging-migrate-hdlp9`. Only migration 0023 was pending; it applied
+successfully. Restored trail count was 1055. Staff login, town CSRF/edit,
+mobile JWT login/submission, and admin approval passed; fixtures were removed.
+Authenticated requests to the private Cloud Run endpoint returned HTTP 200 for
+the homepage, login page, and trail API. This verifies mobile API behaviour,
+not a physical-device mobile UI test.
+
+Fresh production backup: `1789116189476` (SUCCESSFUL, 2026-09-11T08:43:50Z).
+Production migration job `stay-trek-production-migrate` verifies database
+identity, checks for an active administrator and the known default password,
+and refuses any migration plan except the additive 0023 migration.

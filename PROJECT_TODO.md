@@ -44,10 +44,12 @@ post-FYP audit and development plan; unchecked work is not yet implemented.
 - [x] Restrict trail writes and administrative town operations to staff (local branch).
 - [x] Remove the data-changing town GET endpoint; retain the management-command import.
 - [x] Remove automatic administrator creation and its predictable password fallback.
-- [ ] Rotate exposed credentials and move server secrets into secret storage.
+- [x] Prepare replacement Django/weather secrets and grant runtime access.
+- [ ] Activate replacement secrets through the verified production release.
+- [ ] Revoke the old weather key at the provider after checking remaining consumers.
 - [x] Enforce staff/CSRF town edits and separate suggestions from published descriptions.
 - [x] Configure automatic database backups: daily at 12:00 UTC, retain seven.
-- [ ] Test restoration in an isolated instance; never overwrite production.
+- [x] Restore backup into `stay-trek-security-staging` and apply migration 0023 successfully.
 
 Step 2 implementation was authorised on 2026-09-10 and is on the security
 branch. Local tests: 39 passed, including 11 security regression tests; Django
@@ -67,9 +69,10 @@ See `docs/SECURITY_ROLLOUT.md` for release prerequisites.
 ## 4. Strengthen validation
 
 - [x] Add permission/authentication, CSRF, and moderation regression coverage.
-- [ ] Verify test files are included in the built test image (exclusion removed; image build pending).
-- [ ] Exercise real PostGIS queries and migrations in an isolated database.
-- [ ] Test full application routing and core web/mobile workflows.
+- [x] Verify production-platform image includes tests: all 41 tests passed.
+- [x] Exercise migration and core application workflows against restored staging PostGIS.
+- [x] Test full URL configuration and staging web login, staff edits, JWT submissions, moderation.
+- [ ] Verify the mobile UI on physical devices or simulators.
 - [x] Remove Dockerfile suppression of static-file collection failures.
 
 ## 5. Align mobile and backend
@@ -99,3 +102,15 @@ See `docs/SECURITY_ROLLOUT.md` for release prerequisites.
 - [ ] Split large backend and map modules incrementally with regression coverage.
 - [ ] Prioritise accessibility, mobile usability, performance, and data quality.
 - [ ] Maintain a small, demonstrable feature roadmap for the portfolio.
+
+## Release checkpoint — 2026-09-11
+
+Draft PR #10 targets dev. Candidate commit: 6c559a7. All 41 tests passed inside
+the Linux/AMD64 production image. Staging image digest:
+`sha256:66839fc804a8429d4fe8fb57b9c40fb55773d42927069efffba0acf8cf23a8e7`.
+The private staging service is `stay-and-trek-staging`; its database is
+`stay-trek-security-staging`. Restore operation completed successfully.
+Execution `stay-trek-staging-migrate-hdlp9` applied only migration 0023 and passed
+all guarded staging workflows, cleaning up its disposable fixtures.
+Fresh production backup `1789116189476` completed successfully before release.
+Production migration and deployment are being tracked in the rollout notes.
