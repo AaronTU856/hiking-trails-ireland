@@ -375,6 +375,8 @@ LOGOUT_REDIRECT_URL = 'authentication:home'
 
 # Fix for Google Cloud Run HTTPS Proxy
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# CARTO validates the production origin; do not send page paths cross-origin.
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 

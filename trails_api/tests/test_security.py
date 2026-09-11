@@ -142,6 +142,11 @@ from django.utils.html import escapejs
 
 
 class CartoConfigurationTests(SimpleTestCase):
+    def test_browser_sends_origin_for_restricted_carto_tiles(self):
+        response = self.client.get('/auth/login/', secure=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers['Referrer-Policy'], 'strict-origin-when-cross-origin')
+
     @override_settings(CARTO_BASEMAP_API_KEY='test-key</script>"&')
     def test_key_is_escaped_and_available_before_child_map_scripts(self):
         template = engines['django'].from_string(
