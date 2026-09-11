@@ -343,14 +343,14 @@ function initializeMap() {
   );
 
   L.tileLayer(
-    "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-    {
-      attribution:
-        '&copy; <a href="https://carto.com/">CartoDB</a> contributors',
-      subdomains: "abcd",
-      maxZoom: 19,
-    }
-  ).addTo(window.trailsMap);
+  `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=${encodeURIComponent(window.STAY_TREK_CONFIG?.cartoBasemapApiKey || '')}`,
+  {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 19,
+  }
+).addTo(window.trailsMap);
 
   window.trailMarkers = L.layerGroup().addTo(window.trailsMap);
   console.log("✅ Trail marker layer added to map");

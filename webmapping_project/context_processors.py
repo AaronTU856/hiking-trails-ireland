@@ -1,4 +1,6 @@
 # webmapping_project/context_processors.py
+from django.conf import settings
+
 def navigation_context(request):
     """
     Add navigation data to all templates.
@@ -67,4 +69,5 @@ def navigation_context(request):
     return {
         'current_page': current_page,
         'navigation_items': navigation_items,
+        'carto_basemap_api_key': settings.CARTO_BASEMAP_API_KEY,
     }

@@ -134,3 +134,26 @@ class SecurityTests(TestCase):
         self.client.force_login(self.user)
         response = self.client.post('/advanced-js-mapping/api/trails/', {}, format='json', secure=True)
         self.assertEqual(response.status_code, 403)
+
+
+from django.test import SimpleTestCase
+from django.template import engines
+from django.utils.html import escapejs
+
+
+class CartoConfigurationTests(SimpleTestCase):
+    @override_settings(CARTO_BASEMAP_API_KEY='test-key</script>"&')
+    def test_key_is_escaped_and_available_before_child_map_scripts(self):
+        template = engines['django'].from_string(
+            '{% extends "base.html" %}{% block extra_js %}<script id="map-initializer"></script>{% endblock %}'
+        )
+        html = template.render({}, request=RequestFactory().get('/'))
+        self.assertIn(str(escapejs('test-key</script>"&')), html)
+        self.assertNotIn('test-key</script>', html)
+        self.assertLess(html.index('window.STAY_TREK_CONFIG'), html.index('id="map-initializer"'))
+
+    @override_settings(CARTO_BASEMAP_API_KEY='')
+    def test_missing_local_key_does_not_break_template_rendering(self):
+        template = engines['django'].get_template('base.html')
+        html = template.render({}, request=RequestFactory().get('/'))
+        self.assertIn('cartoBasemapApiKey: ""', html)
