@@ -1,7 +1,8 @@
 # Stay & Trek development checklist
 
-Started: 2026-09-10. Application code is unchanged. This checklist records the
-post-FYP audit and development plan; unchecked work is not yet implemented.
+Started: 2026-09-10. Updated: 2026-09-12. This checklist records the
+post-FYP development plan and verified release results. Unchecked work remains
+pending or unverified; historical evidence is labelled below.
 
 ## 1. Preserve and verify the baseline — complete
 
@@ -13,7 +14,7 @@ post-FYP audit and development plan; unchecked work is not yet implemented.
       using GitHub tag `fyp-final`.
 - [x] Leave existing `submission-v1` tag and submission branch intact.
 
-### Production evidence
+### Historical baseline evidence — before the security release
 
 - Project: `long-octane-477515-k6`; region: `europe-west1`.
 - Cloud Run service: `stay-and-trek-service`.
@@ -29,8 +30,7 @@ post-FYP audit and development plan; unchecked work is not yet implemented.
 - New on-demand backup: `1789074915017`, requested 2026-09-10T21:15:15Z.
 - Backup status: `SUCCESSFUL`, completed 2026-09-10T21:16:46Z.
 - Automatic backups were subsequently enabled on 2026-09-10 at 12:00 UTC,
-  retaining seven backups. A successful backup does not establish restore
-  readiness; restoration requires a separate test.
+  retaining seven backups. The separate restoration test subsequently passed; see step 2.
 - Existing `submission-v1` points to `66a6bbe50eab80f848fb958599e3d225ea106828`,
   the parent of the final-submission commit. It was not moved.
 - New tag: https://github.com/AaronTU856/stay-and-trek-platform/tree/fyp-final
@@ -41,35 +41,32 @@ post-FYP audit and development plan; unchecked work is not yet implemented.
 ## 2. Protect production data and credentials
 
 - [x] Create `security/post-fyp-hardening` from `dev`.
-- [x] Restrict trail writes and administrative town operations to staff (local branch).
+- [x] Restrict trail writes and administrative town operations to staff (deployed).
 - [x] Remove the data-changing town GET endpoint; retain the management-command import.
 - [x] Remove automatic administrator creation and its predictable password fallback.
 - [x] Prepare replacement Django/weather secrets and grant runtime access.
-- [ ] Activate replacement secrets through the verified production release.
+- [x] Activate replacement Django/weather secrets through the verified production release.
 - [ ] Revoke the old weather key at the provider after checking remaining consumers.
 - [x] Enforce staff/CSRF town edits and separate suggestions from published descriptions.
 - [x] Configure automatic database backups: daily at 12:00 UTC, retain seven.
 - [x] Restore backup into `stay-trek-security-staging` and apply migration 0023 successfully.
 
-Step 2 implementation was authorised on 2026-09-10 and is on the security
-branch. Local tests: 39 passed, including 11 security regression tests; Django
-system checks passed. Tests used a fresh temporary Python 3.14 environment and
-in-memory SpatiaLite, not the Python 3.11 production image or PostGIS. Migration
-state check reports no missing model migrations. Live credentials have not been
-rotated; the new Secret Manager references require provisioning before deployment.
-No application deployment or production migration has been performed.
-See `docs/SECURITY_ROLLOUT.md` for release prerequisites.
+Step 2 was deployed through PR #10, followed by CARTO fixes in PRs #11 and #12.
+Production migration 0023 and isolated restored-PostGIS validation succeeded.
+The latest Docker regression suite passed all 44 tests. Django, OpenWeather and
+CARTO secret bindings are active. Old provider-key revocation and any other
+credential cleanup remain unverified; see `docs/SECURITY_ROLLOUT.md`.
 
 ## 3. Establish local development and staging
 
 - [ ] Document a reproducible fresh-checkout setup with example configuration.
 - [ ] Provide development data isolated from production.
-- [ ] Establish staging, explicit migration execution, and rollback procedures.
+- [x] Establish staging, explicit migration execution, and rollback procedures.
 
 ## 4. Strengthen validation
 
 - [x] Add permission/authentication, CSRF, and moderation regression coverage.
-- [x] Verify production-platform image includes tests: all 41 tests passed.
+- [x] Verify production-platform image includes tests: latest suite: all 44 tests passed.
 - [x] Exercise migration and core application workflows against restored staging PostGIS.
 - [x] Test full URL configuration and staging web login, staff edits, JWT submissions, moderation.
 - [ ] Verify the mobile UI on physical devices or simulators.
@@ -88,7 +85,8 @@ See `docs/SECURITY_ROLLOUT.md` for release prerequisites.
 - [ ] Review unique changes before merging or retiring old branches.
 - [ ] Reconcile useful changes on `main` and `dev` through a pull request.
 - [ ] Protect production branches and require appropriate checks.
-- [ ] Plan and verify any deployment-trigger switch; `dev` currently deploys.
+- [x] Verify the renamed repository connection and `^dev$` trigger.
+- [ ] Plan and verify a deployment-branch switch only if desired; `dev` remains the release branch.
 
 ## 7. Refresh repository presentation
 
@@ -103,14 +101,37 @@ See `docs/SECURITY_ROLLOUT.md` for release prerequisites.
 - [ ] Prioritise accessibility, mobile usability, performance, and data quality.
 - [ ] Maintain a small, demonstrable feature roadmap for the portfolio.
 
-## Release checkpoint — 2026-09-11
+## Release checkpoint — 2026-09-12
 
-Draft PR #10 targets dev. Candidate commit: 6c559a7. All 41 tests passed inside
-the Linux/AMD64 production image. Staging image digest:
-`sha256:66839fc804a8429d4fe8fb57b9c40fb55773d42927069efffba0acf8cf23a8e7`.
-The private staging service is `stay-and-trek-staging`; its database is
-`stay-trek-security-staging`. Restore operation completed successfully.
-Execution `stay-trek-staging-migrate-hdlp9` applied only migration 0023 and passed
-all guarded staging workflows, cleaning up its disposable fixtures.
-Fresh production backup `1789116189476` completed successfully before release.
-Production migration and deployment are being tracked in the rollout notes.
+- PRs #10, #11 and #12 are merged into `dev`.
+- Deployed commit: `cc7e344459febd867465a71d83b9c18f0bdc8923`.
+- Cloud Run revision: `stay-and-trek-service-00328-veh`, verified at 100% traffic.
+- Matching successful Cloud Build: `966d952c-fff8-4f72-bc9e-0f97b2de8288`.
+- Image digest: `sha256:8b18f944e286ae1ee78cf251440a678395230a0b440056f9dc7dd3da6773d5e6`.
+- Runtime CARTO secret binding and `strict-origin-when-cross-origin` response
+  policy verified. Existing Django, weather and other secret bindings preserved.
+- Trails & Stays, Townland Explorer and dashboard candidate pages returned 200.
+  The user confirmed no watermark in the candidate browser map. After promotion,
+  the production map returned 200 with the corrected policy; a tile requested
+  using production configuration/referrer returned 200 and was visually checked
+  without a watermark. A full production browser sweep was not completed.
+- Production migration 0023 succeeded in `stay-trek-production-migrate-zltt2`.
+  Backup, restoration, migration and staging validation are complete; do not
+  repeat them as unfinished work from this checklist.
+- Cloud Build deploys candidates with no traffic; promotion follows validation.
+- CARTO rollback target: `stay-and-trek-service-00311-v59`. It retains the security
+  release but lacks the CARTO fix, so watermarked maps can return after rollback.
+
+## Next bounded tasks
+
+- [ ] Confirm the temporary CARTO `*.a.run.app` referrer allowance has been removed;
+      keep `stay-and-trek.com` and `www.stay-and-trek.com`. Removal was requested
+      after promotion but has not been confirmed.
+- [ ] Inventory remaining consumers of the old OpenWeather key, including the
+      mobile weather screen, before revoking it. Do not revoke it blindly.
+- [ ] Resolve the pre-existing `/dashboard/analytics/` HTTP 500 separately: the
+      view references an unimported `Accommodation` and a nonexistent `category`
+      field. The main dashboard map works; this defect was also present before
+      the CARTO release and was not changed by it.
+- [ ] Complete mobile UI/device checks and remaining administrator/credential
+      review without treating API regression tests as device validation.
