@@ -102,10 +102,13 @@ key values in documentation, screenshots, commits or diagnostic output.
   password; this is not evidence that a full account review was completed.
 - Verify rotation/revocation of any other exposed credentials from the audit.
   Do not retain an exposed Django key in `SECRET_KEY_FALLBACKS`.
-- Track `/dashboard/analytics/` HTTP 500 separately. It failed on both the old
-  production revision and the CARTO candidate. Its view references an unimported
-  `Accommodation` and a nonexistent model `category` field. The main dashboard
-  map is a separate working page; no analytics fix was included in this release.
+- `/dashboard/analytics/` failed on the old production revision and the CARTO
+  candidate. A subsequent local fix imports `Accommodation` and removes unused
+  hotel/hostel queries against its calculated `category` property. Two targeted
+  Docker tests reproduced the missing-import failure before the fix and passed
+  afterward, verifying empty and populated catalogue rendering and totals.
+  These tests are in `trails_api.tests.test_views`, already selected by CI.
+  This fix is not deployed; release and candidate validation remain pending.
 
 ## Database protection
 

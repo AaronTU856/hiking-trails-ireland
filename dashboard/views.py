@@ -1,7 +1,5 @@
 from django.shortcuts import render
-
-from django.shortcuts import render
-from trails_api.models import Trail, Town
+from trails_api.models import Accommodation, Trail, Town
 from django.db.models import Count, Avg, Sum
 
 # Builds the main dashboard with the filter options and totals.
@@ -32,8 +30,6 @@ def analytics(request):
 
     acc_stats = {
         "total_accommodations": Accommodation.objects.count(),
-        "hotels": Accommodation.objects.filter(category='hotel').count(),
-        "hostels": Accommodation.objects.filter(category='hostel').count(),
     }
 
     context = {

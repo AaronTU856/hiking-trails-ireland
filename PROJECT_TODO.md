@@ -130,10 +130,12 @@ credential cleanup remain unverified; see `docs/SECURITY_ROLLOUT.md`.
 - [ ] Confirm the temporary CARTO `*.a.run.app` referrer allowance has been removed;
       keep `stay-and-trek.com` and `www.stay-and-trek.com`. Removal was requested
       after promotion but has not been confirmed.
-- [ ] Resolve the pre-existing `/dashboard/analytics/` HTTP 500 separately: the
-      view references an unimported `Accommodation` and a nonexistent `category`
-      field. The main dashboard map works; this defect was also present before
-      the CARTO release and was not changed by it.
+- [x] Fix `/dashboard/analytics/` HTTP 500 locally: import `Accommodation` and
+      remove unused queries against its calculated category property. Two Docker
+      regression tests reproduce the previous error and pass with the fix,
+      covering an empty catalogue and populated summary statistics.
+- [ ] Release the analytics fix through a PR and validate the candidate before
+      promotion. Production remains on `cc7e344`; the local fix is not deployed.
 - [ ] Confirm whether the old exposed OpenWeather key has been revoked at the
       provider. The replacement key is already active through Secret Manager.
       Prototype mobile compatibility does not gate web work; mobile changes are
