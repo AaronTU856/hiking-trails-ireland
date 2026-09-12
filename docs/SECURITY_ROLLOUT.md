@@ -88,12 +88,14 @@ key values in documentation, screenshots, commits or diagnostic output.
 ## Remaining credential and application cleanup
 
 - Confirm removal of the temporary CARTO candidate referrer allowance.
-- Inventory old OpenWeather key consumers before provider revocation. The mobile
-  weather screen and trail-detail screen still reference
-  `EXPO_PUBLIC_OPENWEATHERMAP_API_KEY`; the actual key used by released mobile
-  builds has not been verified. Public Expo variables are visible in compiled
-  apps. Route mobile weather requests through the backend before retiring their
-  provider key; moving a literal into an Expo variable does not make it secret.
+- The user confirmed the replacement OpenWeather key is in Secret Manager;
+  its production binding and weather responses were already verified. Do not
+  revoke that replacement key. Revocation of the old exposed provider key is
+  still unconfirmed and is a separate cleanup item.
+- Current scope is finishing the web application. The mobile app is a prototype;
+  its weather/trail-detail screens still reference
+  `EXPO_PUBLIC_OPENWEATHERMAP_API_KEY`, but compatibility with prototype builds
+  does not gate web work. Mobile backend integration and device tests are deferred.
 - Explicitly verify the administrator account formerly created by startup code.
   Removing that routine does not reset existing accounts. The production
   migration guard checked for an active administrator and the known default

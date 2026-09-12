@@ -4,6 +4,9 @@ Started: 2026-09-10. Updated: 2026-09-12. This checklist records the
 post-FYP development plan and verified release results. Unchecked work remains
 pending or unverified; historical evidence is labelled below.
 
+Current priority: finish the web application. The mobile app is a prototype;
+mobile integration and device testing are deferred and do not gate web work.
+
 ## 1. Preserve and verify the baseline — complete
 
 - [x] Confirm local and GitHub `dev`: `6e5515ee151be926f27205373256a183f2e9f385`.
@@ -72,7 +75,7 @@ credential cleanup remain unverified; see `docs/SECURITY_ROLLOUT.md`.
 - [ ] Verify the mobile UI on physical devices or simulators.
 - [x] Remove Dockerfile suppression of static-file collection failures.
 
-## 5. Align mobile and backend
+## 5. Align mobile and backend — deferred
 
 - [x] Accept mobile JWTs in backend authentication; regression test passes.
 - [ ] Correct shared helper URLs, request methods, and weather parameters.
@@ -127,11 +130,13 @@ credential cleanup remain unverified; see `docs/SECURITY_ROLLOUT.md`.
 - [ ] Confirm the temporary CARTO `*.a.run.app` referrer allowance has been removed;
       keep `stay-and-trek.com` and `www.stay-and-trek.com`. Removal was requested
       after promotion but has not been confirmed.
-- [ ] Inventory remaining consumers of the old OpenWeather key, including the
-      mobile weather screen, before revoking it. Do not revoke it blindly.
 - [ ] Resolve the pre-existing `/dashboard/analytics/` HTTP 500 separately: the
       view references an unimported `Accommodation` and a nonexistent `category`
       field. The main dashboard map works; this defect was also present before
       the CARTO release and was not changed by it.
-- [ ] Complete mobile UI/device checks and remaining administrator/credential
-      review without treating API regression tests as device validation.
+- [ ] Confirm whether the old exposed OpenWeather key has been revoked at the
+      provider. The replacement key is already active through Secret Manager.
+      Prototype mobile compatibility does not gate web work; mobile changes are
+      deferred. Old-key revocation itself has not been confirmed.
+- [ ] Complete the remaining web administrator/credential review.
+- [ ] Deferred: mobile integration and UI/device checks.
