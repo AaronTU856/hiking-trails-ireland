@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from unittest.mock import MagicMock, patch
 
-from trails_api.models import Trail
+from trails_api.models import Accommodation, Town, Trail
 
 
 class TrailViewTests(TestCase):
@@ -311,3 +311,43 @@ class TrailViewTests(TestCase):
         self.assertEqual(payload["status"], "success_v2")
         self.assertEqual(payload["features"][1]["properties"]["end_node_candidate"], 2)
         self.assertIn("estimated_times", payload)
+
+
+class DashboardAnalyticsTests(TestCase):
+    def test_empty_catalogue_renders_zero_totals(self):
+        response = self.client.get(reverse("dashboard_analytics"), secure=True)
+
+        self.assertContains(response, "Trails & Towns Analytics")
+        self.assertEqual(response.context["trail_stats"]["total_trails"], 0)
+        self.assertEqual(response.context["trail_stats"]["avg_distance"], 0)
+        self.assertEqual(response.context["acc_stats"]["total_accommodations"], 0)
+        self.assertEqual(response.context["total_towns"], 0)
+
+    def test_public_page_renders_catalogue_statistics(self):
+        for name, distance, elevation, difficulty in [
+            ("Short walk", 4, 100, "easy"),
+            ("Hill walk", 8, 300, "hard"),
+        ]:
+            Trail.objects.create(
+                trail_name=name, county="Wicklow", distance_km=distance,
+                elevation_gain_m=elevation, difficulty=difficulty,
+                start_point=Point(-6.1, 53.2, srid=4326),
+            )
+        Town.objects.create(name="Sample town", location=Point(-6.1, 53.2, srid=4326))
+        for external_id, name in [("HHS-1", "Sample hotel"), ("manual-2", "Sample hostel")]:
+            Accommodation.objects.create(
+                external_id=external_id, name=name, source="manual",
+                location=Point(-6.1, 53.2, srid=4326),
+            )
+
+        response = self.client.get(reverse("dashboard_analytics"), secure=True)
+
+        self.assertContains(response, "Explore 1 towns with 2 available accommodations.")
+        stats = response.context["trail_stats"]
+        self.assertEqual(stats["total_trails"], 2)
+        self.assertEqual(stats["avg_distance"], 6)
+        self.assertEqual(stats["total_distance"], 12)
+        self.assertEqual(stats["avg_elevation"], 200)
+        self.assertEqual((stats["easy_count"], stats["moderate_count"], stats["hard_count"]), (1, 0, 1))
+        self.assertEqual(response.context["county_labels"], ["Wicklow"])
+        self.assertEqual(response.context["county_counts"], [2])
